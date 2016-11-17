@@ -22,15 +22,51 @@ public class Player extends Entity {
         String string = "Images/player.png";
         image = ImageFunction.loadImage(string);
 
-        width = image.getWidth(null);
-        height = image.getHeight(null);
+        setSizeFromImage();
         x = 100;
         y = 100;
     }
 
-    public void move() {
-        x += dx;
-        y += dy;
+    public void move(List<Block> blocks) {
+        double prevx = x;
+        double prevy = y;
+        x = Math.max(Math.min(x + dx, FrameConstants.WIDTH.value), 0);
+        boolean collide = false;
+
+        for(Block block: blocks) {
+            if (collision(block)) {
+                collide = true;
+                break;
+            }
+        }
+
+        if (collide) {
+            x = prevx;
+        }
+
+        y = Math.max(Math.min(y + dy, FrameConstants.HEIGHT.value), 0);
+
+        collide = false;
+
+        for(Block block: blocks) {
+            if (collision(block)) {
+                collide = true;
+                break;
+            }
+        }
+
+        if (collide) {
+            y = prevy;
+        }
+    }
+
+    public boolean collision(Block block) {
+        Position other = block.getCenter();
+        Position me = getCenter();
+
+        double radii = block.getSize().getRadius() + getSize().getRadius();
+
+        return (Math.abs(other.getX() - me.getX()) < radii && Math.abs(other.getY() - me.getY()) < radii);
     }
 
     public void inputs(int[] sensorData) {

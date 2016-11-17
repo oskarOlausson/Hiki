@@ -30,17 +30,12 @@ public class World extends JPanel{
     private List<Block> blocks = new ArrayList<>();
     private List<Enemy> enemies = new ArrayList<>();
     private boolean running = false;
-    private List<Integer> keys = new ArrayList<>();
     private Image background;
 
 
     public World(Input input) {
         this.input = input;
         initBoard();
-    }
-
-    public void nullInput() {
-        input = null;
     }
 
     private void initBoard() {
@@ -51,7 +46,22 @@ public class World extends JPanel{
         setBackground(Color.BLACK);
 
         player = new Player(this);
-        goal = new Goal(400, 400);
+
+        int pad = 50;
+        double xx, yy;
+
+
+        for (int i = 0; i < 50; i ++) {
+            do {
+                xx = pad + (Math.random() * FrameConstants.WIDTH.value - pad * 2);
+                yy = pad + (Math.random() * FrameConstants.HEIGHT.value - pad * 2);
+            }
+            while (Math.sqrt(Math.pow(xx - player.getX(), 2) + Math.sqrt(Math.pow(yy - player.getY(), 2))) < 100);
+            createBlock(xx, yy);
+        }
+
+
+        goal = new Goal(400, 400, blocks);
 
     }
 
@@ -98,7 +108,9 @@ public class World extends JPanel{
 
     public void tick(){
         player.inputs(input.sensorData());
-        player.move();
+        player.move(blocks);
+
+        goal.move(player);
 
         enemies.forEach(Enemy::move);
     }
@@ -122,6 +134,8 @@ public class World extends JPanel{
         g2d.drawImage(background, 0, 0, this);
 
         drawEntity(g2d, player);
+
+        drawEntity(g2d, goal);
 
         Iterator<Block> iter = blocks.iterator();
 

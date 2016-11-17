@@ -27,6 +27,11 @@ public abstract class Entity {
         return (int) (x - width/2);
     }
 
+    public void setSizeFromImage() {
+        width = image.getWidth(null);
+        height = image.getHeight(null);
+    }
+
     public int getY(){ return (int) (y - height/2); }
 
     public Image getImage(){
