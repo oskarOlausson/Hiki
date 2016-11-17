@@ -9,10 +9,6 @@ public class Block extends Entity {
     }
 
     private boolean remove = false;
-    @Override
-    public void move() {
-
-    }
 
     public void delete() {
         remove = true;

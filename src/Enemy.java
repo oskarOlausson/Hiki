@@ -4,7 +4,7 @@
 public class Enemy extends Entity{
 
     private boolean remove = false;
-    @Override
+
     public void move() {
 
     }

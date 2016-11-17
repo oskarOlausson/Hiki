@@ -29,13 +29,16 @@ public class Player extends Entity {
     }
 
     public void move() {
-
+        x += dx;
+        y += dy;
     }
 
-    public void inputs(List<Integer> keyCodes) {
-        if (keyCodes.contains(KeyEvent.VK_SPACE)){
-
-        }
+    public void inputs(int[] sensorData) {
+        double slider = (((double) sensorData[InputConstants.SLIDER]) / 1000) - 0.5;
+        double dial = (((double) sensorData[InputConstants.DIAL]) / 1000) - 0.5;
+        double light = (((double) sensorData[InputConstants.LIGHT]) / 1000);
+        dx = slider * light * 5;
+        dy = dial * light * 5;
     }
 }
 

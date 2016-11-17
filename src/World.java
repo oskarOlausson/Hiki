@@ -1,8 +1,4 @@
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.KeyAdapter;
-import java.awt.event.KeyEvent;
 import java.awt.geom.AffineTransform;
 import java.awt.image.AffineTransformOp;
 import java.awt.image.BufferedImage;
@@ -25,11 +21,12 @@ import javax.swing.*;
     }
  */
 
-
-public class World extends JPanel implements ActionListener {
+public class World extends JPanel{
 
     private GameState state = GameState.PLAY;
     private Player player;
+    private Input input;
+    private Goal goal;
     private List<Block> blocks = new ArrayList<>();
     private List<Enemy> enemies = new ArrayList<>();
     private boolean running = false;
@@ -37,20 +34,24 @@ public class World extends JPanel implements ActionListener {
     private Image background;
 
 
-    public World() {
-
+    public World(Input input) {
+        this.input = input;
         initBoard();
+    }
+
+    public void nullInput() {
+        input = null;
     }
 
     private void initBoard() {
 
         background = ImageFunction.loadImage("images/back.png");
 
-        addKeyListener(new TAdapter());
         setFocusable(true);
         setBackground(Color.BLACK);
 
         player = new Player(this);
+        goal = new Goal(400, 400);
 
     }
 
@@ -88,7 +89,7 @@ public class World extends JPanel implements ActionListener {
 
             if (System.currentTimeMillis() - secondTimer > 1000){
                 secondTimer += 1000;
-                System.out.println("frames: "+ frames +", ticks: " + ticks);
+                //System.out.println("frames: "+ frames +", ticks: " + ticks);
                 frames = 0;
                 ticks = 0;
             }
@@ -96,7 +97,7 @@ public class World extends JPanel implements ActionListener {
     }
 
     public void tick(){
-        player.inputs(keys);
+        player.inputs(input.sensorData());
         player.move();
 
         enemies.forEach(Enemy::move);
@@ -110,9 +111,7 @@ public class World extends JPanel implements ActionListener {
     @Override
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
-
         doDrawing(g);
-
         //Toolkit.getDefaultToolkit().sync(); TODO, this ought to be here but causes problems
     }
 
@@ -179,34 +178,5 @@ public class World extends JPanel implements ActionListener {
         op = new AffineTransformOp(tx, AffineTransformOp.TYPE_BILINEAR);
 
         g2d.drawImage(op.filter((BufferedImage) image, null), x, y, null);
-    }
-
-    @Override
-    public void actionPerformed(ActionEvent e) {
-        //TODO i dont know what this is for
-    }
-
-    /**
-     * This handles keyboard input
-     */
-    private class TAdapter extends KeyAdapter {
-
-        @Override
-        public void keyReleased(KeyEvent e) {
-            //System.out.println("before: " + keys);
-            int key;
-            for (int i = 0; i< keys.size(); i++){
-                key = keys.get(i);
-                if (key == e.getKeyCode()){
-                    keys.remove(i);
-                    i -= 1;
-                }
-            }
-        }
-
-        @Override
-        public void keyPressed(KeyEvent e) {
-            keys.add(e.getKeyCode());
-        }
     }
 }

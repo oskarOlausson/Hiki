@@ -22,7 +22,6 @@ public abstract class Entity {
 
     protected double degrees = 0;
 
-    public abstract void move();
 
     public int getX(){
         return (int) (x - width/2);
