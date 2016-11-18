@@ -37,13 +37,4 @@ public class Goal extends Entity {
         this.x = pad + Math.random() * (FrameConstants.WIDTH.value - pad * 2);
         this.y = pad + Math.random() * (FrameConstants.HEIGHT.value - pad * 2);
     }
-
-    public boolean collision(Entity entity) {
-        Position other = entity.getCenter();
-        Position me = getCenter();
-
-        double radii = entity.getSize().getRadius() + getSize().getRadius();
-
-        return (Math.sqrt(Math.pow(other.getX() - me.getX(), 2) + Math.pow(other.getY() - me.getY(), 2)) < radii);
-    }
 }

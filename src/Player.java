@@ -28,12 +28,14 @@ public class Player extends Entity {
     }
 
     public void move(List<Block> blocks) {
+
         double prevx = x;
         double prevy = y;
         x = Math.max(Math.min(x + dx, FrameConstants.WIDTH.value), 0);
+
         boolean collide = false;
 
-        for(Block block: blocks) {
+        for (Block block : blocks) {
             if (collision(block)) {
                 collide = true;
                 break;
@@ -48,7 +50,7 @@ public class Player extends Entity {
 
         collide = false;
 
-        for(Block block: blocks) {
+        for (Block block : blocks) {
             if (collision(block)) {
                 collide = true;
                 break;
@@ -58,15 +60,6 @@ public class Player extends Entity {
         if (collide) {
             y = prevy;
         }
-    }
-
-    public boolean collision(Block block) {
-        Position other = block.getCenter();
-        Position me = getCenter();
-
-        double radii = block.getSize().getRadius() + getSize().getRadius();
-
-        return (Math.abs(other.getX() - me.getX()) < radii && Math.abs(other.getY() - me.getY()) < radii);
     }
 
     public void inputs(int[] sensorData) {

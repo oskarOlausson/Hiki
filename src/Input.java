@@ -49,7 +49,6 @@ public class Input {
         });
     }
 
-
     public void close() {
         try {
             ik.close();

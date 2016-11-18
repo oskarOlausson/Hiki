@@ -3,6 +3,7 @@
  */
 
 import java.awt.*;
+import java.util.List;
 
 /**
  * Created by oskar on 2016-10-16.
@@ -30,6 +31,15 @@ public abstract class Entity {
     public void setSizeFromImage() {
         width = image.getWidth(null);
         height = image.getHeight(null);
+    }
+
+    public boolean collision(Entity entity) {
+        Position other = entity.getCenter();
+        Position me = getCenter();
+
+        double radii = entity.getSize().getRadius() + getSize().getRadius();
+
+        return (Math.abs(other.getX() - me.getX()) < radii && Math.abs(other.getY() - me.getY()) < radii);
     }
 
     public int getY(){ return (int) (y - height/2); }
