@@ -31,7 +31,7 @@ public class World extends JPanel{
     private List<Enemy> enemies = new ArrayList<>();
     private boolean running = false;
     private Image background;
-
+    private Levels levels = new Levels();
 
     public World(Input input) {
         this.input = input;
@@ -39,30 +39,10 @@ public class World extends JPanel{
     }
 
     private void initBoard() {
-
-        background = ImageFunction.loadImage("images/back.png");
-
         setFocusable(true);
         setBackground(Color.BLACK);
 
-        player = new Player(this);
-
-        int pad = 50;
-        double xx, yy;
-
-
-        for (int i = 0; i < 50; i ++) {
-            do {
-                xx = pad + (Math.random() * FrameConstants.WIDTH.value - pad * 2);
-                yy = pad + (Math.random() * FrameConstants.HEIGHT.value - pad * 2);
-            }
-            while (Math.sqrt(Math.pow(xx - player.getX(), 2) + Math.sqrt(Math.pow(yy - player.getY(), 2))) < 100);
-            createBlock(xx, yy);
-        }
-
-
-        goal = new Goal(400, 400, blocks);
-
+        levels.loadLevelMaze(this);
     }
 
     public synchronized void run(){
@@ -192,5 +172,38 @@ public class World extends JPanel{
         op = new AffineTransformOp(tx, AffineTransformOp.TYPE_BILINEAR);
 
         g2d.drawImage(op.filter((BufferedImage) image, null), x, y, null);
+    }
+
+
+    public void setGoal(Goal goal) {
+        this.goal = goal;
+    }
+
+    public void setWalker(Player player) {
+        this.player = player;
+    }
+
+    public void setBlocks(List<Block> blocks) {
+        this.blocks = blocks;
+    }
+
+    public void setEnemies(List<Enemy> enemies) {
+        this.enemies = enemies;
+    }
+
+    public void setBackground(Image background) {
+        this.background = background;
+    }
+
+    public Player getPlayer() {
+        return player;
+    }
+
+    public List<Block> getBlocks() {
+        return blocks;
+    }
+
+    public List<Enemy> getEnemies() {
+        return enemies;
     }
 }

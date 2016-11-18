@@ -1,5 +1,6 @@
 /**
  * Created by oskar on 2016-11-17.
+ * This classes has some inputs and outputs
  */
 public class Block extends Entity {
 

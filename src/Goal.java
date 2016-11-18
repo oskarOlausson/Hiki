@@ -27,7 +27,8 @@ public class Goal extends Entity {
     }
 
     public void move(Player player) {
-        if (collision(player)) {
+        if (collision(player))
+        {
             move_to_random();
         }
     }
