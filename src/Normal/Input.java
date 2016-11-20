@@ -1,4 +1,4 @@
-/**
+package Normal; /**
  * Created by oskar on 2016-11-17.
  */
 
@@ -12,23 +12,12 @@ public class Input {
     private int[] sensors = new int[7];
 
     public Input() {
-        try {
-            ik = new InterfaceKitPhidget();
-            ik.openAny();
-            System.out.println("Waiting for attachment of InterfaceKit...");
-            ik.waitForAttachment();
-        } catch (PhidgetException e) {
-            System.err.println("Exception when creating InterfaceKit object");
-            e.printStackTrace();
-        }
-
-        System.out.println("Found InterfaceKit");
-
-        initiateListener();
+        findPhidget();
+        initiateSensors();
         createListener();
     }
 
-    private void initiateListener() {
+    private void initiateSensors() {
         try {
             sensors[InputConstants.JOYX]     = ik.getSensorValue(InputConstants.JOYX);
             sensors[InputConstants.JOYY]     = ik.getSensorValue(InputConstants.JOYY);
@@ -76,6 +65,20 @@ public class Input {
 
     public int[] sensorData() {
         return sensors;
+    }
+
+    public void findPhidget() {
+        try {
+            ik = new InterfaceKitPhidget();
+            ik.openAny();
+            System.out.println("Waiting for attachment of InterfaceKit...");
+            ik.waitForAttachment();
+        } catch (PhidgetException e) {
+            System.err.println("Exception when creating InterfaceKit object");
+            e.printStackTrace();
+        }
+
+        System.out.println("Found InterfaceKit");
     }
 }
 

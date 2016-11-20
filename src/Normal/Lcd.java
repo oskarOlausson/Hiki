@@ -1,3 +1,4 @@
+package Normal;
 /**
  * Created by oskar on 2016-11-18.
  */
@@ -30,7 +31,7 @@ public class Lcd {
             screen.setBacklight(true);
             screen.setDisplayString(0, "...");
         } catch (PhidgetException e) {
-            System.err.println("Cant set the screen size, backlight or displaystring");
+            System.err.println("Cant set the screen size, backlight or display string");
             e.printStackTrace();
         }
     }
@@ -56,7 +57,17 @@ public class Lcd {
     public static void main(String[] args) {
         Lcd lcd = new Lcd(141799, TextLCDPhidget.PHIDGET_TEXTLCD_SCREEN_4x20, PlayerNumber.P1);
         lcd.setString(0, "I am number 1");
-        //Lcd lcd2 = new Lcd(141627, TextLCDPhidget.PHIDGET_TEXTLCD_SCREEN_2x16, PlayerNumber.P2);
+        //Normal.Lcd lcd2 = new Normal.Lcd(141627, TextLCDPhidget.PHIDGET_TEXTLCD_SCREEN_2x16, Normal.PlayerNumber.P2);
         //lcd2.setString(0, "I am number 2");
+    }
+
+    public void close() {
+        try {
+            screen.close();
+        } catch (PhidgetException e) {
+            System.err.println("Error closing down Lcd: " + serial);
+            e.printStackTrace();
+        }
+        screen = null;
     }
 }

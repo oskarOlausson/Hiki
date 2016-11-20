@@ -1,9 +1,12 @@
+package Normal;
+
 import java.awt.*;
 import java.util.List;
 
 /**
  * Created by oskar on 2016-11-18.
- * This classes has some inputs and outputs
+ * This class is a parent class of moving avatars that you control
+ * is not needed but is a good foundation of what is needed of a typical player
  */
 public abstract class Player extends Entity{
     /**

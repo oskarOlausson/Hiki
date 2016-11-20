@@ -1,9 +1,8 @@
-/**
+package Normal; /**
  * Created by oskar on 2016-11-17.
  */
 
 import java.awt.*;
-import java.util.List;
 
 /**
  * Created by oskar on 2016-10-16.

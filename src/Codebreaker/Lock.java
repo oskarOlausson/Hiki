@@ -1,10 +1,16 @@
+package Codebreaker;
+
+import Normal.Entity;
+import Normal.ImageFunction;
+import Normal.PlayerNumber;
+
 import java.awt.*;
 
 /**
  * Created by oskar on 2016-11-18.
  * This classes has some inputs and outputs
  */
-public class Lock extends Entity{
+public class Lock extends Entity {
 
     private PlayerNumber playerNumber;
     private int interaction = -1;

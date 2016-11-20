@@ -1,4 +1,4 @@
-/**
+package Normal; /**
  * Created by oskar on 2016-11-17.
  */
 
@@ -20,7 +20,7 @@ public class ImageFunction {
             img = ImageIO.read(new File(filePath));
         } catch (IOException e){
             System.err.println("Could not find file at: '" + filePath+"'");
-            System.exit(1);
+            System.exit(2);
         }
 
         return img;

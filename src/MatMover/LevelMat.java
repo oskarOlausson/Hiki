@@ -1,21 +1,12 @@
+package MatMover;
+
+import Normal.*;
+
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-//TODO use mutex in draw and tick
-/*
-    try {
-      mutex.acquire();
-      try {
-        // do something
-      } finally {
-        mutex.release();
-      }
-    } catch(InterruptedException ie) {
-      // ...
-    }
- */
 
 public class LevelMat implements Level {
 
@@ -28,9 +19,32 @@ public class LevelMat implements Level {
 
     public LevelMat(World world) {
         this.world = world;
-        player = new Mat(world);
         background = ImageFunction.loadImage("Images/back.png");
+        start();
+    }
+
+    @Override
+    public void start() {
+
+        player = new Mat(world);
+        Position center = player.getCenter();
+        Position pos;
+        for (int i = 0; i < 40; i ++) {
+            do {
+                //create random position
+                pos = new Position();
+                pos.randomize(0, 0, FrameConstants.WIDTH.value, FrameConstants.HEIGHT.value);
+            }
+            while(center.distance(pos) > 50);
+            createBlock(pos.getX(), pos.getY());
+        }
         goal = new Goal(400, 400, blocks);
+    }
+
+    @Override
+    public void end() {
+        player = null;
+        goal = null;
     }
 
     public void tick(Input input){

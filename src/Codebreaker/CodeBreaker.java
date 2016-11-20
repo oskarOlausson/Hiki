@@ -1,24 +1,12 @@
+package Codebreaker;
 
 import com.phidgets.TextLCDPhidget;
 
 import java.awt.*;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
+import Normal.*;
 
-//TODO use mutex in draw and tick
-/*
-    try {
-      mutex.acquire();
-      try {
-        // do something
-      } finally {
-        mutex.release();
-      }
-    } catch(InterruptedException ie) {
-      // ...
-    }
- */
 
 public class CodeBreaker implements Level {
 
@@ -28,16 +16,21 @@ public class CodeBreaker implements Level {
     private List<Lock> unlocked = new ArrayList<>();
     private List<Lcd> screens = new ArrayList<>();
     private boolean success = false;
+    private int playerCount;
 
     private Image background;
 
     String clue;
 
     public CodeBreaker(World world) {
-
-        clue = "Small to Large";
-        background = ImageFunction.loadImage("Images/back.png");
         this.world = world;
+        background = ImageFunction.loadImage("Images/back.png");
+    }
+
+    @Override
+    public void start() {
+        playerCount = 2;
+        clue = "Small to Large";
 
         Lock lock = new Lock(100 + locks.size() * 200, FrameConstants.HEIGHT.value / 2);
         lock.setPlayer(PlayerNumber.P1);
@@ -62,6 +55,13 @@ public class CodeBreaker implements Level {
         screens.add(lcd);
     }
 
+    @Override
+    public void end() {
+        locks = null;
+        screens.forEach(Lcd::close);
+        screens = null;
+    }
+
     public void tick(Input input){
 
         for(Lock lock: locks) {
@@ -82,7 +82,7 @@ public class CodeBreaker implements Level {
         }
         System.out.println(correctCount);
 
-        if (correctCount == 2) {
+        if (correctCount == playerCount) {
             success = true;
             locks.forEach(Lock::success);
         }

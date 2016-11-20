@@ -1,46 +1,63 @@
+package Normal;
+
+import Codebreaker.CodeBreaker;
+import MatMover.LevelMat;
+
 import java.awt.*;
 import java.awt.geom.AffineTransform;
 import java.awt.image.AffineTransformOp;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
-import java.util.List;
+import java.util.concurrent.locks.ReentrantLock;
 import javax.swing.*;
-
-//TODO use mutex in draw and tick
-/*
-    try {
-      mutex.acquire();
-      try {
-        // do something
-      } finally {
-        mutex.release();
-      }
-    } catch(InterruptedException ie) {
-      // ...
-    }
- */
 
 public class World extends JPanel{
 
     private GameState state = GameState.PLAY;
     private Input input;
     private boolean running = false;
+    private ReentrantLock lock = new ReentrantLock();
 
-    private Level level;
+    private ArrayList<Level> levels = new ArrayList<>();
+    private int levelIndex = 0;
 
     public World(Input input) {
         this.input = input;
         setFocusable(true);
         setBackground(Color.BLACK);
-        level = new CodeBreaker(this);
+        levels.add(new CodeBreaker(this));
+        levels.add(new LevelMat(this));
+
+        levels.get(levelIndex).start();
+    }
+
+    public void restartLevel() {
+        levels.get(levelIndex).end();
+        levels.get(levelIndex).start();
+    }
+
+    public void nextLevel() {
+        levelIndex += 1;
+        changeLevel(levelIndex);
+    }
+
+    public boolean changeLevel(int levelIndex) {
+        if (levelIndex >= 0 && levelIndex <= levels.size()) {
+            //ends previous level
+            levels.get(this.levelIndex).end();
+            this.levelIndex = levelIndex;
+            //starts next level
+            levels.get(levelIndex).start();
+            return true;
+        } else {
+            System.err.println("LevelIndex is out of range, levelIndex: " + levelIndex);
+            return false;
+        }
     }
 
     public synchronized void run(){
         long lastTime = System.nanoTime();
         double nsPerTick = 1000000000D / FrameConstants.SECOND.value;
-
-        int ticks = 0;
-        int frames = 0;
 
         long secondTimer = System.currentTimeMillis();
         double delta = 0;
@@ -53,8 +70,12 @@ public class World extends JPanel{
             lastTime = now;
 
             while(delta >=1){
-                ticks ++;
-                tick();
+                lock.lock();
+                try {
+                    tick();
+                }finally {
+                    lock.unlock();
+                }
                 delta -= 1;
             }
 
@@ -64,27 +85,28 @@ public class World extends JPanel{
                 e.printStackTrace();
             }
 
-            frames += 1;
             repaint();
 
             if (System.currentTimeMillis() - secondTimer > 1000){
                 secondTimer += 1000;
-                //System.out.println("frames: "+ frames +", ticks: " + ticks);
-                frames = 0;
-                ticks = 0;
             }
         }
     }
 
     public void tick(){
-        level.tick(input);
+        levels.get(levelIndex).tick(input);
     }
 
     @Override
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
-        level.doDrawing(g);
-        //Toolkit.getDefaultToolkit().sync(); TODO, this ought to be here but causes problems
+        lock.lock();
+        try {
+            levels.get(levelIndex).doDrawing(g);
+        } finally {
+            lock.unlock();
+        }
+        Toolkit.getDefaultToolkit().sync();
     }
 
     /**
