@@ -18,4 +18,12 @@ public class Position {
     public double getY() {
         return y;
     }
+
+    public int drawX() {
+        return (int) Math.round(x);
+    }
+
+    public int drawY() {
+        return (int) Math.round(y);
+    }
 }

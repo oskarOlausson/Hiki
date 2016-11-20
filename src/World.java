@@ -3,7 +3,6 @@ import java.awt.geom.AffineTransform;
 import java.awt.image.AffineTransformOp;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 import javax.swing.*;
 
@@ -24,25 +23,16 @@ import javax.swing.*;
 public class World extends JPanel{
 
     private GameState state = GameState.PLAY;
-    private Player player;
     private Input input;
-    private Goal goal;
-    private List<Block> blocks = new ArrayList<>();
-    private List<Enemy> enemies = new ArrayList<>();
     private boolean running = false;
-    private Image background;
-    private Levels levels = new Levels();
+
+    private Level level;
 
     public World(Input input) {
         this.input = input;
-        initBoard();
-    }
-
-    private void initBoard() {
         setFocusable(true);
         setBackground(Color.BLACK);
-
-        levels.loadLevelMaze(this);
+        level = new CodeBreaker(this);
     }
 
     public synchronized void run(){
@@ -87,60 +77,14 @@ public class World extends JPanel{
     }
 
     public void tick(){
-        player.inputs(input.sensorData());
-        player.move(blocks);
-
-        goal.move(player);
-
-        enemies.forEach(Enemy::move);
-    }
-
-    public void createBlock(double x, double y){
-        Block block = new Block(x, y);
-        blocks.add(block);
+        level.tick(input);
     }
 
     @Override
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
-        doDrawing(g);
+        level.doDrawing(g);
         //Toolkit.getDefaultToolkit().sync(); TODO, this ought to be here but causes problems
-    }
-
-    private void doDrawing(Graphics g) {
-
-        Graphics2D g2d = (Graphics2D) g;
-
-        g2d.drawImage(background, 0, 0, this);
-
-        drawEntity(g2d, player);
-
-        drawEntity(g2d, goal);
-
-        Iterator<Block> iter = blocks.iterator();
-
-        while (iter.hasNext()) {
-            Block block = iter.next();
-
-            if (!block.ifRemove()) {
-                drawEntity(g2d, block);
-            }
-            else {
-                iter.remove();
-            }
-        }
-
-        Iterator<Enemy> iter2 = enemies.iterator();
-
-        while (iter2.hasNext()) {
-            Enemy enemy = iter2.next();
-            if (!enemy.ifRemove()) {
-                drawEntity(g2d, enemy);
-            }
-            else {
-                iter2.remove();
-            }
-        }
     }
 
     /**
@@ -148,7 +92,7 @@ public class World extends JPanel{
      * @param g2d
      * @param entity
      */
-    private void drawEntity(Graphics2D g2d, Entity entity) {
+    public void drawEntity(Graphics2D g2d, Entity entity) {
         AffineTransform tx;
         AffineTransformOp op;
 
@@ -174,36 +118,7 @@ public class World extends JPanel{
         g2d.drawImage(op.filter((BufferedImage) image, null), x, y, null);
     }
 
-
-    public void setGoal(Goal goal) {
-        this.goal = goal;
-    }
-
-    public void setWalker(Player player) {
-        this.player = player;
-    }
-
-    public void setBlocks(List<Block> blocks) {
-        this.blocks = blocks;
-    }
-
-    public void setEnemies(List<Enemy> enemies) {
-        this.enemies = enemies;
-    }
-
-    public void setBackground(Image background) {
-        this.background = background;
-    }
-
-    public Player getPlayer() {
-        return player;
-    }
-
-    public List<Block> getBlocks() {
-        return blocks;
-    }
-
-    public List<Enemy> getEnemies() {
-        return enemies;
+    public void drawImage(Graphics2D g2d, Image img, int x, int y) {
+        g2d.drawImage(img, x, y, this);
     }
 }

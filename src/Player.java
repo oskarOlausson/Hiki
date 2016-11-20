@@ -1,3 +1,4 @@
+import java.awt.*;
 import java.util.List;
 
 /**
@@ -19,6 +20,8 @@ public abstract class Player extends Entity{
     }
 
     public abstract void move(List<Block> blocks);
+
+    public abstract void draw(Graphics2D g2d);
 
     public abstract void inputs(int[] sensorData);
 }

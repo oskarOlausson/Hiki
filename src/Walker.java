@@ -2,6 +2,7 @@
  * Created by oskar on 2016-11-17.
  */
 
+import java.awt.*;
 import java.util.List;
 
 public class Walker extends Player {
@@ -84,6 +85,10 @@ public class Walker extends Player {
         double light = (((double) sensorData[inp_speed]) / 1000);
         dx = slider * light * 5;
         dy = dial * light * 5;
+    }
+
+    public void draw(Graphics2D g2d) {
+        world.drawEntity(g2d, this);
     }
 }
 

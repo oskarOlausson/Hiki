@@ -8,11 +8,12 @@ public class Lcd {
     private String displayText;
     private TextLCDPhidget screen;
     private PlayerNumber player;
-
+    private int serial;
 
     public Lcd(int serial, int screenSize, PlayerNumber player) {
 
         this.player = player;
+        this.serial = serial;
 
         try {
             screen = new TextLCDPhidget();
@@ -30,6 +31,15 @@ public class Lcd {
             screen.setDisplayString(0, "...");
         } catch (PhidgetException e) {
             System.err.println("Cant set the screen size, backlight or displaystring");
+            e.printStackTrace();
+        }
+    }
+
+    public void setBacklight(boolean on) {
+        try {
+            screen.setBacklight(on);
+        } catch (PhidgetException e) {
+            System.err.println("Can´t turn on backlight on lcd " + serial);
             e.printStackTrace();
         }
     }
