@@ -12,7 +12,8 @@ public abstract class Player extends Entity{
     /**
      * Created by oskar on 2016-11-17.
      */
-    private World world;
+    protected World world;
+    protected int points = 0;
 
     public Player(World world, String imagePath) {
         this.world = world;
@@ -27,4 +28,12 @@ public abstract class Player extends Entity{
     public abstract void draw(Graphics2D g2d);
 
     public abstract void inputs(int[] sensorData);
+
+    public void givePoint() {
+        points++;
+    }
+
+    public int getPoints() {
+        return points;
+    }
 }

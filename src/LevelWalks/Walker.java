@@ -1,6 +1,8 @@
-package Normal; /**
+package LevelWalks; /**
  * Created by oskar on 2016-11-17.
  */
+
+import Normal.*;
 
 import java.awt.*;
 import java.util.List;
@@ -11,9 +13,7 @@ public class Walker extends Player {
     private int inp_ydir = InputConstants.DIAL;
     private int inp_speed = InputConstants.LIGHT;
 
-    private World world;
-
-    public Walker(double x, double y, World world) {
+    public Walker(World world, double x, double y) {
         super(world, "Images/player.png");
         this.x = x;
         this.y = y;

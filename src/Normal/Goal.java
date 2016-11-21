@@ -15,7 +15,6 @@ public class Goal extends Entity {
         image = ImageFunction.loadImage(string);
         setSizeFromImage();
         boolean collide;
-
         do {
             collide = false;
             for (Block b : blocks) {
@@ -30,9 +29,9 @@ public class Goal extends Entity {
     }
 
     public void move(Player player) {
-        if (collision(player))
-        {
+        if (collision(player)) {
             move_to_random();
+            player.givePoint();
         }
     }
 

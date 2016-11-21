@@ -1,4 +1,4 @@
-package Codebreaker;
+package LevelCodeBreaker;
 
 import com.phidgets.TextLCDPhidget;
 
@@ -16,6 +16,7 @@ public class CodeBreaker implements Level {
     private List<Lock> unlocked = new ArrayList<>();
     private List<Lcd> screens = new ArrayList<>();
     private boolean success = false;
+    private Timer timer;
     private int playerCount;
 
     private Image background;
@@ -53,6 +54,8 @@ public class CodeBreaker implements Level {
         lcd.setString(1, Integer.toString(locks.get(1).getNumber()) + "(" + InputConstants.toString(locks.get(1).getInteraction()) + ")");
         lcd.setBacklight(true);
         screens.add(lcd);
+
+        timer = new Timer(FrameConstants.SECOND.value);
     }
 
     @Override
@@ -60,6 +63,7 @@ public class CodeBreaker implements Level {
         locks = null;
         screens.forEach(Lcd::close);
         screens = null;
+        timer = null;
     }
 
     public void tick(Input input){
@@ -83,8 +87,18 @@ public class CodeBreaker implements Level {
         System.out.println(correctCount);
 
         if (correctCount == playerCount) {
+            if (!success) {
+                locks.forEach(Lock::success);
+            }
             success = true;
-            locks.forEach(Lock::success);
+        }
+
+        if (success) {
+            timer.update();
+
+            if (timer.isDone()) {
+                world.nextLevel();
+            }
         }
     }
 

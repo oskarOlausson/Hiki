@@ -1,6 +1,7 @@
-package MatMover;
+package LevelMat;
 
 import Normal.*;
+import Normal.Frame;
 
 import java.awt.*;
 import java.util.ArrayList;
@@ -16,6 +17,7 @@ public class LevelMat implements Level {
     private List<Block> blocks = new ArrayList<>();
     private List<Enemy> enemies = new ArrayList<>();
     private Image background;
+    private Timer timer;
 
     public LevelMat(World world) {
         this.world = world;
@@ -26,7 +28,7 @@ public class LevelMat implements Level {
     @Override
     public void start() {
 
-        player = new Mat(world);
+        player = new Mat(world, FrameConstants.WIDTH.value / 2, FrameConstants.HEIGHT.value / 2);
         Position center = player.getCenter();
         Position pos;
         for (int i = 0; i < 40; i ++) {
@@ -35,16 +37,19 @@ public class LevelMat implements Level {
                 pos = new Position();
                 pos.randomize(0, 0, FrameConstants.WIDTH.value, FrameConstants.HEIGHT.value);
             }
-            while(center.distance(pos) > 50);
+            while(center.distance(pos) < 50);
             createBlock(pos.getX(), pos.getY());
         }
         goal = new Goal(400, 400, blocks);
+        timer = new Timer(FrameConstants.SECOND.value);
     }
 
     @Override
     public void end() {
         player = null;
         goal = null;
+        blocks = new ArrayList<>();
+        timer = null;
     }
 
     public void tick(Input input){
@@ -54,6 +59,14 @@ public class LevelMat implements Level {
         goal.move(player);
 
         enemies.forEach(Enemy::move);
+
+        if (player.getPoints() > 0) {
+            timer.update();
+
+            if (timer.isDone()) {
+                world.nextLevel();
+            }
+        }
     }
 
     public void createBlock(double x, double y){

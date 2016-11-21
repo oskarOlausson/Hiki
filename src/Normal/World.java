@@ -1,7 +1,9 @@
 package Normal;
 
-import Codebreaker.CodeBreaker;
-import MatMover.LevelMat;
+import LevelCodeBreaker.CodeBreaker;
+import LevelMat.LevelMat;
+import LevelWalks.LevelWalk;
+import LevelRunner.LevelRunner;
 
 import java.awt.*;
 import java.awt.geom.AffineTransform;
@@ -25,8 +27,12 @@ public class World extends JPanel{
         this.input = input;
         setFocusable(true);
         setBackground(Color.BLACK);
+        levels.add(new LevelRunner(this));
         levels.add(new CodeBreaker(this));
         levels.add(new LevelMat(this));
+        levels.add(new LevelWalk(this));
+
+        this.levelIndex = 0;
 
         levels.get(levelIndex).start();
     }
@@ -37,21 +43,29 @@ public class World extends JPanel{
     }
 
     public void nextLevel() {
-        levelIndex += 1;
-        changeLevel(levelIndex);
+        changeLevel(levelIndex + 1);
     }
 
     public boolean changeLevel(int levelIndex) {
-        if (levelIndex >= 0 && levelIndex <= levels.size()) {
-            //ends previous level
-            levels.get(this.levelIndex).end();
-            this.levelIndex = levelIndex;
-            //starts next level
-            levels.get(levelIndex).start();
-            return true;
-        } else {
-            System.err.println("LevelIndex is out of range, levelIndex: " + levelIndex);
-            return false;
+        lock.lock();
+        try {
+            if (levelIndex >= 0 && levelIndex <= levels.size()) {
+                int previousLevelIndex = this.levelIndex;
+                this.levelIndex = levelIndex;
+
+                //starts next level
+                levels.get(this.levelIndex).start();
+
+                //ends previous level
+                levels.get(previousLevelIndex).end();
+
+                return true;
+            } else {
+                System.err.println("LevelIndex is out of range, levelIndex: " + levelIndex);
+                return false;
+            }
+        } finally {
+            lock.unlock();
         }
     }
 

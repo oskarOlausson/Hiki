@@ -1,4 +1,4 @@
-package MatMover; /**
+package LevelMat; /**
  * Created by oskar on 2016-11-17.
  */
 
@@ -20,6 +20,12 @@ public class Mat extends Player {
         super(world, "Images/player.png");
         initWalker();
         this.world = world;
+    }
+
+    public Mat(World world, double x, double y) {
+        this(world);
+        this.x = x;
+        this.y = y;
     }
 
     public void setSensors(int inp_topLeft, int inp_topRight, int inp_bottomLeft, int inp_bottomRight) {

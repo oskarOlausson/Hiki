@@ -1,4 +1,4 @@
-package Codebreaker;
+package LevelCodeBreaker;
 
 import Normal.Entity;
 import Normal.ImageFunction;
