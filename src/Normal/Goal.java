@@ -4,6 +4,7 @@ import java.util.List;
 
 /**
  * Created by oskar on 2016-11-17.
+ * An object which moves when a player object touches it
  */
 public class Goal extends Entity {
 

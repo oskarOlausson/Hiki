@@ -5,17 +5,8 @@ package Normal;
  */
 public class Enemy extends Entity{
 
-    private boolean remove = false;
-
     public void move() {
 
     }
 
-    public void delete() {
-        remove = true;
-    }
-
-    public boolean ifRemove() {
-        return remove;
-    }
 }

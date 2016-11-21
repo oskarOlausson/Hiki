@@ -12,14 +12,4 @@ public class Block extends Entity {
         image = ImageFunction.loadImage("Images/block.png");
         setSizeFromImage();
     }
-
-    private boolean remove = false;
-
-    public void delete() {
-        remove = true;
-    }
-
-    public boolean ifRemove() {
-        return remove;
-    }
 }

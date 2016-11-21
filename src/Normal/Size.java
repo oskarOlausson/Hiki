@@ -15,8 +15,7 @@ public class Size {
     }
 
     public Size(double width, double height){
-        this.width = (int) width;
-        this.height = (int) height;
+        this((int) width, (int) height);
     }
 
     public int getWidth() {

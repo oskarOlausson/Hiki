@@ -1,19 +1,19 @@
 package Normal;
-/**
+/*
  * Created by oskar on 2016-11-18.
+ * Represents a display, can also know which player owns it
  */
 
 import com.phidgets.*;
 
 public class Lcd {
-    private String displayText;
     private TextLCDPhidget screen;
-    private PlayerNumber player;
+    private PlayerNumber playerNumber;
     private int serial;
 
     public Lcd(int serial, int screenSize, PlayerNumber player) {
 
-        this.player = player;
+        this.playerNumber = player;
         this.serial = serial;
 
         try {
@@ -45,6 +45,10 @@ public class Lcd {
         }
     }
 
+    public PlayerNumber getPlayerNumber() {
+        return playerNumber;
+    }
+
     public void setString(int index, String string) {
         try {
             screen.setDisplayString(index, string);
@@ -57,8 +61,8 @@ public class Lcd {
     public static void main(String[] args) {
         Lcd lcd = new Lcd(141799, TextLCDPhidget.PHIDGET_TEXTLCD_SCREEN_4x20, PlayerNumber.P1);
         lcd.setString(0, "I am number 1");
-        //Normal.Lcd lcd2 = new Normal.Lcd(141627, TextLCDPhidget.PHIDGET_TEXTLCD_SCREEN_2x16, Normal.PlayerNumber.P2);
-        //lcd2.setString(0, "I am number 2");
+        Normal.Lcd lcd2 = new Normal.Lcd(141627, TextLCDPhidget.PHIDGET_TEXTLCD_SCREEN_2x16, Normal.PlayerNumber.P2);
+        lcd2.setString(0, "I am number 2");
     }
 
     public void close() {

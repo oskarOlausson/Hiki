@@ -1,9 +1,12 @@
-package Normal; /**
+/*
  * Created by oskar on 2016-11-17.
+ * Handles all phidget inputs, ie sensors and digital inputs
+ * for LCD things, look into the class Lcd
  */
 
-import com.phidgets.*;
+package Normal;
 
+import com.phidgets.*;
 import java.io.IOException;
 
 public class Input {

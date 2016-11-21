@@ -9,9 +9,11 @@ import java.awt.*;
  */
 public abstract class Entity {
 
+    //position variables
     protected double x;
     protected double y;
 
+    //speed variables
     protected double dx = 0;
     protected double dy = 0;
 
@@ -20,8 +22,11 @@ public abstract class Entity {
 
     protected Image image;
 
-    protected double degrees = 0;
+    //if the object should be removed
+    protected boolean remove = false;
 
+    //rotation of object
+    protected double degrees = 0;
 
     public int getX(){
         return (int) (x - width/2);
@@ -57,5 +62,14 @@ public abstract class Entity {
 
     public double getDegrees(){
         return degrees;
+    }
+
+
+    public void delete() {
+        remove = true;
+    }
+
+    public boolean ifRemove() {
+        return remove;
     }
 }

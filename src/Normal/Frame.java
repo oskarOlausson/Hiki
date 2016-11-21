@@ -1,5 +1,6 @@
 package Normal; /**
  * Created by oskar on 2016-11-17.
+ * This is the main class
  */
 import javax.swing.*;
 
@@ -7,6 +8,7 @@ public class Frame extends JFrame {
 
     private World world;
     private Input input;
+
     public Frame() {
 
         initUI();
