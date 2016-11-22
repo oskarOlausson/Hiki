@@ -66,11 +66,11 @@ public class Runner extends Player{
 
     @Override
     public void inputs(int[] sensorData) {
-        degrees = 60 * ((sensorData[InputConstants.SLIDER] / 1000) - 0.5);
-        speed = speedMax * (1.2 - (sensorData[InputConstants.PREASSURE] / 1000));
-        System.out.println(degrees);
 
-        //dx = speed * Math.cos(Math.toRadians(degrees));
-        //dy = speed * Math.sin(Math.toRadians(degrees));
+        degrees = 360 * (((double) sensorData[InputConstants.DIAL] / 1000) - 0.5);
+        speed = speedMax * (1.2 - ((double) sensorData[InputConstants.SLIDER] / 1000));
+
+        dx = speed * Math.cos(Math.toRadians(degrees));
+        dy = speed * Math.sin(Math.toRadians(degrees));
     }
 }

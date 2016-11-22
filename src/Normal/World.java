@@ -53,11 +53,12 @@ public class World extends JPanel{
                 int previousLevelIndex = this.levelIndex;
                 this.levelIndex = levelIndex;
 
-                //starts next level
-                levels.get(this.levelIndex).start();
-
                 //ends previous level
                 levels.get(previousLevelIndex).end();
+
+
+                //starts next level
+                levels.get(this.levelIndex).start();
 
                 return true;
             } else {

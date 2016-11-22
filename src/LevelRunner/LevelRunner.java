@@ -1,6 +1,7 @@
 package LevelRunner;
 
 import Normal.*;
+import com.phidgets.TextLCDPhidget;
 
 import java.awt.*;
 import java.util.ArrayList;
@@ -17,16 +18,18 @@ public class LevelRunner implements Level {
     private List<Enemy> enemies = new ArrayList<>();
     private Image background;
     private Timer timer;
+    private Lcd screen;
 
     public LevelRunner(World world) {
         this.world = world;
         background = ImageFunction.loadImage("Images/back.png");
-        start();
     }
 
     @Override
     public void start() {
 
+        screen = new Lcd(141799, TextLCDPhidget.PHIDGET_TEXTLCD_SCREEN_4x20, PlayerNumber.P1);
+        screen.setString(0, "I am working");
         player = new Runner(world, FrameConstants.WIDTH.value / 2, FrameConstants.HEIGHT.value / 2);
 
         Position center = player.getCenter();
@@ -50,6 +53,8 @@ public class LevelRunner implements Level {
         goal = null;
         blocks = new ArrayList<>();
         timer = null;
+        screen.close();
+        screen = null;
     }
 
     public void tick(Input input){
@@ -109,6 +114,4 @@ public class LevelRunner implements Level {
 
         player.draw(g2d);
     }
-
-
 }

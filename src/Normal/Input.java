@@ -22,10 +22,10 @@ public class Input {
 
     private void initiateSensors() {
         try {
-            sensors[InputConstants.JOYX]     = ik.getSensorValue(InputConstants.JOYX);
-            sensors[InputConstants.JOYY]     = ik.getSensorValue(InputConstants.JOYY);
+            //sensors[InputConstants.JOYX]     = ik.getSensorValue(InputConstants.JOYX);
+            //sensors[InputConstants.JOYY]     = ik.getSensorValue(InputConstants.JOYY);
             sensors[InputConstants.DIAL]     = ik.getSensorValue(InputConstants.DIAL);
-            sensors[InputConstants.LIGHT]    = ik.getSensorValue(InputConstants.LIGHT);
+            //sensors[InputConstants.LIGHT]    = ik.getSensorValue(InputConstants.LIGHT);
             sensors[InputConstants.SLIDER]   = ik.getSensorValue(InputConstants.SLIDER);
         } catch (PhidgetException e) {
             System.err.println("Some input to the kit is malfunctioning");

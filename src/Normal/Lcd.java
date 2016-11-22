@@ -61,8 +61,6 @@ public class Lcd {
     public static void main(String[] args) {
         Lcd lcd = new Lcd(141799, TextLCDPhidget.PHIDGET_TEXTLCD_SCREEN_4x20, PlayerNumber.P1);
         lcd.setString(0, "I am number 1");
-        Normal.Lcd lcd2 = new Normal.Lcd(141627, TextLCDPhidget.PHIDGET_TEXTLCD_SCREEN_2x16, Normal.PlayerNumber.P2);
-        lcd2.setString(0, "I am number 2");
     }
 
     public void close() {
