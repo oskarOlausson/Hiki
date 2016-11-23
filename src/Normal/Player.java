@@ -17,17 +17,63 @@ public abstract class Player extends Entity{
 
     public Player(World world, String imagePath) {
         this.world = world;
-        String string = "Images/player.png";
+        String string = imagePath;
         image = ImageFunction.loadImage(string);
 
         setSizeFromImage();
     }
 
-    public abstract void move(List<Block> blocks);
+    public void move() {
+        x += dx;
+        y += dy;
+    }
 
-    public abstract void draw(Graphics2D g2d);
+    public void move(List<Block> blocks) {
+        double previousX = x;
+        double previousY = y;
 
-    public abstract void inputs(int[] sensorData);
+        int halfSize = getSize().getHeight() / 2;
+
+        x = Math.max(Math.min(x + dx, FrameConstants.WIDTH.value - halfSize), halfSize);
+
+        boolean collide = false;
+
+        for (Block block : blocks) {
+            if (collision(block)) {
+                collide = true;
+                break;
+            }
+        }
+
+        if (collide) {
+            x = previousX;
+        }
+
+        y = Math.max(Math.min(y + dy, FrameConstants.HEIGHT.value - halfSize), halfSize);
+
+        collide = false;
+
+        for (Block block : blocks) {
+            if (collision(block)) {
+                collide = true;
+                break;
+            }
+        }
+
+        if (collide) {
+            y = previousY;
+        }
+    }
+
+    public void draw(Graphics2D g2d) {
+        world.drawEntity(g2d, this);
+    }
+
+    public double normalize(int value) {
+        return (double) value / 1000;
+    }
+
+    public abstract void inputs(int[] sensorData, boolean[] digitalData);
 
     public void givePoint() {
         points++;

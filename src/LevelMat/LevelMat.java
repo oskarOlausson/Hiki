@@ -53,7 +53,7 @@ public class LevelMat implements Level {
     }
 
     public void tick(Input input){
-        player.inputs(input.sensorData());
+        player.inputs(input.sensorData(), input.digitalData());
         player.move(blocks);
 
         goal.move(player);

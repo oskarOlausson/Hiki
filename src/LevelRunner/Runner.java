@@ -2,7 +2,6 @@ package LevelRunner;
 
 import Normal.*;
 import java.awt.*;
-import java.util.List;
 
 /**
  * Created by oskar on 2016-11-21.
@@ -22,53 +21,15 @@ public class Runner extends Player{
     }
 
     @Override
-    public void move(List<Block> blocks) {
-        double previousX = x;
-        double previousY = y;
-
-        int halfSize = getSize().getHeight() / 2;
-
-        x = Math.max(Math.min(x + dx, FrameConstants.WIDTH.value - halfSize), halfSize);
-
-        boolean collide = false;
-
-        for (Block block : blocks) {
-            if (collision(block)) {
-                collide = true;
-                break;
-            }
-        }
-
-        if (collide) {
-            x = previousX;
-        }
-
-        y = Math.max(Math.min(y + dy, FrameConstants.HEIGHT.value - halfSize), halfSize);
-
-        collide = false;
-
-        for (Block block : blocks) {
-            if (collision(block)) {
-                collide = true;
-                break;
-            }
-        }
-
-        if (collide) {
-            y = previousY;
-        }
-    }
-
-    @Override
     public void draw(Graphics2D g2d) {
         world.drawEntity(g2d, this);
     }
 
     @Override
-    public void inputs(int[] sensorData) {
+    public void inputs(int[] sensorData, boolean[] digitalData) {
 
-        degrees = 360 * (((double) sensorData[InputConstants.DIAL] / 1000) - 0.5);
-        speed = speedMax * (1.2 - ((double) sensorData[InputConstants.SLIDER] / 1000));
+        degrees = 360 * (normalize(sensorData[InputConstants.P1_SLIDE]) - 0.5);
+        speed = speedMax * (1.2 - normalize(sensorData[InputConstants.P2_SLIDE]));
 
         dx = speed * Math.cos(Math.toRadians(degrees));
         dy = speed * Math.sin(Math.toRadians(degrees));

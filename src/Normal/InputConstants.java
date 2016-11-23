@@ -4,26 +4,24 @@ package Normal;
  * Created by oskar on 2016-11-17.
  */
 public class InputConstants {
-    public static final int JOYX = -1;
-    public static final int JOYY = -2;
-    public static final int DIAL = 1;
-    public static final int LIGHT = 3;
-    public static final int PREASSURE = 4;
-    public static final int SLIDER = 2;
+    public static final int P1_SLIDE = 1;
+    public static final int P2_SLIDE = 5;
+    public static final int P3_SLIDE = 4;
+    public static final int P4_SLIDE = 7;
 
-    public static final int BUTTON = 0;
 
-    //DIGITAL
-    public static final int SWITCH = 0;
 
-    public static String toString(int input) {
+    public static final int BUTTON = 4;
+
+    public static String sensorToString(int input) {
         switch(input) {
-            case JOYX:      return "JOYX";
-            case JOYY:      return "JOYY";
-            case DIAL:      return "DIAL";
-            case LIGHT:     return "LIGHT";
-            case PREASSURE: return "PRESSURE";
-            case SLIDER:    return "SLIDER";
+            default: return "Unknown";
+        }
+    }
+
+    public static String digitalToString(int input) {
+        switch(input) {
+            case BUTTON:      return "BUTTON";
 
             default: return "Unknown";
         }

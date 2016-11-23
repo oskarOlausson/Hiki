@@ -11,6 +11,7 @@ import java.awt.*;
  */
 public interface Level {
 
+
     /**Called at start of level, create objects in this function**/
     void start();
 

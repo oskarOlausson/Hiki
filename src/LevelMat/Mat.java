@@ -9,10 +9,10 @@ import java.util.List;
 
 public class Mat extends Player {
 
-    private int inp_topLeft = InputConstants.SLIDER;
-    private int inp_topRight = InputConstants.DIAL;
-    private int inp_bottomLeft= InputConstants.PREASSURE;
-    private int inp_bottomRight = InputConstants.JOYX;
+    private int inp_topLeft = InputConstants.P1_SLIDE;
+    private int inp_topRight = InputConstants.P2_SLIDE;
+    private int inp_bottomLeft= InputConstants.P3_SLIDE;
+    private int inp_bottomRight = InputConstants.P4_SLIDE;
 
     private World world;
 
@@ -53,54 +53,17 @@ public class Mat extends Player {
         y = 100;
     }
 
-    public void move(List<Block> blocks) {
-
-        double prevx = x;
-        double prevy = y;
-
-        int halfSize = getSize().getHeight() / 2;
-
-        x = Math.max(Math.min(x + dx, FrameConstants.WIDTH.value - halfSize), halfSize);
-
-        boolean collide = false;
-
-        for (Block block : blocks) {
-            if (collision(block)) {
-                collide = true;
-                break;
-            }
-        }
-
-        if (collide) {
-            x = prevx;
-        }
-
-        y = Math.max(Math.min(y + dy, FrameConstants.HEIGHT.value - halfSize), halfSize);
-
-        collide = false;
-
-        for (Block block : blocks) {
-            if (collision(block)) {
-                collide = true;
-                break;
-            }
-        }
-
-        if (collide) {
-            y = prevy;
-        }
-    }
-
-    public void inputs(int[] sensorData) {
-        double tl = (((double) sensorData[inp_topLeft]) / 1000);
-        double tr = (((double) sensorData[inp_topRight]) / 1000);
-        double bl = (((double) sensorData[inp_bottomLeft]) / 1000);
-        double br = (((double) sensorData[inp_bottomRight]) / 1000);
+    public void inputs(int[] sensorData, boolean[] digitalData) {
+        double tl = normalize(sensorData[inp_topLeft]);
+        double tr = normalize(sensorData[inp_topRight]);
+        double bl = normalize(sensorData[inp_bottomLeft]);
+        double br = normalize(sensorData[inp_bottomRight]);
 
         dx = (tr + br) - (tl + bl);
         dy = (bl + br) - (tl + tr);
     }
 
+    @Override
     public void draw(Graphics2D g2d) {
         Position pos = getCenter();
         int cx = pos.drawX();
@@ -108,10 +71,10 @@ public class Mat extends Player {
 
         g2d.setPaint(new Color(20, 20, 20));
 
-        g2d.drawString(InputConstants.toString(inp_topLeft), cx - 100, cy - 100);
-        g2d.drawString(InputConstants.toString(inp_topRight), cx + 100, cy - 100);
-        g2d.drawString(InputConstants.toString(inp_bottomLeft), cx - 100, cy + 100);
-        g2d.drawString(InputConstants.toString(inp_bottomRight), cx + 100, cy + 100);
+        g2d.drawString(InputConstants.sensorToString(inp_topLeft), cx - 100, cy - 100);
+        g2d.drawString(InputConstants.sensorToString(inp_topRight), cx + 100, cy - 100);
+        g2d.drawString(InputConstants.sensorToString(inp_bottomLeft), cx - 100, cy + 100);
+        g2d.drawString(InputConstants.sensorToString(inp_bottomRight), cx + 100, cy + 100);
 
         g2d.drawLine(cx, cy, cx - 800, cy - 800);
         g2d.drawLine(cx, cy, cx + 800, cy - 800);

@@ -28,7 +28,7 @@ public class LevelRunner implements Level {
     @Override
     public void start() {
 
-        screen = new Lcd(141799, TextLCDPhidget.PHIDGET_TEXTLCD_SCREEN_4x20, PlayerNumber.P1);
+        screen = new Lcd(141799, TextLCDPhidget.PHIDGET_TEXTLCD_SCREEN_4x20);
         screen.setString(0, "I am working");
         player = new Runner(world, FrameConstants.WIDTH.value / 2, FrameConstants.HEIGHT.value / 2);
 
@@ -58,7 +58,7 @@ public class LevelRunner implements Level {
     }
 
     public void tick(Input input){
-        player.inputs(input.sensorData());
+        player.inputs(input.sensorData(), input.digitalData());
         player.move(blocks);
 
         goal.move(player);

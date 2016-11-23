@@ -2,6 +2,7 @@ package Normal;
 
 import LevelCodeBreaker.CodeBreaker;
 import LevelMat.LevelMat;
+import LevelQue.LevelClub;
 import LevelWalks.LevelWalk;
 import LevelRunner.LevelRunner;
 
@@ -27,6 +28,7 @@ public class World extends JPanel{
         this.input = input;
         setFocusable(true);
         setBackground(Color.BLACK);
+        levels.add(new LevelClub(this));
         levels.add(new LevelRunner(this));
         levels.add(new CodeBreaker(this));
         levels.add(new LevelMat(this));

@@ -35,23 +35,23 @@ public class CodeBreaker implements Level {
 
         Lock lock = new Lock(100 + locks.size() * 200, FrameConstants.HEIGHT.value / 2);
         lock.setPlayer(PlayerNumber.P1);
-        lock.setInteraction(InputConstants.DIAL);
+        lock.setInteraction(InputConstants.P1_SLIDE);
         locks.add(lock);
 
         lock = new Lock(100 + locks.size() * 200, FrameConstants.HEIGHT.value / 2);
         lock.setPlayer(PlayerNumber.P2);
-        lock.setInteraction(InputConstants.SLIDER);
+        lock.setInteraction(InputConstants.P2_SLIDE);
         locks.add(lock);
 
-        Lcd lcd = new Lcd(141799, TextLCDPhidget.PHIDGET_TEXTLCD_SCREEN_4x20, PlayerNumber.P1);
+        Lcd lcd = new Lcd(141799, TextLCDPhidget.PHIDGET_TEXTLCD_SCREEN_4x20);
         lcd.setString(0, clue);
-        lcd.setString(1, Integer.toString(locks.get(0).getNumber()) + "(" + InputConstants.toString(locks.get(0).getInteraction()) + ")");
+        lcd.setString(1, Integer.toString(locks.get(0).getNumber()) + "(" + InputConstants.sensorToString(locks.get(0).getInteraction()) + ")");
         lcd.setBacklight(true);
         screens.add(lcd);
 
-        lcd = new Lcd(141627, TextLCDPhidget.PHIDGET_TEXTLCD_SCREEN_4x20, PlayerNumber.P1);
+        lcd = new Lcd(141627, TextLCDPhidget.PHIDGET_TEXTLCD_SCREEN_4x20);
         lcd.setString(0, clue);
-        lcd.setString(1, Integer.toString(locks.get(1).getNumber()) + "(" + InputConstants.toString(locks.get(1).getInteraction()) + ")");
+        lcd.setString(1, Integer.toString(locks.get(1).getNumber()) + "(" + InputConstants.sensorToString(locks.get(1).getInteraction()) + ")");
         lcd.setBacklight(true);
         screens.add(lcd);
 
