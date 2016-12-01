@@ -22,7 +22,7 @@ public class LevelRunner implements Level {
 
     public LevelRunner(World world) {
         this.world = world;
-        background = ImageFunction.loadImage("Images/back.png");
+        background = ImageFunctions.loadImage("Images/back.png");
     }
 
     @Override

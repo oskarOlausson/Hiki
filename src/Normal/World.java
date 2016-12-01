@@ -5,6 +5,7 @@ import LevelMat.LevelMat;
 import LevelQue.LevelClub;
 import LevelWalks.LevelWalk;
 import LevelRunner.LevelRunner;
+import LevelColor.LevelColor;
 
 import java.awt.*;
 import java.awt.geom.AffineTransform;
@@ -28,11 +29,15 @@ public class World extends JPanel{
         this.input = input;
         setFocusable(true);
         setBackground(Color.BLACK);
+        levels.add(new CodeBreaker(this));
+        levels.add(new LevelColor(this, input));
+
         levels.add(new LevelClub(this));
         levels.add(new LevelRunner(this));
         levels.add(new CodeBreaker(this));
         levels.add(new LevelMat(this));
         levels.add(new LevelWalk(this));
+
 
         this.levelIndex = 0;
 
@@ -158,6 +163,7 @@ public class World extends JPanel{
     }
 
     public void drawImage(Graphics2D g2d, Image img, int x, int y) {
+
         g2d.drawImage(img, x, y, this);
     }
 }

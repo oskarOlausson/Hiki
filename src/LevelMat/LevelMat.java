@@ -1,7 +1,6 @@
 package LevelMat;
 
 import Normal.*;
-import Normal.Frame;
 
 import java.awt.*;
 import java.util.ArrayList;
@@ -21,7 +20,7 @@ public class LevelMat implements Level {
 
     public LevelMat(World world) {
         this.world = world;
-        background = ImageFunction.loadImage("Images/back.png");
+        background = ImageFunctions.loadImage("Images/back.png");
         start();
     }
 

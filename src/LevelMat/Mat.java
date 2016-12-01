@@ -5,7 +5,6 @@ package LevelMat; /**
 import Normal.*;
 
 import java.awt.*;
-import java.util.List;
 
 public class Mat extends Player {
 
@@ -46,7 +45,7 @@ public class Mat extends Player {
     private void initWalker() {
 
         String string = "Images/player.png";
-        image = ImageFunction.loadImage(string);
+        image = ImageFunctions.loadImage(string);
 
         setSizeFromImage();
         x = 100;

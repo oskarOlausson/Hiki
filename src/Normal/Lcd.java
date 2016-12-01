@@ -9,35 +9,42 @@ import com.phidgets.*;
 public class Lcd {
     private TextLCDPhidget screen;
     private int serial;
+    private boolean hasScreen;
 
     public Lcd(int serial, int screenSize) {
 
         this.serial = serial;
+        hasScreen = true;
 
         try {
             screen = new TextLCDPhidget();
             screen.open(serial);
-            System.out.println("Waiting for TextLCDPhidget[" + serial + "]...");
-            screen.waitForAttachment();
+            System.out.println("Waiting for LCD, serial: " + serial);
+            screen.waitForAttachment(20);
         } catch (PhidgetException e) {
-            System.err.println("No screen found");
-            e.printStackTrace();
+            System.err.println("No screen found, serial: " + serial);
+            hasScreen = false;
+            //e.printStackTrace();
         }
 
-        try {
-            screen.setScreenSize(screenSize);
-            screen.setBacklight(true);
-            screen.setDisplayString(0, " ");
-            screen.setDisplayString(1, " ");
-        } catch (PhidgetException e) {
-            System.err.println("Cant set the screen size, backlight or display string");
-            e.printStackTrace();
+        if (hasScreen) {
+            try {
+                screen.setScreenSize(screenSize);
+                screen.setBacklight(true);
+                screen.setDisplayString(0, " ");
+                screen.setDisplayString(1, " ");
+            } catch (PhidgetException e) {
+                System.err.println("Cant set the screen size, backlight or display string");
+                e.printStackTrace();
+            }
+
+            addSwedishChars();
         }
 
-        addSwedishChars();
     }
 
     public void setBacklight(boolean on) {
+        if (!hasScreen) return;
         try {
             screen.setBacklight(on);
         } catch (PhidgetException e) {
@@ -48,6 +55,8 @@ public class Lcd {
 
     public void setString(int index, String string) {
 
+        if (!hasScreen) return;
+        //Adds in åäö in a way the LCD can handle
         StringBuilder swedish = new StringBuilder(string);
 
         for(int i = 0; i < swedish.length(); i++) {
@@ -88,6 +97,7 @@ public class Lcd {
             System.err.println("Can´t set display string: '" + string + "'");
             e.printStackTrace();
         }
+
     }
 
     public void addSwedishChars() {
@@ -109,6 +119,7 @@ public class Lcd {
     }
 
     public void close() {
+        if (!hasScreen) return;
         try {
             screen.close();
         } catch (PhidgetException e) {

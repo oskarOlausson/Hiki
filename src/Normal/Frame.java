@@ -47,7 +47,6 @@ public class Frame extends JFrame {
             }
         });
 
-
         ex.setVisible(true);
         //runs the program
         ex.run();

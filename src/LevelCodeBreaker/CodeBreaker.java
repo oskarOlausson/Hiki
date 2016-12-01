@@ -25,7 +25,7 @@ public class CodeBreaker implements Level {
 
     public CodeBreaker(World world) {
         this.world = world;
-        background = ImageFunction.loadImage("Images/back.png");
+        background = ImageFunctions.loadImage("Images/back.png");
     }
 
     @Override
@@ -105,7 +105,9 @@ public class CodeBreaker implements Level {
     public void doDrawing(Graphics g) {
         Graphics2D g2d = (Graphics2D) g;
         world.drawImage(g2d, background, 0, 0);
-        for (Lock lock: locks) world.drawEntity(g2d, lock);
+        for (Lock lock: locks) {
+            world.drawEntity(g2d, lock);
+        }
     }
 
 

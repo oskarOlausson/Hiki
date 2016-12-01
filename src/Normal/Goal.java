@@ -12,7 +12,7 @@ public class Goal extends Entity {
         this.x = x;
         this.y = y;
         String string = "Images/goal.png";
-        image = ImageFunction.loadImage(string);
+        image = ImageFunctions.loadImage(string);
         setSizeFromImage();
         boolean collide;
         do {

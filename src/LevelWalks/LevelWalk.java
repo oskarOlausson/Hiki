@@ -1,6 +1,5 @@
 package LevelWalks;
 
-import LevelMat.Mat;
 import Normal.*;
 
 import java.awt.*;
@@ -20,7 +19,7 @@ public class LevelWalk implements Level {
 
     public LevelWalk(World world) {
         this.world = world;
-        background = ImageFunction.loadImage("Images/back.png");
+        background = ImageFunctions.loadImage("Images/back.png");
     }
 
     @Override

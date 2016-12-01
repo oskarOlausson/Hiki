@@ -18,9 +18,11 @@ public abstract class Player extends Entity{
     public Player(World world, String imagePath) {
         this.world = world;
         String string = imagePath;
-        image = ImageFunction.loadImage(string);
-
-        setSizeFromImage();
+        if (string != null) {
+            image = ImageFunctions.loadImage(string);
+            setSizeFromImage();
+        }
+        else image = null;
     }
 
     public void move() {

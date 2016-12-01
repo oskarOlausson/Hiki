@@ -31,6 +31,7 @@ public abstract class Entity {
     public int getX(){
         return (int) (x - width/2);
     }
+    public int getY(){ return (int) (y - height/2); }
 
     public void setSizeFromImage() {
         width = image.getWidth(null);
@@ -45,8 +46,6 @@ public abstract class Entity {
 
         return (Math.abs(other.getX() - me.getX()) < radii && Math.abs(other.getY() - me.getY()) < radii);
     }
-
-    public int getY(){ return (int) (y - height/2); }
 
     public Image getImage(){
         return image;
@@ -63,7 +62,6 @@ public abstract class Entity {
     public double getDegrees(){
         return degrees;
     }
-
 
     public void delete() {
         remove = true;

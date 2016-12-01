@@ -1,7 +1,7 @@
 package LevelCodeBreaker;
 
 import Normal.Entity;
-import Normal.ImageFunction;
+import Normal.ImageFunctions;
 import Normal.PlayerNumber;
 
 import java.awt.*;
@@ -18,6 +18,7 @@ public class Lock extends Entity {
     private Image imgOpen;
     private Image imgClosed;
     private Image imgPick;
+
     private int state = 0;
 
 
@@ -26,9 +27,11 @@ public class Lock extends Entity {
         this.y = y;
         number = (int) (Math.random() * 100);
 
-        imgOpen = ImageFunction.loadImage("Images/lock_opened.png");
-        imgClosed = ImageFunction.loadImage("Images/lock.png");
-        imgPick = ImageFunction.loadImage("Images/lock_pick.png");
+        imgOpen = ImageFunctions.loadImage("Images/lock_opened.png");
+        imgClosed = ImageFunctions.loadImage("Images/lock.png");
+
+
+        imgPick = ImageFunctions.loadImage("Images/lock_pick.png");
         image = imgClosed;
         setSizeFromImage();
     }

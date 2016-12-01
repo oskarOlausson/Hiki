@@ -4,7 +4,6 @@ import Normal.*;
 import com.phidgets.TextLCDPhidget;
 
 import java.awt.*;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 import java.util.ArrayList;
@@ -17,18 +16,24 @@ public class LevelClub implements Level {
 
     private List<Clubber> players = new ArrayList<>();
     private List<Lcd>    screens = new ArrayList<>();
+    private List<Particle> confettis = new ArrayList<>();
+    private Image confettiImage = ImageFunctions.loadImage("Images/confetti.png");
     private String solution;
     private World world;
     private boolean success;
     private Image background;
+    private Image foreground;
+
 
     public LevelClub (World world) {
         this.world = world;
-        background = ImageFunction.loadImage("Images/backClub.png");
+        background = ImageFunctions.loadImage("Images/backClub.png");
+        foreground = ImageFunctions.loadImage("Images/klarade.png");
     }
 
     @Override
     public void start() {
+
         success = false;
         int y =  FrameConstants.HEIGHT.value / 2;
 
@@ -134,19 +139,26 @@ public class LevelClub implements Level {
 
         if (currentOrder.equals(solution)) {
             if (!success) {
+                success = true;
+
                 for(Lcd s: screens) {
                     s.setString(0, "Ni klarade det!!!");
                 }
-                success = true;
+
+                for (int i = 0; i < 120; i++) {
+                    confettis.add(new Particle());
+                }
             }
         }
-        else {
-            for (Clubber c : players) {
-                c.inputs(input.sensorData(), input.digitalData());
-                c.move();
-            }
-            screens.get(0).setString(0, "Så här står ni just nu: " + currentOrder);
+
+        for (Clubber c: players) {
+            c.inputs(input.sensorData(), input.digitalData());
+            c.move();
         }
+
+        confettis.forEach(Particle::move);
+
+        if (!success) screens.get(0).setString(0, "Så här står ni just nu: " + currentOrder);
 
     }
 
@@ -159,6 +171,16 @@ public class LevelClub implements Level {
 
         for(Clubber c: players) {
             c.draw(g2d);
+        }
+
+        if (success) {
+            world.drawImage(g2d, foreground, 0, 0);
+        }
+
+
+        for(Particle p: confettis) {
+            g2d.setColor(p.getColor());
+            g2d.fillRect(p.getX() - p.getWidth(), p.getY(), p.getWidth() * 2, p.getHeight());
         }
     }
 }
