@@ -28,10 +28,10 @@ public class Runner extends Player{
     @Override
     public void inputs(int[] sensorData, boolean[] digitalData) {
 
-        degrees = 360 * (normalize(sensorData[InputConstants.P1_SLIDE]) - 0.5);
+        direction = 360 * (normalize(sensorData[InputConstants.P1_SLIDE]) - 0.5);
         speed = speedMax * (1.2 - normalize(sensorData[InputConstants.P2_SLIDE]));
 
-        dx = speed * Math.cos(Math.toRadians(degrees));
-        dy = speed * Math.sin(Math.toRadians(degrees));
+        dx = speed * Math.cos(Math.toRadians(direction));
+        dy = speed * Math.sin(Math.toRadians(direction));
     }
 }

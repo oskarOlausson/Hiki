@@ -29,15 +29,15 @@ public class World extends JPanel{
         this.input = input;
         setFocusable(true);
         setBackground(Color.BLACK);
-        levels.add(new CodeBreaker(this));
-        levels.add(new LevelColor(this, input));
+
+        levels.add(new LevelMat(this));
+        levels.add(new LevelColor(this));
 
         levels.add(new LevelClub(this));
         levels.add(new LevelRunner(this));
         levels.add(new CodeBreaker(this));
-        levels.add(new LevelMat(this));
-        levels.add(new LevelWalk(this));
 
+        levels.add(new LevelWalk(this));
 
         this.levelIndex = 0;
 
@@ -153,7 +153,7 @@ public class World extends JPanel{
         double scalex = size.getWidth() / (double) width;
         double scaley = size.getHeight() / (double) height;
 
-        rotation = Math.toRadians(entity.getDegrees());
+        rotation = Math.toRadians(entity.getDirection());
         tx = AffineTransform.getScaleInstance(scalex, scaley);
         tx.concatenate(AffineTransform.getRotateInstance(rotation, width / 2, height / 2));
 

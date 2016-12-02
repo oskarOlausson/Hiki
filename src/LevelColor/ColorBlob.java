@@ -15,13 +15,18 @@ public class ColorBlob extends Entity{
     private int size = 20;
     private boolean mix = false;
 
+
     public ColorBlob(int index) {
+
+        if (index < 0) {
+            index = (int) Math.round(Math.random() * 2);
+        }
         this.index = index;
         this.width = size;
         this.height = size;
-        dx = 2;
+        dx = 1 + Math.random();
 
-        y = 100 + (Math.random() * (FrameConstants.HEIGHT.value - 200));
+        y = 150 + (Math.random() * (FrameConstants.HEIGHT.value - 300));
     }
 
     public ColorBlob(int index, int index2) {
@@ -33,6 +38,8 @@ public class ColorBlob extends Entity{
         else {
             System.err.println("Tried to mix the same colors, rather pointless. " +index +" = " + index2);
         }
+
+        dx = 0.5 + 0.5 * Math.random();
     }
 
     public boolean collision(double lowRange, double highRange) {
@@ -62,9 +69,6 @@ public class ColorBlob extends Entity{
 
     public void update() {
         x += dx;
-        if (x > FrameConstants.WIDTH.value) {
-            delete();
-        }
     }
 
     public void draw(Graphics g, Colors colors) {

@@ -26,7 +26,7 @@ public abstract class Entity {
     protected boolean remove = false;
 
     //rotation of object
-    protected double degrees = 0;
+    protected double direction = 0;
 
     public int getX(){
         return (int) (x - width/2);
@@ -59,8 +59,8 @@ public abstract class Entity {
         return new Position(x, y);
     }
 
-    public double getDegrees(){
-        return degrees;
+    public double getDirection(){
+        return direction;
     }
 
     public void delete() {

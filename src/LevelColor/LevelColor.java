@@ -15,42 +15,48 @@ public class LevelColor implements Level {
 
     private List<ColorBlob> colorBlobs = new ArrayList<>();
     private List<ColorSlider> colorSliders = new ArrayList<>();
+    private List<ColorParticle> colorParticles = new ArrayList<>();
     private ColorSlider colorSlider1;
     private ColorSlider colorSlider2;
     private Colors colors = new Colors();
     private World world;
     private int timerMax = FrameConstants.SECOND.value * 2;
     private int timer;
-    private Input input;
+
     private Font fontNormal = new Font("Sans-Serif", Font.PLAIN, 50);
     private Font fontUpsideDown = new Font("Sans-Serif", Font.PLAIN, -50);
+    private boolean mixAllowed = false;
 
     private int score;
+    private int life;
 
-    public LevelColor(World world, Input input) {
+    public LevelColor(World world) {
         this.world = world;
-        this.input = input;
     }
 
     @Override
     public void start() {
-        colorSlider1 = new ColorSlider(world, FrameConstants.WIDTH.value / 2 + 100, 0);
+        colorSlider1 = new ColorSlider(world, FrameConstants.WIDTH.value / 2 + 10, 30);
         colorSlider1.setControl(InputConstants.P1_SLIDE, InputConstants.P2_SLIDE);
-        colorSlider2 = new ColorSlider(world, FrameConstants.WIDTH.value / 2 - 100, 0);
+        colorSlider1.changeColor();
+        colorSlider2 = new ColorSlider(world, FrameConstants.WIDTH.value / 2 - 10, FrameConstants.HEIGHT.value - 60);
         colorSlider2.setControl(InputConstants.P3_SLIDE, InputConstants.P4_SLIDE);
 
         colorSliders.add(colorSlider1);
         colorSliders.add(colorSlider2);
         timer = timerMax;
         score = 0;
+        life = 3;
     }
 
     @Override
     public void end() {
-        colorBlobs   = new ArrayList<>();
-        colorSlider1 = null;
-        colorSlider2 = null;
-        colorSliders = new ArrayList<>();
+        colorBlobs      = new ArrayList<>();
+        colorSlider1    = null;
+        colorSlider2    = null;
+        colorSliders    = new ArrayList<>();
+        colorSliders    = new ArrayList<>();
+        colorParticles  = new ArrayList<>();
     }
 
     @Override
@@ -64,6 +70,8 @@ public class LevelColor implements Level {
             c.move();
         }
 
+        colorParticles.forEach(ColorParticle::move);
+
         overLaps = colorSlider1.overLaps(colorSlider2);
         double lowPoint = Math.min(colorSlider1.lowPoint(), colorSlider2.lowPoint());
         double highPoint = Math.max(colorSlider1.highPoint(), colorSlider2.highPoint());
@@ -71,13 +79,17 @@ public class LevelColor implements Level {
         //TIMED
         if (timer < 0) {
             timer = timerMax;
-            index = (int) Math.round(Math.random() * 2);
-            do {
-                index2 = (int) Math.round(Math.random() * 2);
+            if (fiftyFifty()) {
+                index = (int) Math.round(Math.random() * 2);
+                do {
+                    index2 = (int) Math.round(Math.random() * 2);
+                }
+                while (index == index2);
+                colorBlobs.add(new ColorBlob(index, index2));
             }
-            while(index == index2);
-            colorBlobs.add(new ColorBlob(index, index2));
-            colorSlider2.changeColor();
+            else {
+                colorBlobs.add(new ColorBlob(-1));
+            }
         }
         else timer -= 1;
 
@@ -101,13 +113,35 @@ public class LevelColor implements Level {
                     }
                 }
             }
+
+            if (c.getCenter().getX() > FrameConstants.WIDTH.value) {
+                if (life > 0) life -= 1;
+                c.delete();
+            }
         }
+    }
+
+    public boolean fiftyFifty() {
+        return Math.random() > 0.5;
     }
 
     @Override
     public void doDrawing(Graphics g) {
 
         drawColorSliders(g);
+
+        Iterator<ColorParticle> iterColorParticle = colorParticles.iterator();
+
+        while (iterColorParticle.hasNext()) {
+            ColorParticle c = iterColorParticle.next();
+
+            if (!c.ifRemove()) {
+                c.draw(g, world);
+            }
+            else {
+                iterColorParticle.remove();
+            }
+        }
 
         Iterator<ColorBlob> iterColorBlob = colorBlobs.iterator();
 
@@ -118,6 +152,18 @@ public class LevelColor implements Level {
                 c.draw(g, colors);
             }
             else {
+                Color color;
+                if (c.isMix()) {
+                    for (int i = 0; i < 30; i++){
+                        if (fiftyFifty()) color = colors.primaryGet(c.getIndex());
+                        else color = colors.primaryGet(c.getIndex2());
+                        colorParticles.add(new ColorParticle(c.getX(), c.getY(), color));
+                    }
+                }
+                else {
+                    color = colors.primaryGet(c.getIndex());
+                    for (int i = 0; i < 30; i++) colorParticles.add(new ColorParticle(c.getX(), c.getY(), color));
+                }
                 iterColorBlob.remove();
             }
         }
@@ -142,14 +188,18 @@ public class LevelColor implements Level {
             int rx = Math.max((int) colorSlider1.highPoint(), (int) colorSlider2.highPoint());
 
             g.setColor(colors.secondaryGet(colorSlider1.getIndex(), colorSlider2.getIndex()));
-            g.fillRect(lx, 100, rx - lx, FrameConstants.HEIGHT.value - 200);
+            g.fillRect(lx, 85, rx - lx, FrameConstants.HEIGHT.value - 200);
         }
         else {
             for (ColorSlider c : colorSliders) {
                 g.setColor(colors.primaryGet(c.getIndex()));
 
-                g.fillRect((int) c.lowPoint(), 100, (int) c.getWidth(), FrameConstants.HEIGHT.value - 200);
+                g.fillRect((int) c.lowPoint(), 85, (int) c.getWidth(), FrameConstants.HEIGHT.value - 200);
             }
+        }
+
+        for (ColorSlider c : colorSliders) {
+            c.drawInterface(g, colors);
         }
     }
 }

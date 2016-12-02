@@ -5,6 +5,8 @@ import Normal.InputConstants;
 import Normal.Player;
 import Normal.World;
 
+import java.awt.*;
+
 /**
  * Created by oskar on 2016-11-30.
  * This classes has some inputs and outputs
@@ -12,10 +14,10 @@ import Normal.World;
 public class ColorSlider extends Player{
 
     private int sensorIndex = InputConstants.P1_SLIDE;
-    private int digitalIndex = InputConstants.P2_SLIDE;
+    private int sensorIndex2= InputConstants.P2_SLIDE;
     private int pad = 50;
-    private boolean pressed = false;
     private double gotoX;
+    private double colorIndexDouble = 0;
     private int colorIndex = 0;
 
     public ColorSlider(World world, double x, double y) {
@@ -24,7 +26,7 @@ public class ColorSlider extends Player{
         this.y = y;
         gotoX = x;
         colorIndex = (int) Math.round(Math.random() * 2);
-        width = 40;
+        width = 60;
     }
 
     public int getIndex() {
@@ -38,9 +40,9 @@ public class ColorSlider extends Player{
         }
     }
 
-    public void setControl(int sensorIndex, int digitalIndex) {
+    public void setControl(int sensorIndex, int sensorIndex2) {
         this.sensorIndex = sensorIndex;
-        this.digitalIndex = digitalIndex;
+        this.sensorIndex2 = sensorIndex2;
     }
 
     public void move() {
@@ -51,18 +53,11 @@ public class ColorSlider extends Player{
     @Override
     public void inputs(int[] sensorData, boolean[] digitalData) {
         double sensorValue = normalize(sensorData[sensorIndex]);
-        boolean digitalValue = digitalData[digitalIndex];
+        colorIndexDouble = 3 * normalize(sensorData[sensorIndex2]);
+        colorIndex = (int) (colorIndexDouble);
+        if (colorIndex > 2) colorIndex = 2;
 
         this.gotoX = pad + sensorValue * (FrameConstants.WIDTH.value - pad * 2);
-        if (digitalValue) {
-
-            if (!pressed) {
-                changeColor();
-            }
-
-            pressed = true;
-        }
-        else pressed = false;
     }
 
     public double lowPoint() {
@@ -80,5 +75,21 @@ public class ColorSlider extends Player{
 
     public double getWidth() {
         return width;
+    }
+
+    public void drawInterface(Graphics g, Colors colors) {
+
+        int boxWidth = 20;
+        int boxHeight = 40;
+
+        for (int i = 0; i < 3; i++) {
+            g.setColor(colors.primaryGet(i));
+            g.fillRect(getX() + boxWidth * i, (int) (y - boxHeight / 2), boxWidth, boxHeight);
+        }
+
+        g.setColor(Color.BLACK);
+        g.fillRect((int) (getX() + boxWidth * colorIndexDouble) - 2, (int) (y - boxHeight / 2), 4, boxHeight);
+        g.setColor(Color.WHITE);
+        g.drawRect((int) (getX() + boxWidth * colorIndexDouble) - 2, (int) (y - boxHeight / 2), 4, boxHeight);
     }
 }
