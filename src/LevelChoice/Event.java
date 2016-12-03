@@ -1,9 +1,6 @@
 package LevelChoice;
 
-import Normal.Entity;
-import Normal.FrameConstants;
-import Normal.ImageFunctions;
-import Normal.World;
+import Normal.*;
 
 import java.awt.*;
 import java.util.ArrayList;
@@ -41,8 +38,11 @@ public class Event extends Entity{
 
     //variable number of parameters
     public void addAnswers(Answer... answers) {
+        int count = 0;
         for (Answer a: answers) {
             this.answers.add(a);
+            a.addControls(count, count + 1);
+            count++;
         }
     }
 

@@ -1,9 +1,6 @@
 package LevelChoice;
 
-import Normal.Entity;
-import Normal.FrameConstants;
-import Normal.ImageFunctions;
-import Normal.World;
+import Normal.*;
 
 import java.awt.*;
 
@@ -14,6 +11,8 @@ import java.awt.*;
 public class Answer extends Entity {
 
     private TextBox textBox;
+    private int control1 = 0;
+    private int control2 = 1;
 
     public Answer(String text, String imgPath) {
         if (imgPath == null) imgPath = "other";
@@ -22,6 +21,18 @@ public class Answer extends Entity {
         this.textBox = new TextBox(text);
         x = FrameConstants.WIDTH.value / 2;
         y = FrameConstants.HEIGHT.value / 2;
+    }
+
+    public void update(Input input) {
+        boolean chosen = false;
+        boolean maybe = false;
+        if (input.digitalData()[control1] ^ input.digitalData()[control2]) {
+            maybe = true;
+        }
+        if (input.digitalData()[control1] && input.digitalData()[control2]) {
+            chosen = true;
+        }
+        textBox.update(maybe, chosen);
     }
 
     public void drawTextBox(Graphics g, int x, int y) {
@@ -34,5 +45,10 @@ public class Answer extends Entity {
 
     public int getTextBoxHeight() {
         return (int) textBox.getHeight();
+    }
+
+    public void addControls(int control1, int control2) {
+        this.control1 = control1;
+        this.control2 = control2;
     }
 }

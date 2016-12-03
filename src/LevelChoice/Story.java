@@ -19,10 +19,12 @@ public class Story {
     private int progression = 0;
     private int choice = 0;
     private int[] debugChoice = {0, 1, 2};
+    private int[] debugChoice2 = {2, 3, 1};
     private int points = 0;
     private Timer timer = new Timer(FrameConstants.SECOND.value * 8);
+    private Timer debugTimer = new Timer(FrameConstants.SECOND.value); //TODO test
     private boolean done = false;
-    private Position answerPosition = new Position(FrameConstants.WIDTH.value - 310, FrameConstants.HEIGHT.value * 0.5);
+    private Position answerPosition = new Position(FrameConstants.WIDTH.value - 360, FrameConstants.HEIGHT.value * 0.4);
 
     public Story() {
         mainStory = new ArrayList<>();
@@ -37,11 +39,11 @@ public class Story {
     private void loadGalaStory() {
         storyAdd("storyRoot");
         storyAdd("storyDrink");
-        lastEvent.addAnswers(new Answer("yes", "drinkYes"), new Answer("no", "drinkNo"), new Answer("dick move", "drinkDickMove"));
+        lastEvent.addAnswers(new Answer("Tack gärna", "drinkYes"), new Answer("Nej tack", "drinkNo"), new Answer("Dra åt helvete", "drinkDickMove"));
         storyAdd("storyDate");
-        lastEvent.addAnswers(new Answer("yes", "dateYes"), new Answer("no", "dateNo"), new Answer("dick move", "dateDickMove"));
+        lastEvent.addAnswers(new Answer("Dra ut hennes stol\noch sätt dig sedan", "dateYes"), new Answer("Sätt dig ner", "dateNo"), new Answer("Muttra något om att du \nvill ha en snyggare dejt", "dateDickMove"));
         storyAdd("storyCeleb");
-        lastEvent.addAnswers(new Answer("yes", "other"), new Answer("no", "other"), new Answer("dick move", "other"));
+        lastEvent.addAnswers(new Answer("Gå fram till Alicia direkt", "other"), new Answer("Ställ dig i Alicias sällskap\noch skratta högt åt\nhennes skämt", "other"), new Answer("Gå upp på scenen\n och kräv att Alicia ska\nprata med dig", "other"));
     }
 
     /**
@@ -77,10 +79,10 @@ public class Story {
             if (index != 2) points += 9;
         }
         else if (progression == 2) {
-            points += index * 3;
+            points += (2 - index) * 3;
         }
         else if (progression == 3) {
-            points += index;
+            points += (2 - index);
         }
 
         answerMode = true;

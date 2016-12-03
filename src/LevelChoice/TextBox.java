@@ -4,6 +4,7 @@ import Normal.Position;
 import Normal.Size;
 
 import java.awt.*;
+import java.util.List;
 
 /**
  * Created by oskar on 2016-12-03.
@@ -15,9 +16,18 @@ public class TextBox {
     private Font fontNormal = new Font("Sans-Serif", Font.PLAIN, 20);
     private Font fontUpsideDown = new Font("Sans-Serif", Font.PLAIN, 20);
 
-    private Color blockColor = new Color(100,55,30);
-    private Color textColor = new Color(50, 35, 10);
-    private Size size = new Size(300, 60);
+    private static Color blockColor = new Color(30,65,180);
+    private static Color maybeColor = new Color(10,45,160);
+    private static Color chosenColor = new Color(180,180,20);
+    private static Color textColor = new Color(140, 140, 190);
+    private Size size = new Size(350, 100);
+    private boolean chosen = false;
+    private boolean maybe = false;
+
+    public void update(boolean maybe, boolean chosen) {
+        if (chosen) this.chosen = true;
+        this.maybe = maybe;
+    }
 
     public TextBox(String string) {
         this.string = string;
@@ -29,15 +39,23 @@ public class TextBox {
 
         FontMetrics fm = g.getFontMetrics();
 
-        g.setColor(blockColor);
+        if (chosen) g.setColor(chosenColor);
+        else if (maybe) g.setColor(maybeColor);
+        else  g.setColor(blockColor);
+
         g.fillRect(x, y, size.getWidth(), size.getHeight());
 
         int stringX, stringY;
-        stringX = x + size.getWidth()  / 2 - fm.stringWidth(string) / 2;
+
         stringY = y + size.getHeight() / 2 - fm.getHeight() / 2 + fm.getAscent();
 
+        String[] lines = string.split("\n");
+
         g.setColor(textColor);
-        g.drawString(string, stringX, stringY);
+        for (int i = 0; i < lines.length; i++) {
+            stringX = x + size.getWidth()  / 2 - fm.stringWidth(lines[i]) / 2;
+            g.drawString(lines[i], stringX, (int) (stringY + ((i + .5) - lines.length / 2f) * fm.getHeight()));
+        }
     }
 
     public int getHeight() {
