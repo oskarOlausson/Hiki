@@ -6,6 +6,7 @@ import LevelQue.LevelClub;
 import LevelWalks.LevelWalk;
 import LevelRunner.LevelRunner;
 import LevelColor.LevelColor;
+import LevelChoice.LevelChoice;
 
 import java.awt.*;
 import java.awt.geom.AffineTransform;
@@ -30,6 +31,7 @@ public class World extends JPanel{
         setFocusable(true);
         setBackground(Color.BLACK);
 
+        levels.add(new LevelChoice(this));
         levels.add(new LevelMat(this));
         levels.add(new LevelColor(this));
 

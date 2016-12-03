@@ -25,7 +25,6 @@ public class LevelColor implements Level {
 
     private Font fontNormal = new Font("Sans-Serif", Font.PLAIN, 50);
     private Font fontUpsideDown = new Font("Sans-Serif", Font.PLAIN, -50);
-    private boolean mixAllowed = false;
 
     private int score;
     private int life;

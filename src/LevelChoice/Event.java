@@ -1,6 +1,7 @@
 package LevelChoice;
 
 import Normal.Entity;
+import Normal.FrameConstants;
 import Normal.ImageFunctions;
 import Normal.World;
 
@@ -14,46 +15,42 @@ import java.util.List;
  */
 public class Event extends Entity{
 
-    Event parent;
-    List<Event> answers = new ArrayList<>();
-    Event child = null;
+    private List<Answer> answers = new ArrayList<>();
+    private String text = null;
 
-    public Event(Event parent, String imgPath) {
-        image = ImageFunctions.loadImage("Images/story" + imgPath + ".png");
+    public Event(String imgPath) {
+        this(null, imgPath);
+    }
+
+    public Event(String text, String imgPath) {
+        if (imgPath == null) imgPath = "other";
+        image = ImageFunctions.loadImage("Images/Story/" + imgPath + ".png");
         setSizeFromImage();
-        this.parent = parent;
+        this.text = text;
+        x = FrameConstants.WIDTH.value / 2;
+        y = FrameConstants.HEIGHT.value / 2;
     }
 
-    public Event getParent() {
-        return parent;
-    }
-
-    public boolean hasChild() {
-        return child != null;
-    }
-
-    public Event getChild() {
-        return child;
-    }
-
-    public Event getAnswer(int index) {
+    public Answer getAnswer(int index) {
         return answers.get(index);
     }
 
-    //variable number of parameters
-    public void addAnswers(Event... events) {
-        for (Event e: events) {
-            answers.add(e);
-        }
+    public List<Answer> getAnswers() {
+        return answers;
     }
 
     //variable number of parameters
-    public Event setChild(Event child) {
-        this.child = child;
-        return this.child;
+    public void addAnswers(Answer... answers) {
+        for (Answer a: answers) {
+            this.answers.add(a);
+        }
     }
 
     public void draw(Graphics g, World world) {
         world.drawEntity((Graphics2D) g, this);
+    }
+
+    public boolean hasAnswers() {
+        return (answers != null && !answers.isEmpty());
     }
 }

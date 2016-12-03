@@ -7,10 +7,12 @@ package Normal;
 public class Timer {
 
     private int ticks;
+    private int maxTicks;
     private boolean done;
 
     public Timer(int ticks) {
-        this.ticks = ticks;
+        maxTicks = ticks;
+        this.ticks = maxTicks;
     }
 
     public int update() {
@@ -23,5 +25,15 @@ public class Timer {
 
     public boolean isDone() {
         return done;
+    }
+
+    public void restart() {
+        done = false;
+        ticks = maxTicks;
+    }
+
+    public void ring() {
+        ticks = 0;
+        done = true;
     }
 }

@@ -21,7 +21,13 @@ public class ImageFunctions {
             img = ImageIO.read(new File(filePath));
         } catch (IOException e){
             System.err.println("Could not find file at: '" + filePath+"'");
-            System.exit(2);
+
+            try{
+                img = ImageIO.read(new File("Images/Story/other.png"));
+            } catch (IOException f){
+                System.err.println("Could not find file at: '" + filePath+"'");
+                System.exit(2);
+            }
         }
 
         return img;

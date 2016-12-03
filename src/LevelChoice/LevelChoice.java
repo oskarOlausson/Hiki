@@ -1,7 +1,6 @@
 package LevelChoice;
 
-import Normal.Input;
-import Normal.Level;
+import Normal.*;
 
 import java.awt.*;
 
@@ -11,27 +10,39 @@ import java.awt.*;
  */
 public class LevelChoice implements Level{
 
-    private Mood guardMood;
-    private Mood  dateMood;
+    private Story story;
+    private World world;
+    private Timer timer = new Timer(FrameConstants.SECOND.value * 5);
+
+
+    public LevelChoice(World world) {
+        this.world = world;
+    }
 
     @Override
     public void start() {
-        guardMood = Mood.NEUTRAL;
-        dateMood = Mood.NEUTRAL;
+        story = new Story();
     }
 
     @Override
     public void end() {
-
+        story = null;
     }
 
     @Override
     public void tick(Input input) {
-
+        if (story.update(input)) {
+            /*
+            timer.update();
+            if (timer.isDone()) {
+                world.nextLevel();
+            }
+            */
+        }
     }
 
     @Override
     public void doDrawing(Graphics g) {
-
+        story.draw(g, world);
     }
 }
