@@ -20,30 +20,39 @@ public class TextBox {
     private static Color maybeColor = new Color(10,45,160);
     private static Color chosenColor = new Color(180,180,20);
     private static Color textColor = new Color(140, 140, 190);
+    private static Color textColorChosen = new Color(10, 10, 10);
     private Size size = new Size(350, 100);
     private boolean chosen = false;
     private boolean maybe = false;
 
     public void update(boolean maybe, boolean chosen) {
-        if (chosen) this.chosen = true;
+        this.chosen = chosen;
         this.maybe = maybe;
+    }
+
+    public boolean isChosen() {
+        return chosen;
     }
 
     public TextBox(String string) {
         this.string = string;
     }
 
-    public void draw(Graphics g, int x, int y, boolean upsideDown) {
+    public void draw(Graphics g, int x, int y, double percent, boolean upsideDown) {
         if (upsideDown) g.setFont(fontNormal);
         else g.setFont(fontUpsideDown);
 
         FontMetrics fm = g.getFontMetrics();
 
-        if (chosen) g.setColor(chosenColor);
-        else if (maybe) g.setColor(maybeColor);
+        if (maybe) g.setColor(maybeColor);
         else  g.setColor(blockColor);
 
         g.fillRect(x, y, size.getWidth(), size.getHeight());
+
+        if (chosen) {
+            g.setColor(chosenColor);
+            g.fillRect(x, y, (int) (size.getWidth() * percent), size.getHeight());
+        }
 
         int stringX, stringY;
 
@@ -51,7 +60,9 @@ public class TextBox {
 
         String[] lines = string.split("\n");
 
-        g.setColor(textColor);
+        if (chosen) g.setColor(textColorChosen);
+        else g.setColor(textColor);
+
         for (int i = 0; i < lines.length; i++) {
             stringX = x + size.getWidth()  / 2 - fm.stringWidth(lines[i]) / 2;
             g.drawString(lines[i], stringX, (int) (stringY + ((i + .5) - lines.length / 2f) * fm.getHeight()));
@@ -62,7 +73,7 @@ public class TextBox {
         return size.getHeight();
     }
 
-    public void draw(Graphics g, int x, int y) {
-        draw(g, x, y, false);
+    public void draw(Graphics g, int x, int y, double percent) {
+        draw(g, x, y, percent, false);
     }
 }
