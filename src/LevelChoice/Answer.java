@@ -8,7 +8,7 @@ import java.awt.*;
  * Created by oskar on 2016-12-03.
  * This classes has some inputs and outputs
  */
-public class Answer extends Entity {
+class Answer extends Entity {
 
     private TextBox textBox;
     private int control1 = 0;
@@ -18,7 +18,7 @@ public class Answer extends Entity {
     private boolean next = false;
     private Timer nextTimer = new Timer(FrameConstants.SECOND.value * 2);
 
-    public Answer(String text, String imgPath) {
+    Answer(String text, String imgPath) {
         if (imgPath == null) imgPath = "other";
         image = ImageFunctions.loadImage("Images/Story/" + imgPath + ".png");
         setSizeFromImage();
@@ -45,11 +45,7 @@ public class Answer extends Entity {
         textBox.update(maybe, chosen);
     }
 
-    public boolean isChosen() {
-        return chosen;
-    }
-
-    public void drawTextBox(Graphics g, int x, int y) {
+    void drawTextBox(Graphics g, int x, int y) {
         double percent = nextTimer.getPercent();
         if (textBox.isChosen()) textBox.draw(g, x, y, percent);
         else textBox.draw(g, x, y, 0);
@@ -59,16 +55,16 @@ public class Answer extends Entity {
         world.drawEntity((Graphics2D) g, this);
     }
 
-    public int getTextBoxHeight() {
-        return (int) textBox.getHeight();
+    int getTextBoxHeight() {
+        return textBox.getHeight();
     }
 
-    public void addControls(int control1, int control2) {
+    void addControls(int control1, int control2) {
         this.control1 = control1;
         this.control2 = control2;
     }
 
-    public boolean isDone() {
+    boolean isDone() {
         return next;
     }
 }

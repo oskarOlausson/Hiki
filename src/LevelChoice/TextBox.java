@@ -1,18 +1,15 @@
 package LevelChoice;
 
-import Normal.Position;
 import Normal.Size;
-
 import java.awt.*;
-import java.util.List;
 
 /**
  * Created by oskar on 2016-12-03.
  * This classes has some inputs and outputs
  */
-public class TextBox {
+class TextBox {
 
-    String string;
+    private String string;
     private Font fontNormal = new Font("Sans-Serif", Font.PLAIN, 20);
     private Font fontUpsideDown = new Font("Sans-Serif", Font.PLAIN, 20);
 
@@ -25,16 +22,16 @@ public class TextBox {
     private boolean chosen = false;
     private boolean maybe = false;
 
-    public void update(boolean maybe, boolean chosen) {
+    void update(boolean maybe, boolean chosen) {
         this.chosen = chosen;
         this.maybe = maybe;
     }
 
-    public boolean isChosen() {
+    boolean isChosen() {
         return chosen;
     }
 
-    public TextBox(String string) {
+    TextBox(String string) {
         this.string = string;
     }
 

@@ -10,7 +10,7 @@ import Normal.*;
  * Created by oskar on 2016-12-02.
  * This classes has some inputs and outputs
  */
-public class Story {
+class Story {
 
     private List<Event> mainStory;
     private List<Event> endings;
@@ -20,19 +20,19 @@ public class Story {
     private int choice = 0;
     private int[] debugChoice = {0, 2, 0};
     private int points = 0;
-    private Timer timer = new Timer(FrameConstants.SECOND.value * 8);
-    private Timer debugTimer = new Timer(FrameConstants.SECOND.value); //TODO test
+    private Timer timer = new Timer(FrameConstants.SECOND.value * 5);
+    private Timer debugTimer = new Timer(FrameConstants.SECOND.value);
     private boolean done = false;
     private Position answerPosition = new Position(FrameConstants.WIDTH.value - 360, FrameConstants.HEIGHT.value * 0.4);
-    private Timer debugTimer2 = new Timer(FrameConstants.SECOND.value); //TODO test
+    private Timer debugTimer2 = new Timer(FrameConstants.SECOND.value);
 
-    public Story() {
+    Story() {
         mainStory = new ArrayList<>();
         endings = getEndings();
         loadGalaStory();
     }
 
-    public void storyAdd(String s) {
+    private void storyAdd(String s) {
         mainStory.add(lastEvent = new Event(s));
     }
 
@@ -48,7 +48,7 @@ public class Story {
 
     /**
      * @param input, the sensor and digital input
-     * @return: if its finished with the story
+     * @return: done, if its finished with the story
      */
     public boolean update(Input input) {
         if (!done) {
@@ -61,7 +61,7 @@ public class Story {
                     if (progression < mainStory.size() - 1) progression++;
                 }
             } else {
-                boolean[] arr = {false, false, false, false, false, false, false, false};
+                boolean[] arr = input.digitalData().clone();
 
                 //artificial choice
                 if (mainStory.get(progression).hasAnswers()) {
@@ -111,7 +111,6 @@ public class Story {
 
     private void makeChoice(int index) {
 
-        int inde = index;
         if (progression == 1) {
             if (index != 2) points += 9;
         }
@@ -142,7 +141,7 @@ public class Story {
         }
     }
 
-    public void drawOptions(Graphics g) {
+    private void drawOptions(Graphics g) {
         Event e = mainStory.get(progression);
         int count = 0;
         for (Answer a: e.getAnswers()) {
@@ -151,7 +150,7 @@ public class Story {
         }
     }
 
-    public List<Event> getEndings() {
+    private List<Event> getEndings() {
         List<Event> endings = new ArrayList<>();
         for (int i = 0; i <= 17; i++) {
             endings.add(new Event("storyCeleb" + Integer.toString(i)));
