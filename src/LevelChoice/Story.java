@@ -39,11 +39,11 @@ class Story {
     private void loadGalaStory() {
         storyAdd("storyRoot");
         storyAdd("storyDrink");
-        lastEvent.addAnswers(new Answer("Tack gärna", "drinkYes"), new Answer("Nej tack", "drinkNo"), new Answer("Dra åt helvete", "drinkDickMove"));
+        lastEvent.addAnswers(new Answer("Tack gärna", "drinkYes", 0, 1), new Answer("Nej tack", "drinkNo", 1, 2), new Answer("Dra åt helvete", "drinkDickMove", 2, 3));
         storyAdd("storyDate");
-        lastEvent.addAnswers(new Answer("Dra ut hennes stol\noch sätt dig sedan", "dateYes"), new Answer("Sätt dig ner", "dateNo"), new Answer("Muttra något om att du \nvill ha en snyggare dejt", "dateDickMove"));
+        lastEvent.addAnswers(new Answer("Dra ut hennes stol\noch sätt dig sedan", "dateYes", 0, 1), new Answer("Sätt dig ner", "dateNo", 1, 2), new Answer("Muttra något om att du \nvill ha en snyggare dejt", "dateDickMove", 2, 3));
         storyAdd("storyCeleb");
-        lastEvent.addAnswers(new Answer("Gå fram till Alicia direkt", "other"), new Answer("Ställ dig i Alicias sällskap\noch skratta högt åt\nhennes skämt", "other"), new Answer("Gå upp på scenen\n och kräv att Alicia ska\nprata med dig", "other"));
+        lastEvent.addAnswers(new Answer("Gå fram till Alicia direkt", "other", 0, 1), new Answer("Ställ dig i Alicias sällskap\noch skratta högt åt\nhennes skämt", "other", 1, 2), new Answer("Gå upp på scenen\n och kräv att Alicia ska\nprata med dig", "other", 2, 3));
     }
 
     /**

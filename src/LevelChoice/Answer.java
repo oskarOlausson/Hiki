@@ -18,11 +18,13 @@ class Answer extends Entity {
     private boolean next = false;
     private Timer nextTimer = new Timer(FrameConstants.SECOND.value * 2);
 
-    Answer(String text, String imgPath) {
+    Answer(String text, String imgPath, int control1, int control2) {
+        this.control1 = control1;
+        this.control2 = control2;
         if (imgPath == null) imgPath = "other";
         image = ImageFunctions.loadImage("Images/Story/" + imgPath + ".png");
         setSizeFromImage();
-        this.textBox = new TextBox(text);
+        this.textBox = new TextBox(text, Integer.toString(control1), Integer.toString(control2));
         x = FrameConstants.WIDTH.value / 2;
         y = FrameConstants.HEIGHT.value / 2;
     }
@@ -57,11 +59,6 @@ class Answer extends Entity {
 
     int getTextBoxHeight() {
         return textBox.getHeight();
-    }
-
-    void addControls(int control1, int control2) {
-        this.control1 = control1;
-        this.control2 = control2;
     }
 
     boolean isDone() {

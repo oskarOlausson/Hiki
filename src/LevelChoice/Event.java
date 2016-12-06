@@ -35,7 +35,6 @@ class Event extends Entity{
         int count = 0;
         for (Answer a: answers) {
             this.answers.add(a);
-            a.addControls(count, count + 1);
             count++;
         }
     }

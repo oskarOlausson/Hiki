@@ -67,7 +67,7 @@ public class Input {
         ik.addInputChangeListener(ic -> {
             //Insert your code here
             System.out.println("digital[" + ic.getIndex() + "] = " + ic.getState());
-            digital[ic.getIndex()] = ic.getState();
+            if (ic.getState()) digital[ic.getIndex()] = true;
         });
     }
 
@@ -101,6 +101,17 @@ public class Input {
 
     public int[] sensorData() {
         return sensors;
+    }
+
+    public void reset() {
+        for (int i = 0; i < digital.length; i++) {
+            try {
+                digital[i] = ik.getInputState(i);
+            } catch (PhidgetException e) {
+                //System.err.println("Could not get inputState of index: " + Integer.toString(i));
+                digital[i] = false;
+            }
+        }
     }
 }
 

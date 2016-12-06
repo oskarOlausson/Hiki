@@ -118,7 +118,9 @@ public class World extends JPanel{
     }
 
     public void tick(){
+
         levels.get(levelIndex).tick(input);
+        input.reset();
     }
 
     @Override
