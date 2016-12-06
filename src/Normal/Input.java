@@ -25,7 +25,7 @@ public class Input {
         }
     }
 
-    public void findPhidget() {
+    private void findPhidget() {
         try {
             ik = new InterfaceKitPhidget();
             ik.openAny();

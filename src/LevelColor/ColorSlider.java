@@ -11,7 +11,7 @@ import java.awt.*;
  * Created by oskar on 2016-11-30.
  * This classes has some inputs and outputs
  */
-public class ColorSlider extends Player{
+class ColorSlider extends Player{
 
     private int sensorIndex = InputConstants.P1_SLIDE;
     private int sensorIndex2= InputConstants.P2_SLIDE;
@@ -20,7 +20,7 @@ public class ColorSlider extends Player{
     private double colorIndexDouble = 0;
     private int colorIndex = 0;
 
-    public ColorSlider(World world, double x, double y) {
+    ColorSlider(World world, double x, double y) {
         super(world, null);
         this.x = x;
         this.y = y;
@@ -29,18 +29,18 @@ public class ColorSlider extends Player{
         width = 60;
     }
 
-    public int getIndex() {
+    int getIndex() {
         return colorIndex;
     }
 
-    public void changeColor() {
+    void changeColor() {
         colorIndex += 1;
         if (colorIndex > 2) {
             colorIndex = 0;
         }
     }
 
-    public void setControl(int sensorIndex, int sensorIndex2) {
+    void setControl(int sensorIndex, int sensorIndex2) {
         this.sensorIndex = sensorIndex;
         this.sensorIndex2 = sensorIndex2;
     }

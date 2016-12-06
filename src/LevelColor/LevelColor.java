@@ -120,7 +120,7 @@ public class LevelColor implements Level {
         }
     }
 
-    public boolean fiftyFifty() {
+    private boolean fiftyFifty() {
         return Math.random() > 0.5;
     }
 

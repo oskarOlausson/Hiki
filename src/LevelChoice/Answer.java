@@ -24,12 +24,12 @@ class Answer extends Entity {
         if (imgPath == null) imgPath = "other";
         image = ImageFunctions.loadImage("Images/Story/" + imgPath + ".png");
         setSizeFromImage();
-        this.textBox = new TextBox(text, Integer.toString(control1), Integer.toString(control2));
+        this.textBox = new TextBox(text, control1, control2);
         x = FrameConstants.WIDTH.value / 2;
         y = FrameConstants.HEIGHT.value / 2;
     }
 
-    public void update(boolean[] pressed) {
+    void update(boolean[] pressed) {
         if (pressed[control1] ^ pressed[control2]) {
             maybe = true;
             nextTimer.restart();

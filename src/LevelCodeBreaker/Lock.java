@@ -10,7 +10,7 @@ import java.awt.*;
  * Created by oskar on 2016-11-18.
  * This classes has some inputs and outputs
  */
-public class Lock extends Entity {
+class Lock extends Entity {
 
     private PlayerNumber playerNumber;
     private int interaction = -1;
@@ -21,8 +21,7 @@ public class Lock extends Entity {
 
     private int state = 0;
 
-
-    public Lock(int x, int y) {
+     Lock(int x, int y) {
         this.x = x;
         this.y = y;
         number = (int) (Math.random() * 100);
@@ -36,7 +35,7 @@ public class Lock extends Entity {
         setSizeFromImage();
     }
 
-    public boolean update(int[] input) {
+    boolean update(int[] input) {
         int in = input[interaction];
 
         if (state == 2) {
@@ -55,27 +54,27 @@ public class Lock extends Entity {
         }
     }
 
-    public void success() {
+    void success() {
         state = 2;
     }
 
-    public void setPlayer(PlayerNumber playerNumber) {
+    void setPlayer(PlayerNumber playerNumber) {
         this.playerNumber = playerNumber;
     }
 
-    public PlayerNumber getPlayer() {
+    PlayerNumber getPlayer() {
         return playerNumber;
     }
 
-    public int getInteraction() {
+    int getInteraction() {
         return interaction;
     }
 
-    public void setInteraction(int interaction) {
+    void setInteraction(int interaction) {
         this.interaction = interaction;
     }
 
-    public int getNumber() {
+    int getNumber() {
         return number;
     }
 }

@@ -37,11 +37,21 @@ class TextBox {
         return chosen;
     }
 
-    TextBox(String string, String inputText1, String inputText2) {
+    TextBox(String string, int input1, int input2) {
 
         this.string = string;
-        inputText.add(inputText1);
-        inputText.add(inputText2);
+        inputText.add(inputToText(input1));
+        inputText.add(inputToText(input2));
+    }
+
+    private String inputToText(int input) {
+        switch(input) {
+            case 0:     return "A";
+            case 1:     return "B";
+            case 2:     return "C";
+            case 3:     return "D";
+        }
+        return "ERROR";
     }
 
     private void drawInput(Graphics g, int x, int y) {

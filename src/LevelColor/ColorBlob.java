@@ -9,14 +9,14 @@ import java.awt.*;
  * Created by oskar on 2016-11-30.
  * This classes has some inputs and outputs
  */
-public class ColorBlob extends Entity{
+class ColorBlob extends Entity{
     private int index;
     private int index2 = -1;
     private int size = 20;
     private boolean mix = false;
 
 
-    public ColorBlob(int index) {
+    ColorBlob(int index) {
 
         if (index < 0) {
             index = (int) Math.round(Math.random() * 2);
@@ -29,7 +29,7 @@ public class ColorBlob extends Entity{
         y = 150 + (Math.random() * (FrameConstants.HEIGHT.value - 300));
     }
 
-    public ColorBlob(int index, int index2) {
+    ColorBlob(int index, int index2) {
         this(index);
         if (index != index2) {
             this.index2 = index2;
@@ -42,20 +42,20 @@ public class ColorBlob extends Entity{
         dx = 0.5 + 0.5 * Math.random();
     }
 
-    public boolean collision(double lowRange, double highRange) {
+    boolean collision(double lowRange, double highRange) {
         double rangeCenter = (lowRange + highRange) / 2;
         double rangeWidth = highRange - lowRange;
         return (Math.abs(rangeCenter - x) < (rangeWidth + width) / 2);
     }
 
-    public boolean match(int index) {
+    boolean match(int index) {
         if (!mix) {
             if (this.index == index) return true;
         }
         return false;
     }
 
-    public boolean match(int index, int index2) {
+    boolean match(int index, int index2) {
         if (mix) {
             if (this.index == index && this.index2 == index2)       return true;
             else if (this.index == index2 && this.index2 == index)  return true;
@@ -63,7 +63,7 @@ public class ColorBlob extends Entity{
         return false;
     }
 
-    public boolean isMix() {
+    boolean isMix() {
         return mix;
     }
 
@@ -71,7 +71,7 @@ public class ColorBlob extends Entity{
         x += dx;
     }
 
-    public void draw(Graphics g, Colors colors) {
+    void draw(Graphics g, Colors colors) {
         if (isMix()) {
             g.setColor(colors.secondaryGet(getIndex(), getIndex2()));
         }
@@ -80,11 +80,11 @@ public class ColorBlob extends Entity{
         g.fillOval(getX(), getY(), size, size);
     }
 
-    public int getIndex() {
+    int getIndex() {
         return index;
     }
 
-    public int getIndex2() {
+    int getIndex2() {
         if (index2 == -1) {
             System.err.println("Can´t get index2, is a primary color");
         }

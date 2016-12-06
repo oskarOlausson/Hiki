@@ -2,6 +2,7 @@ package Normal;
 
 /**
  * Created by oskar on 2016-11-17.
+ * Simple position class, useful when returning from function
  */
 public class Position {
 

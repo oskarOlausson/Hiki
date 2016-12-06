@@ -1,6 +1,7 @@
 package Normal;
 
 /**
+ * Holds size and stuff
  * Created by oskar on 2016-11-17.
  */
 

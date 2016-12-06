@@ -1,26 +1,24 @@
 package LevelQue;
 import Normal.*;
 
-import java.awt.*;
-
 /**
  * Created by oskar on 2016-11-23.
  * This classes has some inputs and outputs
  */
-public class Clubber extends Player {
+class Clubber extends Player {
 
     private String name;
     private int index = 0;
     private int aimX = 0;
 
-    public Clubber(World world, String playerImage, double x, double y, String name) {
+    Clubber(World world, String playerImage, double x, double y, String name) {
         super(world, "Images/" + playerImage + ".png");
         this.x = x;
         this.y = y;
         this.name = name;
     }
 
-    public void setSensorIndex(int index) {
+    void setSensorIndex(int index) {
         this.index = index;
     }
 
@@ -33,7 +31,7 @@ public class Clubber extends Player {
         }
     }
 
-    public String getName() {
+    String getName() {
         return name;
     }
 

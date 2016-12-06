@@ -1,10 +1,8 @@
-package Normal; /**
- * Created by oskar on 2016-11-17.
- */
-
+package Normal;
 import java.awt.*;
 
 /**
+ * All objects
  * Created by oskar on 2016-10-16.
  */
 public abstract class Entity {
@@ -23,7 +21,7 @@ public abstract class Entity {
     protected Image image;
 
     //if the object should be removed
-    protected boolean remove = false;
+    private  boolean remove = false;
 
     //rotation of object
     protected double direction = 0;
@@ -33,7 +31,7 @@ public abstract class Entity {
     }
     public int getY(){ return (int) (y - height/2); }
 
-    public void setSizeFromImage() {
+    protected void setSizeFromImage() {
         width = image.getWidth(null);
         height = image.getHeight(null);
     }
@@ -51,7 +49,7 @@ public abstract class Entity {
         return image;
     }
 
-    public Size getSize(){
+    protected Size getSize(){
         return new Size(width, height);
     }
 
@@ -59,7 +57,7 @@ public abstract class Entity {
         return new Position(x, y);
     }
 
-    public double getDirection(){
+    protected double getDirection(){
         return direction;
     }
 

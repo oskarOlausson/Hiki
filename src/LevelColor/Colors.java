@@ -8,7 +8,7 @@ import java.util.List;
  * Created by oskar on 2016-11-30.
  * This classes has some inputs and outputs
  */
-public class Colors {
+class Colors {
 
     private final Color r = new Color(180, 40, 40);
     private final Color y = new Color(220, 220, 20);
@@ -23,19 +23,19 @@ public class Colors {
 
     private final Color[] SECONDARY = {o, g, l};
 
-    public Color getTextColor() {
+    Color getTextColor() {
         return textColor;
     }
 
-    public Color primaryGet(int index) {
+    Color primaryGet(int index) {
         return PRIMARY[index];
     }
 
-    public Color secondaryGet(int index) {
+    private Color secondaryGet(int index) {
         return SECONDARY[index];
     }
 
-    public Color secondaryGet(int index, int index2) {
+    Color secondaryGet(int index, int index2) {
         if (index == index2) {
             return primaryGet(index);
         }

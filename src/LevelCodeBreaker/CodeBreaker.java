@@ -21,8 +21,6 @@ public class CodeBreaker implements Level {
 
     private Image background;
 
-    String clue;
-
     public CodeBreaker(World world) {
         this.world = world;
         background = ImageFunctions.loadImage("Images/back.png");
@@ -30,8 +28,8 @@ public class CodeBreaker implements Level {
 
     @Override
     public void start() {
-        playerCount = 2;
-        clue = "Small to Large";
+
+        String clue = "Small to Large";
 
         Lock lock = new Lock(100 + locks.size() * 200, FrameConstants.HEIGHT.value / 2);
         lock.setPlayer(PlayerNumber.P1);
@@ -109,6 +107,4 @@ public class CodeBreaker implements Level {
             world.drawEntity(g2d, lock);
         }
     }
-
-
 }

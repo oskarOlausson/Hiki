@@ -1,5 +1,8 @@
-package Normal; /**
- * Created by oskar on 2016-11-17.
+package Normal;
+
+/**
+ * Created by oskar on 2016-10-15.
+ * Static class which has an important function used to load images
  */
 
 import javax.imageio.ImageIO;
@@ -8,10 +11,7 @@ import java.awt.image.*;
 import java.io.File;
 import java.io.IOException;
 
-/**
- * Created by oskar on 2016-10-15.
- * Static class which has an important function used to load images
- */
+
 public class ImageFunctions {
 
     public static BufferedImage loadImage(String filePath) {

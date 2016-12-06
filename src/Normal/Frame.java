@@ -9,7 +9,7 @@ public class Frame extends JFrame {
     private World world;
     private Input input;
 
-    public Frame() {
+    private Frame() {
 
         initUI();
     }
@@ -28,10 +28,7 @@ public class Frame extends JFrame {
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
     }
 
-
-
-
-    public void run(){
+    private void run(){
         world.run();
     }
 

@@ -4,6 +4,7 @@ import Normal.*;
 
 import java.awt.*;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -32,11 +33,7 @@ class Event extends Entity{
 
     //variable number of parameters
     void addAnswers(Answer... answers) {
-        int count = 0;
-        for (Answer a: answers) {
-            this.answers.add(a);
-            count++;
-        }
+        Collections.addAll(this.answers, answers);
     }
 
     public void draw(Graphics g, World world) {
