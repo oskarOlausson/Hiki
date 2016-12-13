@@ -11,7 +11,6 @@ import java.awt.image.*;
 import java.io.File;
 import java.io.IOException;
 
-
 public class ImageFunctions {
 
     public static BufferedImage loadImage(String filePath) {
@@ -61,10 +60,8 @@ public class ImageFunctions {
         graphics.drawImage(img, 0, 0, null);
         graphics.dispose();
 
-        for (int i = 0; i < tintedSprite.getWidth(); i++)
-        {
-            for (int j = 0; j < tintedSprite.getHeight(); j++)
-            {
+        for (int i = 0; i < tintedSprite.getWidth(); i++) {
+            for (int j = 0; j < tintedSprite.getHeight(); j++) {
                 int ax = tintedSprite.getColorModel().getAlpha(tintedSprite.getRaster().
                         getDataElements(i, j, null));
                 int rx = tintedSprite.getColorModel().getRed(tintedSprite.getRaster().

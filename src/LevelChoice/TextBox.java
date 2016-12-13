@@ -1,5 +1,6 @@
 package LevelChoice;
 
+import Normal.FrameConstants;
 import Normal.Size;
 import java.awt.*;
 import java.util.ArrayList;
@@ -13,7 +14,7 @@ class TextBox {
 
     private String string;
     private static final Font fontNormal = new Font("Sans-Serif", Font.PLAIN, 20);
-    private static final Font fontUpsideDown = new Font("Sans-Serif", Font.PLAIN, 20);
+    private static final Font fontUpsideDown = new Font("Sans-Serif", Font.PLAIN, -20);
 
     private static final Color inputColor       = new Color(0,25,140);
     private static final Color blockColor       = new Color(30,65,180);
@@ -26,6 +27,7 @@ class TextBox {
     private boolean chosen = false;
     private boolean maybe = false;
     private List<String> inputText = new ArrayList<>();
+    private boolean upSideDown = false;
 
 
     void update(boolean maybe, boolean chosen) {
@@ -56,7 +58,11 @@ class TextBox {
 
     private void drawInput(Graphics g, int x, int y) {
         int size = this.size.getHeight() / 2;
-        x = x - size;
+        if (!upSideDown) x = x - size;
+        else {
+            x += this.size.getWidth();
+        }
+
         FontMetrics fm = g.getFontMetrics();
         int stringX, stringY;
 
@@ -71,17 +77,27 @@ class TextBox {
         }
     }
 
-    public void draw(Graphics g, int x, int y, double percent, boolean upsideDown) {
+    public void draw(Graphics g, int x, int y, double percent) {
 
-        if (upsideDown) g.setFont(fontNormal);
-        else g.setFont(fontUpsideDown);
+        int offSetX = 0;
+        int offSetY = 0;
+
+        if (upSideDown) {
+            x = FrameConstants.WIDTH.value - x;
+            y = FrameConstants.HEIGHT.value - y;
+            offSetX =  -1 * size.getWidth();
+            offSetY = -1 * size.getHeight();
+        }
+
+        if (upSideDown) g.setFont(fontUpsideDown);
+        else g.setFont(fontNormal);
 
         FontMetrics fm = g.getFontMetrics();
 
         if (maybe) g.setColor(maybeColor);
         else  g.setColor(blockColor);
 
-        g.fillRect(x, y, size.getWidth(), size.getHeight());
+        g.fillRect(x + offSetX, y + offSetY, size.getWidth(), size.getHeight());
 
         if (chosen) {
             g.setColor(chosenColor);
@@ -89,12 +105,12 @@ class TextBox {
             int h = (int) (size.getHeight() * percent);
             int arc = 5;
 
-            g.fillRoundRect(x + size.getWidth() / 2 - w / 2, y + size.getHeight() / 2 - h / 2, w, h, (int) (arc - (percent * arc)), (int) (arc - (percent * arc)));
+            g.fillRoundRect(x + size.getWidth() / 2 - w / 2 + offSetX, y + size.getHeight() / 2 - h / 2 + offSetY, w, h, (int) (arc - (percent * arc)), (int) (arc - (percent * arc)));
         }
 
         int stringX, stringY;
 
-        stringY = y + size.getHeight() / 2 - fm.getHeight() / 2 + fm.getAscent();
+        stringY = y + offSetY + size.getHeight() / 2 - fm.getHeight() / 2 + fm.getAscent();
 
         String[] lines = string.split("\\r?\\n");
 
@@ -102,18 +118,18 @@ class TextBox {
         else g.setColor(textColor);
 
         for (int i = 0; i < lines.length; i++) {
-            stringX = x + size.getWidth()  / 2 - fm.stringWidth(lines[i]) / 2;
+            stringX = x + offSetX + size.getWidth()  / 2 - fm.stringWidth(lines[i]) / 2;
             g.drawString(lines[i], stringX, (int) (stringY + ((i + .5) - lines.length / 2f) * fm.getHeight()));
         }
 
-        drawInput(g, x, y);
+        drawInput(g, x + offSetX, y + offSetY);
     }
 
     public int getHeight() {
         return size.getHeight();
     }
 
-    public void draw(Graphics g, int x, int y, double percent) {
-        draw(g, x, y, percent, false);
+    public void setUpSideDown(boolean upSideDown) {
+        this.upSideDown = upSideDown;
     }
 }

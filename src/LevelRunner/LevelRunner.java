@@ -44,7 +44,7 @@ public class LevelRunner implements Level {
             createBlock(pos.getX(), pos.getY());
         }
         goal = new Goal(400, 400, blocks);
-        timer = new Timer(FrameConstants.SECOND.value);
+        timer = new Timer(1);
     }
 
     @Override

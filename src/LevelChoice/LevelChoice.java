@@ -12,7 +12,7 @@ public class LevelChoice implements Level{
 
     private Story story;
     private World world;
-    private Timer timer = new Timer(FrameConstants.SECOND.value * 5);
+    private Timer timer = new Timer(5);
 
     public LevelChoice(World world) {
         this.world = world;

@@ -16,7 +16,8 @@ class Answer extends Entity {
     private boolean chosen = false;
     private boolean maybe = false;
     private boolean next = false;
-    private Timer nextTimer = new Timer(FrameConstants.SECOND.value * 2);
+    private Timer nextTimer = new Timer(2);
+    private boolean upSideDown;
 
     Answer(String text, String imgPath, int control1, int control2) {
         this.control1 = control1;
@@ -63,5 +64,15 @@ class Answer extends Entity {
 
     boolean isDone() {
         return next;
+    }
+
+    public void setUpSideDown(boolean upSideDown) {
+        this.upSideDown = upSideDown;
+
+        if (upSideDown) {
+            direction = 180;
+        }
+        else direction = 0;
+        textBox.setUpSideDown(upSideDown);
     }
 }

@@ -53,7 +53,7 @@ public class CodeBreaker implements Level {
         lcd.setBacklight(true);
         screens.add(lcd);
 
-        timer = new Timer(FrameConstants.SECOND.value);
+        timer = new Timer(1);
     }
 
     @Override

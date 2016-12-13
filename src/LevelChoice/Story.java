@@ -20,11 +20,12 @@ class Story {
     private int choice = 0;
     private int[] debugChoice = {0, 2, 0};
     private int points = 0;
-    private Timer timer = new Timer(FrameConstants.SECOND.value * 5);
-    private Timer debugTimer = new Timer(FrameConstants.SECOND.value);
+    private Timer timer = new Timer(5);
+    private Timer debugTimer = new Timer(1);
     private boolean done = false;
     private Position answerPosition = new Position(FrameConstants.WIDTH.value - 360, FrameConstants.HEIGHT.value * 0.4);
-    private Timer debugTimer2 = new Timer(FrameConstants.SECOND.value);
+    private Timer debugTimer2 = new Timer(1);
+    private boolean upSideDown = false;
 
     Story() {
         mainStory = new ArrayList<>();

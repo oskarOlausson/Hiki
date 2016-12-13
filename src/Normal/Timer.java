@@ -10,8 +10,8 @@ public class Timer {
     private int maxTicks;
     private boolean done;
 
-    public Timer(int ticks) {
-        maxTicks = ticks;
+    public Timer(double seconds) {
+        maxTicks = (int) (seconds * FrameConstants.SECOND.value);
         this.ticks = maxTicks;
     }
 
