@@ -12,12 +12,11 @@ import java.util.ArrayList;
  * Created by oskar on 2016-11-23.
  * This classes has some inputs and outputs
  */
-public class LevelClub implements Level {
+public class LevelClub extends Level {
 
     private List<Clubber> players = new ArrayList<>();
     private List<Lcd>    screens = new ArrayList<>();
     private List<Particle> confettis = new ArrayList<>();
-    private Image confettiImage = ImageFunctions.loadImage("Images/confetti.png");
     private String solution;
     private World world;
     private boolean success;
@@ -27,8 +26,8 @@ public class LevelClub implements Level {
 
     public LevelClub (World world) {
         this.world = world;
-        background = ImageFunctions.loadImage("Images/backClub.png");
-        foreground = ImageFunctions.loadImage("Images/klarade.png");
+        background = Library.loadImage("backClub");
+        foreground = Library.loadImage("klarade");
     }
 
     @Override

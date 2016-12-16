@@ -11,8 +11,8 @@ public class Goal extends Entity {
     public Goal(double x, double y, List<Block> blocks) {
         this.x = x;
         this.y = y;
-        String string = "Images/goal.png";
-        image = ImageFunctions.loadImage(string);
+        String string = "goal";
+        image = Library.loadImage(string);
         setSizeFromImage();
         boolean collide;
         do {

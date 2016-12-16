@@ -11,7 +11,7 @@ import java.util.ArrayList;
  * Created by Oskar on 2016-11-30.
  * This classes has some inputs and outputs
  */
-public class LevelColor implements Level {
+public class LevelColor extends Level {
 
     private List<ColorBlob> colorBlobs = new ArrayList<>();
     private List<ColorSlider> colorSliders = new ArrayList<>();
@@ -22,6 +22,7 @@ public class LevelColor implements Level {
     private World world;
     private int timerMax = FrameConstants.SECOND.value * 2;
     private int timer;
+    private boolean moving = false;
 
     private Font fontNormal = new Font("Sans-Serif", Font.PLAIN, 50);
     private Font fontUpsideDown = new Font("Sans-Serif", Font.PLAIN, -50);
@@ -46,6 +47,19 @@ public class LevelColor implements Level {
         timer = timerMax;
         score = 0;
         life = 3;
+
+        ColorBlob c = new ColorBlob(0);
+        c.moveTo(FrameConstants.WIDTH.value / 4, FrameConstants.HEIGHT.value / 2);
+        colorBlobs.add(c);
+
+        c = new ColorBlob(0, 1);
+        c.moveTo(FrameConstants.WIDTH.value * 3 / 4, FrameConstants.HEIGHT.value / 2);
+        colorBlobs.add(c);
+
+        c = new ColorBlob(1);
+        c.moveTo(FrameConstants.WIDTH.value / 2, FrameConstants.HEIGHT.value / 2);
+        colorBlobs.add(c);
+
     }
 
     @Override
@@ -64,6 +78,10 @@ public class LevelColor implements Level {
         int index2;
         boolean overLaps;
 
+        if (!moving && colorBlobs.isEmpty()) {
+            moving = true;
+        }
+
         for (ColorSlider c: colorSliders) {
             c.inputs(input.sensorData(), input.digitalData());
             c.move();
@@ -75,25 +93,26 @@ public class LevelColor implements Level {
         double lowPoint = Math.min(colorSlider1.lowPoint(), colorSlider2.lowPoint());
         double highPoint = Math.max(colorSlider1.highPoint(), colorSlider2.highPoint());
 
-        //TIMED
-        if (timer < 0) {
-            timer = timerMax;
-            if (fiftyFifty()) {
-                index = (int) Math.round(Math.random() * 2);
-                do {
-                    index2 = (int) Math.round(Math.random() * 2);
+        //creates new blobs
+        if (moving) {
+            if (timer < 0) {
+                timer = timerMax;
+                if (fiftyFifty()) {
+                    index = (int) Math.round(Math.random() * 2);
+                    do {
+                        index2 = (int) Math.round(Math.random() * 2);
+                    }
+                    while (index == index2);
+                    colorBlobs.add(new ColorBlob(index, index2));
+                } else {
+                    colorBlobs.add(new ColorBlob(-1));
                 }
-                while (index == index2);
-                colorBlobs.add(new ColorBlob(index, index2));
-            }
-            else {
-                colorBlobs.add(new ColorBlob(-1));
-            }
+            } else timer -= 1;
         }
-        else timer -= 1;
 
         for (ColorBlob c: colorBlobs) {
-            c.update();
+            if (moving) c.update();
+
             if (overLaps) {
                 if (c.collision(lowPoint, highPoint)) {
                     if (c.match(colorSlider1.getIndex(), colorSlider2.getIndex())) {

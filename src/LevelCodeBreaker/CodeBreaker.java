@@ -8,7 +8,7 @@ import java.util.List;
 import Normal.*;
 
 
-public class CodeBreaker implements Level {
+public class CodeBreaker extends Level {
 
     private World world;
 
@@ -23,7 +23,7 @@ public class CodeBreaker implements Level {
 
     public CodeBreaker(World world) {
         this.world = world;
-        background = ImageFunctions.loadImage("Images/back.png");
+        background = Library.loadImage("back");
     }
 
     @Override
@@ -106,5 +106,13 @@ public class CodeBreaker implements Level {
         for (Lock lock: locks) {
             world.drawEntity(g2d, lock);
         }
+    }
+
+    @Override
+    public void doDrawing(Graphics g, GameState gameState) {
+        if (gameState.equals(GameState.BETWEEN)) {
+            drawBetween(g);
+        }
+        else doDrawing(g);
     }
 }

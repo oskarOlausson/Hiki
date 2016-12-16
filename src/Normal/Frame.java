@@ -3,6 +3,7 @@ package Normal; /**
  * This is the main class
  */
 import javax.swing.*;
+import java.awt.*;
 
 public class Frame extends JFrame {
 
@@ -20,8 +21,10 @@ public class Frame extends JFrame {
 
         add(world);
 
-        setSize(FrameConstants.WIDTH.value, FrameConstants.HEIGHT.value);
+        setPreferredSize(new Dimension(FrameConstants.WIDTH.value, FrameConstants.HEIGHT.value));
         setResizable(false);
+
+        pack();
 
         setTitle("Hikikomori");
         setLocationRelativeTo(null);

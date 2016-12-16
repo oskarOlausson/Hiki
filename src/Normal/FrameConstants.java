@@ -8,7 +8,8 @@ package Normal;
 public enum FrameConstants {
     WIDTH (800),
     HEIGHT (600),
-    SECOND (60);
+    SECOND (60),
+    PROJECTOR (0);
 
     public final int value;
 

@@ -18,7 +18,8 @@ import javax.swing.*;
 
 public class World extends JPanel{
 
-    private GameState state = GameState.PLAY;
+    private GameState state = GameState.BETWEEN;
+    private Timer betweenTimer = new Timer(3);
     private Input input;
     private boolean running = false;
     private ReentrantLock lock = new ReentrantLock();
@@ -29,16 +30,14 @@ public class World extends JPanel{
     public World(Input input) {
         this.input = input;
         setFocusable(true);
-        setBackground(Color.BLACK);
+        setBackground(Color.WHITE);
 
-        levels.add(new LevelChoice(this));
-        levels.add(new LevelMat(this));
+        //levels.add(new LevelChoice(this));
         levels.add(new LevelColor(this));
-
         levels.add(new LevelClub(this));
+        levels.add(new LevelMat(this));
         levels.add(new LevelRunner(this));
         levels.add(new CodeBreaker(this));
-
         levels.add(new LevelWalk(this));
 
         this.levelIndex = 0;
@@ -56,6 +55,8 @@ public class World extends JPanel{
     }
 
     public boolean changeLevel(int levelIndex) {
+
+        state = GameState.BETWEEN;
         lock.lock();
         try {
             if (levelIndex >= 0 && levelIndex <= levels.size()) {
@@ -64,7 +65,6 @@ public class World extends JPanel{
 
                 //ends previous level
                 levels.get(previousLevelIndex).end();
-
 
                 //starts next level
                 levels.get(this.levelIndex).start();
@@ -119,7 +119,16 @@ public class World extends JPanel{
 
     public void tick(){
 
-        levels.get(levelIndex).tick(input);
+        if (state.equals(GameState.PLAY)) {
+            levels.get(levelIndex).tick(input);
+        }
+        else {
+            betweenTimer.update();
+            if (betweenTimer.isDone()) {
+                betweenTimer.restart();
+                state = GameState.PLAY;
+            }
+        }
         input.reset();
     }
 
@@ -128,7 +137,7 @@ public class World extends JPanel{
         super.paintComponent(g);
         lock.lock();
         try {
-            levels.get(levelIndex).doDrawing(g);
+            levels.get(levelIndex).doDrawing(g, state);
         } finally {
             lock.unlock();
         }

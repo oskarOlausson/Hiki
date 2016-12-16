@@ -2,7 +2,7 @@ package LevelColor;
 
 import Normal.Entity;
 import Normal.FrameConstants;
-import Normal.ImageFunctions;
+import Normal.Library;
 import Normal.World;
 
 import java.awt.*;
@@ -31,7 +31,7 @@ class ColorParticle extends Entity {
         this.life = (int) ((.5 + Math.random() * 0.75) * FrameConstants.SECOND.value);
         this.color = color;
 
-        image = ImageFunctions.loadImage("Images/particle.png", color);
+        image = Library.loadImage("particle", color);
         setSizeFromImage();
     }
 

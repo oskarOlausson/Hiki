@@ -8,8 +8,7 @@ import java.util.Iterator;
 import java.util.List;
 
 
-public class LevelWalk implements Level {
-
+public class LevelWalk extends Level {
     private World world;
     private Player player;
     private Goal goal;
@@ -19,7 +18,7 @@ public class LevelWalk implements Level {
 
     public LevelWalk(World world) {
         this.world = world;
-        background = ImageFunctions.loadImage("Images/back.png");
+        background = Library.loadImage("back");
     }
 
     @Override

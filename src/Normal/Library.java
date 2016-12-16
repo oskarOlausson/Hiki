@@ -10,26 +10,32 @@ import java.awt.*;
 import java.awt.image.*;
 import java.io.File;
 import java.io.IOException;
+import java.util.HashMap;
 
-public class ImageFunctions {
+public class Library {
 
-    public static BufferedImage loadImage(String filePath) {
+    private static HashMap<ImageRes, BufferedImage> library = new HashMap<>();
 
-        BufferedImage img = null;
-        try{
-            img = ImageIO.read(new File(filePath));
-        } catch (IOException e){
-            System.err.println("Could not find file at: '" + filePath+"'");
+    public static BufferedImage loadImage(ImageRes res) {
+        BufferedImage img = library.get(res);
 
-            try{
-                img = ImageIO.read(new File("Images/Story/other.png"));
-            } catch (IOException f){
-                System.err.println("Could not find file at: '" + filePath+"'");
-                System.exit(2);
+        if (img == null) {
+            try {
+                if (!res.isValid()) throw new IOException();
+                else img = ImageIO.read(res.getPath());
+            } catch (IOException e) {
+                System.err.println("Could not find file at " + res.toString());
+                img = loadImage("lock");
             }
         }
 
         return img;
+    }
+
+    public static BufferedImage loadImage(String filePath) {
+
+        ImageRes res = new ImageRes(filePath);
+        return loadImage(res);
     }
 
     public static BufferedImage loadImage(String filePath, Color color) {
@@ -83,6 +89,6 @@ public class ImageFunctions {
 
 
     public static void main(String[] arguments) {
-        loadImage("Images/lock.png");
+        loadImage("lock");
     }
 }

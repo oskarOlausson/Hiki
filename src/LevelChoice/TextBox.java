@@ -23,7 +23,7 @@ class TextBox {
     private static final Color textColor        = new Color(140, 140, 190);
     private static final Color textColorChosen  = new Color(10, 10, 10);
 
-    private final Size size = new Size(350, 100);
+    private final Size size = new Size(250, 100);
     private boolean chosen = false;
     private boolean maybe = false;
     private List<String> inputText = new ArrayList<>();

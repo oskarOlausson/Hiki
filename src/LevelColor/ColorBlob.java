@@ -15,6 +15,10 @@ class ColorBlob extends Entity{
     private int size = 20;
     private boolean mix = false;
 
+    void moveTo(double x, double y) {
+        this.x = x;
+        this.y = y;
+    }
 
     ColorBlob(int index) {
 

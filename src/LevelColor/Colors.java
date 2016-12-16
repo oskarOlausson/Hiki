@@ -19,7 +19,7 @@ class Colors {
     private final Color g = new Color(0, 120, 0);
     private final Color l = new Color(170, 20, 130);
 
-    private final Color textColor = new Color(230, 230, 230);
+    private final Color textColor = new Color(130, 130, 130);
 
     private final Color[] SECONDARY = {o, g, l};
 

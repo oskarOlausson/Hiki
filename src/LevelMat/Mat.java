@@ -16,7 +16,7 @@ public class Mat extends Player {
     private World world;
 
     public Mat(World world) {
-        super(world, "Images/player.png");
+        super(world, "player");
         initWalker();
         this.world = world;
     }
@@ -44,8 +44,8 @@ public class Mat extends Player {
 
     private void initWalker() {
 
-        String string = "Images/player.png";
-        image = ImageFunctions.loadImage(string);
+        String string = "player";
+        image = Library.loadImage(string);
 
         setSizeFromImage();
         x = 100;

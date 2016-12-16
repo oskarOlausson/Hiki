@@ -14,7 +14,7 @@ public class Walker extends Player {
     private int inp_speed = InputConstants.P3_SLIDE;
 
     public Walker(World world, double x, double y) {
-        super(world, "Images/player.png");
+        super(world, "player");
         this.x = x;
         this.y = y;
     }

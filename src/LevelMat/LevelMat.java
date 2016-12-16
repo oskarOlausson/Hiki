@@ -8,7 +8,7 @@ import java.util.Iterator;
 import java.util.List;
 
 
-public class LevelMat implements Level {
+public class LevelMat extends Level {
 
     private World world;
     private Player player;
@@ -20,7 +20,7 @@ public class LevelMat implements Level {
 
     public LevelMat(World world) {
         this.world = world;
-        background = ImageFunctions.loadImage("Images/back.png");
+        background = Library.loadImage("back");
         start();
     }
 

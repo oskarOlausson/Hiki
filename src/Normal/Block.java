@@ -9,7 +9,7 @@ public class Block extends Entity {
     public Block(double x, double y) {
         this.x = x;
         this.y = y;
-        image = ImageFunctions.loadImage("Images/block.png");
+        image = Library.loadImage("block");
         setSizeFromImage();
     }
 }

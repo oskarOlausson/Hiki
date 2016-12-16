@@ -5,5 +5,5 @@ package Normal;
  * Different states the game can be in
  */
 public enum GameState {
-    PLAY, MENU;
+    PLAY, BETWEEN, MENU;
 }

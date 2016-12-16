@@ -19,7 +19,7 @@ public abstract class Player extends Entity{
         this.world = world;
         String string = imagePath;
         if (string != null) {
-            image = ImageFunctions.loadImage(string);
+            image = Library.loadImage(string);
             setSizeFromImage();
         }
         else image = null;

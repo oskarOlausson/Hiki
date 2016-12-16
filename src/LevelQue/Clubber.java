@@ -12,7 +12,7 @@ class Clubber extends Player {
     private int aimX = 0;
 
     Clubber(World world, String playerImage, double x, double y, String name) {
-        super(world, "Images/" + playerImage + ".png");
+        super(world, playerImage);
         this.x = x;
         this.y = y;
         this.name = name;

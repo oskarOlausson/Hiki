@@ -8,7 +8,7 @@ import java.awt.*;
  * Created by oskar on 2016-12-02.
  * This classes has some inputs and outputs
  */
-public class LevelChoice implements Level{
+public class LevelChoice extends Level{
 
     private Story story;
     private World world;
@@ -44,4 +44,6 @@ public class LevelChoice implements Level{
     public void doDrawing(Graphics g) {
         story.draw(g, world);
     }
+
+
 }

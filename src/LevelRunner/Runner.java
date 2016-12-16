@@ -13,7 +13,7 @@ public class Runner extends Player{
     private double speedMax;
 
     public Runner(World world, double x, double y) {
-        super(world,"Images/player.png");
+        super(world,"player");
         this.x = x;
         this.y = y;
         speed = 1;

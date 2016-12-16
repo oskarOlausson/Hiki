@@ -9,7 +9,7 @@ import java.util.Iterator;
 import java.util.List;
 
 
-public class LevelRunner implements Level {
+public class LevelRunner extends Level {
 
     private World world;
     private Player player;
@@ -22,7 +22,7 @@ public class LevelRunner implements Level {
 
     public LevelRunner(World world) {
         this.world = world;
-        background = ImageFunctions.loadImage("Images/back.png");
+        background = Library.loadImage("back");
     }
 
     @Override

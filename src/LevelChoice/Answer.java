@@ -23,7 +23,7 @@ class Answer extends Entity {
         this.control1 = control1;
         this.control2 = control2;
         if (imgPath == null) imgPath = "other";
-        image = ImageFunctions.loadImage("Images/Story/" + imgPath + ".png");
+        image = Library.loadImage("Story/" + imgPath + ".png");
         setSizeFromImage();
         this.textBox = new TextBox(text, control1, control2);
         x = FrameConstants.WIDTH.value / 2;

@@ -23,9 +23,8 @@ class Story {
     private Timer timer = new Timer(5);
     private Timer debugTimer = new Timer(1);
     private boolean done = false;
-    private Position answerPosition = new Position(FrameConstants.WIDTH.value - 360, FrameConstants.HEIGHT.value * 0.4);
+    private Position answerPosition = new Position(FrameConstants.WIDTH.value - 285, FrameConstants.HEIGHT.value * 0.4);
     private Timer debugTimer2 = new Timer(1);
-    private boolean upSideDown = false;
 
     Story() {
         mainStory = new ArrayList<>();
@@ -38,12 +37,12 @@ class Story {
     }
 
     private void loadGalaStory() {
-        storyAdd("storyRoot");
-        storyAdd("storyDrink");
-        lastEvent.addAnswers(new Answer("Tack gärna", "drinkYes", 0, 1), new Answer("Nej tack", "drinkNo", 1, 2), new Answer("Dra åt helvete", "drinkDickMove", 2, 3));
-        storyAdd("storyDate");
-        lastEvent.addAnswers(new Answer("Dra ut hennes stol\noch sätt dig sedan", "dateYes", 0, 1), new Answer("Sätt dig ner", "dateNo", 1, 2), new Answer("Muttra något om att du \nvill ha en snyggare dejt", "dateDickMove", 2, 3));
-        storyAdd("storyCeleb");
+        storyAdd("step1");
+        storyAdd("step2");
+        lastEvent.addAnswers(new Answer("Tack gärna", "step2Answer1", 0, 1), new Answer("Nej tack", "step2Answer2", 1, 2), new Answer("Dra åt helvete", "step2Answer3", 2, 3));
+        storyAdd("step3");
+        lastEvent.addAnswers(new Answer("Dra ut hennes stol\noch sätt dig sedan", "step3Answer1", 0, 1), new Answer("Sätt dig ner", "step3Answer2", 1, 2), new Answer("Muttra något om att du \nvill ha en snyggare dejt", "step3Answer3", 2, 3));
+        storyAdd("step4");
         lastEvent.addAnswers(new Answer("Gå fram till Alicia direkt", "other", 0, 1), new Answer("Ställ dig i Alicias sällskap\noch skratta högt åt\nhennes skämt", "other", 1, 2), new Answer("Gå upp på scenen\n och kräv att Alicia ska\nprata med dig", "other", 2, 3));
     }
 
@@ -153,9 +152,29 @@ class Story {
 
     private List<Event> getEndings() {
         List<Event> endings = new ArrayList<>();
-        for (int i = 0; i <= 17; i++) {
-            endings.add(new Event("storyCeleb" + Integer.toString(i)));
-        }
+        String s = "step4Answer";
+
+        endings.add(new Event(s + "1.1"));
+        endings.add(new Event(s + "1.1"));
+        endings.add(new Event(s + "1.1"));
+
+        endings.add(new Event(s + "1.2.2"));
+        endings.add(new Event(s + "1.2.2"));
+        endings.add(new Event(s + "1.2.2"));
+
+        endings.add(new Event(s + "1.3.2"));
+        endings.add(new Event(s + "1.3.2"));
+        endings.add(new Event(s + "1.3.2"));
+
+        endings.add(new Event(s + "2.1.1"));
+        endings.add(new Event(s + "2.1"));
+        endings.add(new Event(s + "2.1"));
+
+        endings.add(new Event(s + "2.3.2"));
+        endings.add(new Event(s + "2.3.2"));
+        endings.add(new Event(s + "3.3"));
+
+
         return endings;
     }
 }

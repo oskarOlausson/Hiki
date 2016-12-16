@@ -20,14 +20,17 @@ class Event extends Entity{
 
     Event(String imgPath) {
         if (imgPath == null) imgPath = "other";
-        image = ImageFunctions.loadImage("Images/Story/" + imgPath + ".png");
+        image = Library.loadImage("Story/" + imgPath);
         setSizeFromImage();
         x = FrameConstants.WIDTH.value / 2;
         y = FrameConstants.HEIGHT.value / 2;
-        upSideDown = random.nextBoolean();
-        if (upSideDown) {
-            direction = 180;
+        if (FrameConstants.PROJECTOR.value != 0) {
+            upSideDown = random.nextBoolean();
+            if (upSideDown) {
+                direction = 180;
+            }
         }
+        else upSideDown = false;
     }
 
     Answer getAnswer(int index) {
