@@ -7,14 +7,20 @@
 package Normal;
 
 import com.phidgets.*;
-import java.io.IOException;
 
-public class Input {
+import java.awt.event.*;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+
+public class Input implements KeyListener {
 
     private InterfaceKitPhidget ik;
     private int[] sensors = new int[8];
     private boolean[] digital = new boolean[8];
     private boolean hasKit;
+    private List<Integer> keys = new ArrayList<>();
+    private final int[] allowedKeys = {KeyEvent.VK_1, KeyEvent.VK_2, KeyEvent.VK_3, KeyEvent.VK_4};
 
     public Input() {
         hasKit = true;
@@ -30,7 +36,7 @@ public class Input {
             ik = new InterfaceKitPhidget();
             ik.openAny();
             System.out.println("Waiting for attachment of InterfaceKit...");
-            ik.waitForAttachment(20);
+            ik.waitForAttachment(200);
         } catch (PhidgetException e) {
             System.err.println("No InterfaceKit found");
             hasKit = false;
@@ -97,21 +103,66 @@ public class Input {
         input.close();
     }
 
-    public boolean[] digitalData() { return digital; }
+    public boolean[] digitalData() {
+        if (hasKit) return digital;
+        else {
+            boolean[] arr = new boolean[4];
+            for (int i = 0; i < 4; i++) {
+                if (keys.contains(allowedKeys[i])) {
+                    arr[i] = true;
+                }
+            }
+            return arr;
+        }
+    }
 
     public int[] sensorData() {
         return sensors;
     }
 
     public void reset() {
+        if (ik == null) {
+            return;
+        }
+
+        try {
+            if (!ik.isAttached()) return;
+        } catch (PhidgetException e) {
+            e.printStackTrace();
+        }
+
         for (int i = 0; i < digital.length; i++) {
             try {
                 digital[i] = ik.getInputState(i);
             } catch (PhidgetException e) {
-                //System.err.println("Could not get inputState of index: " + Integer.toString(i));
+                System.err.println("Could not get inputState of index: " + Integer.toString(i));
                 digital[i] = false;
             }
         }
     }
+
+
+    @Override
+    public void keyTyped(KeyEvent e) {
+        //nothing
+    }
+
+    @Override
+    public void keyPressed(KeyEvent e) {
+        keys.add(e.getKeyCode());
+    }
+
+    @Override
+    public void keyReleased(KeyEvent e) {
+        int key;
+        for (int i = 0; i< keys.size(); i++){
+            key = keys.get(i);
+            if (key == e.getKeyCode()){
+                keys.remove(i);
+                i -= 1;
+            }
+        }
+    }
+
 }
 

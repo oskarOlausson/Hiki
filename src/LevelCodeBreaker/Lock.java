@@ -22,17 +22,14 @@ class Lock extends Entity {
     private int state = 0;
 
      Lock(int x, int y) {
-        this.x = x;
-        this.y = y;
-        number = (int) (Math.random() * 100);
-
-        imgOpen = Library.loadImage("Images/lock_opened.png");
-        imgClosed = Library.loadImage("Images/lock.png");
-
-
-        imgPick = Library.loadImage("Images/lock_pick.png");
-        image = imgClosed;
-        setSizeFromImage();
+         this.x = x;
+         this.y = y;
+         number = (int) (Math.random() * 100);
+         imgOpen = Library.loadImage("lock_opened");
+         imgClosed = Library.loadImage("lock");
+         imgPick = Library.loadImage("lock_pick");
+         image = imgClosed;
+         setSizeFromImage();
     }
 
     boolean update(int[] input) {

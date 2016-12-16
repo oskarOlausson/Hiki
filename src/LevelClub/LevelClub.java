@@ -1,4 +1,4 @@
-package LevelQue;
+package LevelClub;
 
 import Normal.*;
 import com.phidgets.TextLCDPhidget;
@@ -16,7 +16,7 @@ public class LevelClub extends Level {
 
     private List<Clubber> players = new ArrayList<>();
     private List<Lcd>    screens = new ArrayList<>();
-    private List<Particle> confettis = new ArrayList<>();
+    private List<Particle> confetti = new ArrayList<>();
     private String solution;
     private World world;
     private boolean success;
@@ -25,9 +25,10 @@ public class LevelClub extends Level {
 
 
     public LevelClub (World world) {
+        super("clubInstructions");
         this.world = world;
         background = Library.loadImage("backClub");
-        foreground = Library.loadImage("klarade");
+        foreground = Library.loadImage("madeIt");
     }
 
     @Override
@@ -126,7 +127,10 @@ public class LevelClub extends Level {
     @Override
     public void end() {
         players = new ArrayList<>();
-        screens.forEach(Lcd::close);
+        for (Lcd screen : screens) {
+            screen.reset();
+            screen.close();
+        }
         screens = new ArrayList<>();
         solution = null;
     }
@@ -145,7 +149,7 @@ public class LevelClub extends Level {
                 }
 
                 for (int i = 0; i < 120; i++) {
-                    confettis.add(new Particle());
+                    confetti.add(new Particle());
                 }
             }
         }
@@ -155,7 +159,7 @@ public class LevelClub extends Level {
             c.move();
         }
 
-        confettis.forEach(Particle::move);
+        confetti.forEach(Particle::move);
 
         if (!success) screens.get(0).setString(0, "Så här står ni just nu: " + currentOrder);
 
@@ -177,7 +181,7 @@ public class LevelClub extends Level {
         }
 
 
-        for(Particle p: confettis) {
+        for(Particle p: confetti) {
             g2d.setColor(p.getColor());
             g2d.fillRect(p.getX() - p.getWidth(), p.getY(), p.getWidth() * 2, p.getHeight());
         }

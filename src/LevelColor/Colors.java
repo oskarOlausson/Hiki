@@ -20,6 +20,8 @@ class Colors {
     private final Color l = new Color(170, 20, 130);
 
     private final Color textColor = new Color(130, 130, 130);
+    private final Color scoreColorBack = new Color(150, 150, 150);
+    private final Color scoreColor = new Color(110, 110, 110);
 
     private final Color[] SECONDARY = {o, g, l};
 
@@ -53,5 +55,13 @@ class Colors {
 
         System.err.println("Unreachable state i thought, index: " + index + ", index2: " +  index2);
         return null;
+    }
+
+    public Color getScoreColorBack() {
+        return scoreColorBack;
+    }
+
+    public Color getScoreColor() {
+        return scoreColor;
     }
 }

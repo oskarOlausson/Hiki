@@ -17,7 +17,7 @@ public class ImageRes {
 
         string = "/" + string;
 
-        if (!string.substring(string.length() - 4, string.length()).equals(".png")) {
+        if (string.length() < 4 || (!string.substring(string.length() - 4, string.length()).equals(".png"))) {
 
             string += fileEnd;
         }

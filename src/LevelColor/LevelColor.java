@@ -1,6 +1,7 @@
 package LevelColor;
 
 import Normal.*;
+import jdk.nashorn.internal.ir.annotations.Ignore;
 
 import java.awt.*;
 import java.util.Iterator;
@@ -24,11 +25,15 @@ public class LevelColor extends Level {
     private int timer;
     private boolean moving = false;
 
+    private final double scoreDrop = 0.5f / FrameConstants.SECOND.value;
+
     private Font fontNormal = new Font("Sans-Serif", Font.PLAIN, 50);
     private Font fontUpsideDown = new Font("Sans-Serif", Font.PLAIN, -50);
 
-    private int score;
-    private int life;
+    private double score;
+    private double scoreAnim;
+    private final int scoreMax = 35;
+    private final int scoreBuffer = 10;
 
     public LevelColor(World world) {
         this.world = world;
@@ -45,8 +50,8 @@ public class LevelColor extends Level {
         colorSliders.add(colorSlider1);
         colorSliders.add(colorSlider2);
         timer = timerMax;
-        score = 0;
-        life = 3;
+        score = 30;
+        scoreAnim = score;
 
         ColorBlob c = new ColorBlob(0);
         c.moveTo(FrameConstants.WIDTH.value / 4, FrameConstants.HEIGHT.value / 2);
@@ -59,7 +64,6 @@ public class LevelColor extends Level {
         c = new ColorBlob(1);
         c.moveTo(FrameConstants.WIDTH.value / 2, FrameConstants.HEIGHT.value / 2);
         colorBlobs.add(c);
-
     }
 
     @Override
@@ -70,6 +74,8 @@ public class LevelColor extends Level {
         colorSliders    = new ArrayList<>();
         colorSliders    = new ArrayList<>();
         colorParticles  = new ArrayList<>();
+        score = 0;
+        scoreAnim = 0;
     }
 
     @Override
@@ -117,7 +123,7 @@ public class LevelColor extends Level {
                 if (c.collision(lowPoint, highPoint)) {
                     if (c.match(colorSlider1.getIndex(), colorSlider2.getIndex())) {
                         c.delete();
-                        score += 5;
+                        score += 3;
                     }
                 }
             }
@@ -133,10 +139,17 @@ public class LevelColor extends Level {
             }
 
             if (c.getCenter().getX() > FrameConstants.WIDTH.value) {
-                if (life > 0) life -= 1;
+                score -= 1;
                 c.delete();
             }
         }
+
+        score -= scoreDrop;
+
+        if (score > scoreMax + scoreBuffer) score = scoreMax + scoreBuffer;
+        else if (score < 0) score = 0;
+
+        scoreAnim = scoreAnim * 0.8 + score * 0.2;
     }
 
     private boolean fiftyFifty() {
@@ -145,6 +158,16 @@ public class LevelColor extends Level {
 
     @Override
     public void doDrawing(Graphics g) {
+
+        int size = 200;
+
+        g.setColor(colors.getScoreColorBack());
+        g.drawOval(FrameConstants.WIDTH.value / 2 - size / 2, FrameConstants.HEIGHT.value / 2 - size / 2, size, size);
+
+        int now = (int) (size * Math.min(1, score / scoreMax));
+
+        g.setColor(colors.getScoreColor());
+        g.fillOval(FrameConstants.WIDTH.value / 2 - now / 2, FrameConstants.HEIGHT.value / 2 - now / 2, now, now);
 
         drawColorSliders(g);
 
@@ -186,9 +209,16 @@ public class LevelColor extends Level {
             }
         }
 
+
+
+    }
+
+
+    @SuppressWarnings("unused")
+    private void drawScore(Graphics g) {
         FontMetrics mud = g.getFontMetrics(fontUpsideDown);
         FontMetrics mn = g.getFontMetrics(fontNormal);
-        String text = "Your score: " + Integer.toString(score);
+        String text = "Your score: " + Integer.toString((int) score);
         int pad = 40;
         g.setColor(colors.getTextColor());
 
@@ -197,8 +227,8 @@ public class LevelColor extends Level {
 
         g.setFont(fontNormal);
         g.drawString(text, FrameConstants.WIDTH.value / 2 - mn.stringWidth(text) / 2, FrameConstants.HEIGHT.value - pad - mud.getHeight() / 2 + mud.getAscent());
-
     }
+
 
     private void drawColorSliders(Graphics g) {
         if (colorSlider1.overLaps(colorSlider2)) {
@@ -211,7 +241,6 @@ public class LevelColor extends Level {
         else {
             for (ColorSlider c : colorSliders) {
                 g.setColor(colors.primaryGet(c.getIndex()));
-
                 g.fillRect((int) c.lowPoint(), 85, (int) c.getWidth(), FrameConstants.HEIGHT.value - 200);
             }
         }

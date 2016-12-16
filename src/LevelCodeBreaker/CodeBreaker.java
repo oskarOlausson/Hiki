@@ -17,7 +17,7 @@ public class CodeBreaker extends Level {
     private List<Lcd> screens = new ArrayList<>();
     private boolean success = false;
     private Timer timer;
-    private int playerCount;
+    private int playerCount = 4;
 
     private Image background;
 
@@ -41,15 +41,39 @@ public class CodeBreaker extends Level {
         lock.setInteraction(InputConstants.P2_SLIDE);
         locks.add(lock);
 
-        Lcd lcd = new Lcd(141799, TextLCDPhidget.PHIDGET_TEXTLCD_SCREEN_4x20);
+        lock = new Lock(100 + locks.size() * 200, FrameConstants.HEIGHT.value / 2);
+        lock.setPlayer(PlayerNumber.P3);
+        lock.setInteraction(InputConstants.P3_SLIDE);
+        locks.add(lock);
+
+        lock = new Lock(100 + locks.size() * 200, FrameConstants.HEIGHT.value / 2);
+        lock.setPlayer(PlayerNumber.P4);
+        lock.setInteraction(InputConstants.P4_SLIDE);
+        locks.add(lock);
+
+
+        //SCREEN
+        Lcd lcd = new Lcd(ScreenNumbers.ONE);
         lcd.setString(0, clue);
         lcd.setString(1, Integer.toString(locks.get(0).getNumber()) + "(" + InputConstants.sensorToString(locks.get(0).getInteraction()) + ")");
         lcd.setBacklight(true);
         screens.add(lcd);
 
-        lcd = new Lcd(141627, TextLCDPhidget.PHIDGET_TEXTLCD_SCREEN_4x20);
+        lcd = new Lcd(ScreenNumbers.TWO);
         lcd.setString(0, clue);
         lcd.setString(1, Integer.toString(locks.get(1).getNumber()) + "(" + InputConstants.sensorToString(locks.get(1).getInteraction()) + ")");
+        lcd.setBacklight(true);
+        screens.add(lcd);
+
+        lcd = new Lcd(ScreenNumbers.THREE);
+        lcd.setString(0, clue);
+        lcd.setString(1, Integer.toString(locks.get(2).getNumber()) + "(" + InputConstants.sensorToString(locks.get(1).getInteraction()) + ")");
+        lcd.setBacklight(true);
+        screens.add(lcd);
+
+        lcd = new Lcd(ScreenNumbers.FOUR);
+        lcd.setString(0, clue);
+        lcd.setString(1, Integer.toString(locks.get(3).getNumber()) + "(" + InputConstants.sensorToString(locks.get(1).getInteraction()) + ")");
         lcd.setBacklight(true);
         screens.add(lcd);
 
@@ -58,9 +82,13 @@ public class CodeBreaker extends Level {
 
     @Override
     public void end() {
-        locks = null;
-        screens.forEach(Lcd::close);
-        screens = null;
+        locks = new ArrayList<>();
+        for (Lcd screen : screens) {
+            screen.reset();
+            screen.close();
+        }
+
+        screens = new ArrayList<>();
         timer = null;
     }
 

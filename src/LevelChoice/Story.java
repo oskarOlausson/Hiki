@@ -112,13 +112,13 @@ class Story {
     private void makeChoice(int index) {
 
         if (progression == 1) {
-            if (index != 2) points += 9;
+            points += (2 - index) * 9;
         }
         else if (progression == 2) {
             points += (2 - index) * 3;
         }
         else if (progression == 3) {
-            points += (2 - index);
+            points += (2 - index); // * 1
         }
 
         answerMode = true;
@@ -154,26 +154,42 @@ class Story {
         List<Event> endings = new ArrayList<>();
         String s = "step4Answer";
 
-        endings.add(new Event(s + "1.1"));
-        endings.add(new Event(s + "1.1"));
-        endings.add(new Event(s + "1.1"));
-
-        endings.add(new Event(s + "1.2.2"));
-        endings.add(new Event(s + "1.2.2"));
-        endings.add(new Event(s + "1.2.2"));
-
+        //0-2
+        endings.add(new Event(s + "2.1.2"));
+        endings.add(new Event(s + "1.2.3"));
+        endings.add(new Event(s + "2.1.2"));
+        //3-5
+        endings.add(new Event(s + "2.1.2"));
+        endings.add(new Event(s + "1.2.3"));
+        endings.add(new Event(s + "2.1.2"));
+        //6-8
+        endings.add(new Event(s + "1.2"));
         endings.add(new Event(s + "1.3.2"));
-        endings.add(new Event(s + "1.3.2"));
-        endings.add(new Event(s + "1.3.2"));
-
-        endings.add(new Event(s + "2.1.1"));
-        endings.add(new Event(s + "2.1"));
-        endings.add(new Event(s + "2.1"));
-
-        endings.add(new Event(s + "2.3.2"));
-        endings.add(new Event(s + "2.3.2"));
-        endings.add(new Event(s + "3.3"));
-
+        endings.add(new Event(s + "1.2"));
+        //9-11
+        endings.add(new Event(s + "2.1.2"));
+        endings.add(new Event(s + "NOT MADE YET"));
+        endings.add(new Event(s + "2.1.2"));
+        //12-14
+        endings.add(new Event(s + "2.1.2"));
+        endings.add(new Event(s + "1.2.3"));
+        endings.add(new Event(s + "2.1.2"));
+        //15-17
+        endings.add(new Event(s + "3.4"));
+        endings.add(new Event(s + "2.3.3"));
+        endings.add(new Event(s + "3.4"));
+        //18-20
+        endings.add(new Event(s + "NOT MADE YET"));
+        endings.add(new Event(s + "NOT MADE YET"));
+        endings.add(new Event(s + "NOT MADE YET"));
+        //21-23
+        endings.add(new Event(s + "2.1.2"));
+        endings.add(new Event(s + "2.2"));
+        endings.add(new Event(s + "2.1.2"));
+        //24-26
+        endings.add(new Event(s + "3.4"));
+        endings.add(new Event(s + "2.2"));
+        endings.add(new Event(s + "3.4"));
 
         return endings;
     }

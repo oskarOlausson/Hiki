@@ -11,6 +11,10 @@ public class Lcd {
     private int serial;
     private boolean hasScreen;
 
+    public Lcd(ScreenNumbers screenEnum) {
+        this(screenEnum.value, screenEnum.getSize());
+    }
+
     public Lcd(int serial, int screenSize) {
 
         this.serial = serial;
@@ -20,7 +24,7 @@ public class Lcd {
             screen = new TextLCDPhidget();
             screen.open(serial);
             System.out.println("Waiting for LCD, serial: " + serial);
-            screen.waitForAttachment(20);
+            screen.waitForAttachment(200);
         } catch (PhidgetException e) {
             System.err.println("No screen found, serial: " + serial);
             hasScreen = false;
@@ -127,5 +131,16 @@ public class Lcd {
             e.printStackTrace();
         }
         screen = null;
+    }
+
+    public void reset() {
+        try {
+            for (int i = 0; i < screen.getRowCount(); i++) {
+                screen.setDisplayString(i, "");
+            }
+            screen.setBacklight(false);
+        } catch (PhidgetException e) {
+            e.printStackTrace();
+        }
     }
 }

@@ -79,17 +79,19 @@ class ColorSlider extends Player{
 
     public void drawInterface(Graphics g, Colors colors) {
 
-        int boxWidth = 20;
-        int boxHeight = 40;
+        int boxWidth = 40;
+        int boxHeight = 60;
+        int totalWidth = boxWidth * 3;
+        int drawX = (int) (getX() + width / 2d - totalWidth / 2d);
 
         for (int i = 0; i < 3; i++) {
             g.setColor(colors.primaryGet(i));
-            g.fillRect(getX() + boxWidth * i, (int) (y - boxHeight / 2), boxWidth, boxHeight);
+            g.fillRect(drawX + boxWidth * i, (int) (y - boxHeight / 2), boxWidth, boxHeight);
         }
 
         g.setColor(Color.BLACK);
-        g.fillRect((int) (getX() + boxWidth * colorIndexDouble) - 2, (int) (y - boxHeight / 2), 4, boxHeight);
+        g.fillRect((int) (drawX + boxWidth * colorIndexDouble) - 2, (int) (y - boxHeight / 2), 4, boxHeight);
         g.setColor(Color.WHITE);
-        g.drawRect((int) (getX() + boxWidth * colorIndexDouble) - 2, (int) (y - boxHeight / 2), 4, boxHeight);
+        g.drawRect((int) (drawX + boxWidth * colorIndexDouble) - 2, (int) (y - boxHeight / 2), 4, boxHeight);
     }
 }

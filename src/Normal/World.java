@@ -2,7 +2,7 @@ package Normal;
 
 import LevelCodeBreaker.CodeBreaker;
 import LevelMat.LevelMat;
-import LevelQue.LevelClub;
+import LevelClub.LevelClub;
 import LevelWalks.LevelWalk;
 import LevelRunner.LevelRunner;
 import LevelColor.LevelColor;
@@ -15,14 +15,18 @@ import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 import java.util.concurrent.locks.ReentrantLock;
 import javax.swing.*;
+import java.util.List;
 
 public class World extends JPanel{
 
-    private GameState state = GameState.BETWEEN;
+    private GameState state = GameState.MENU;
     private Timer betweenTimer = new Timer(3);
     private Input input;
     private boolean running = false;
     private ReentrantLock lock = new ReentrantLock();
+
+    private Image menuImage = Library.loadImage("titleScreen");
+    private List<MenuButton> buttons = new ArrayList<>();
 
     private ArrayList<Level> levels = new ArrayList<>();
     private int levelIndex = 0;
@@ -31,8 +35,13 @@ public class World extends JPanel{
         this.input = input;
         setFocusable(true);
         setBackground(Color.WHITE);
+        addKeyListener(input);
 
-        //levels.add(new LevelChoice(this));
+        for (int i = 0; i < 4; i++) {
+            buttons.add(new MenuButton(i, (int) (FrameConstants.WIDTH.value / 5 + (i / 3f) * (FrameConstants.WIDTH.value * 3 / 5)), FrameConstants.HEIGHT.value - 100));
+        }
+
+        levels.add(new LevelChoice(this));
         levels.add(new LevelColor(this));
         levels.add(new LevelClub(this));
         levels.add(new LevelMat(this));
@@ -41,7 +50,6 @@ public class World extends JPanel{
         levels.add(new LevelWalk(this));
 
         this.levelIndex = 0;
-
         levels.get(levelIndex).start();
     }
 
@@ -122,13 +130,25 @@ public class World extends JPanel{
         if (state.equals(GameState.PLAY)) {
             levels.get(levelIndex).tick(input);
         }
-        else {
+        else if (state.equals(GameState.BETWEEN)){
             betweenTimer.update();
             if (betweenTimer.isDone()) {
                 betweenTimer.restart();
                 state = GameState.PLAY;
             }
         }
+        else {
+            int sum = 0;
+            for(MenuButton b : buttons) {
+                b.update(input.digitalData());
+                if (b.isDone()) sum++;
+            }
+
+            if (sum >= buttons.size()) {
+                state = GameState.BETWEEN;
+            }
+        }
+
         input.reset();
     }
 
@@ -137,7 +157,11 @@ public class World extends JPanel{
         super.paintComponent(g);
         lock.lock();
         try {
-            levels.get(levelIndex).doDrawing(g, state);
+            if (state.equals(GameState.MENU)) {
+                g.drawImage(menuImage, 0, 0, null);
+                buttons.forEach(b -> b.draw(g));
+            }
+            else levels.get(levelIndex).doDrawing(g, state);
         } finally {
             lock.unlock();
         }

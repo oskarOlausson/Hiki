@@ -12,7 +12,7 @@ import java.awt.*;
 class ColorBlob extends Entity{
     private int index;
     private int index2 = -1;
-    private int size = 20;
+    private int size = 50;
     private boolean mix = false;
 
     void moveTo(double x, double y) {
