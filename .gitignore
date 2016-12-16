@@ -1,3 +1,5 @@
 .idea/compiler.xml
 *.xml
 .idea/workspace.xml
+*.class
+.idea/workspace.xml
