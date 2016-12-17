@@ -1,10 +1,12 @@
 package Normal;
-/*
+
+import com.phidgets.*;
+
+/**
  * Created by oskar on 2016-11-18.
  * Represents a display, can also know which player owns it
  */
 
-import com.phidgets.*;
 
 public class Lcd {
     private TextLCDPhidget screen;
@@ -119,7 +121,7 @@ public class Lcd {
     }
 
     public static void main(String[] args) {
-        Lcd lcd = new Lcd(141568, TextLCDPhidget.PHIDGET_TEXTLCD_SCREEN_4x20);
+        new Lcd(141568, TextLCDPhidget.PHIDGET_TEXTLCD_SCREEN_4x20);
     }
 
     public void close() {

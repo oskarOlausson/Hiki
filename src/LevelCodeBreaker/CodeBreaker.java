@@ -1,7 +1,5 @@
 package LevelCodeBreaker;
 
-import com.phidgets.TextLCDPhidget;
-
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -17,6 +15,7 @@ public class CodeBreaker extends Level {
     private List<Lcd> screens = new ArrayList<>();
     private boolean success = false;
     private Timer timer;
+    @SuppressWarnings("FieldCanBeLocal")
     private int playerCount = 4;
 
     private Image background;
@@ -129,10 +128,10 @@ public class CodeBreaker extends Level {
     }
 
     public void doDrawing(Graphics g) {
-        Graphics2D g2d = (Graphics2D) g;
-        world.drawImage(g2d, background, 0, 0);
+        DrawFunctions.drawImage(g, background, 0, 0);
         for (Lock lock: locks) {
-            world.drawEntity(g2d, lock);
+
+            DrawFunctions.drawImage(g, lock.getImage(), lock.getX(), lock.getY());
         }
     }
 }

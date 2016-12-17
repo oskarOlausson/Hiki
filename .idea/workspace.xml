@@ -7,10 +7,63 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="84faf7f1-ba4f-4da5-a728-d1f48f6d94b9" name="Default" comment="">
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Hiki/LevelChoice/Mood.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Hiki/Normal/Enemy.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/LevelChoice/Mood.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/Normal/Enemy.java" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Hiki/LevelChoice/Answer.class" afterPath="$PROJECT_DIR$/out/production/Hiki/LevelChoice/Answer.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Hiki/LevelChoice/Event.class" afterPath="$PROJECT_DIR$/out/production/Hiki/LevelChoice/Event.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Hiki/LevelChoice/LevelChoice.class" afterPath="$PROJECT_DIR$/out/production/Hiki/LevelChoice/LevelChoice.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Hiki/LevelCodeBreaker/CodeBreaker.class" afterPath="$PROJECT_DIR$/out/production/Hiki/LevelCodeBreaker/CodeBreaker.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Hiki/LevelColor/ColorParticle.class" afterPath="$PROJECT_DIR$/out/production/Hiki/LevelColor/ColorParticle.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Hiki/LevelColor/Colors.class" afterPath="$PROJECT_DIR$/out/production/Hiki/LevelColor/Colors.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Hiki/LevelColor/LevelColor.class" afterPath="$PROJECT_DIR$/out/production/Hiki/LevelColor/LevelColor.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Hiki/LevelMat/LevelMat.class" afterPath="$PROJECT_DIR$/out/production/Hiki/LevelMat/LevelMat.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Hiki/LevelMat/Mat.class" afterPath="$PROJECT_DIR$/out/production/Hiki/LevelMat/Mat.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Hiki/LevelRunner/LevelRunner.class" afterPath="$PROJECT_DIR$/out/production/Hiki/LevelRunner/LevelRunner.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Hiki/LevelRunner/Runner.class" afterPath="$PROJECT_DIR$/out/production/Hiki/LevelRunner/Runner.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Hiki/LevelWalks/LevelWalk.class" afterPath="$PROJECT_DIR$/out/production/Hiki/LevelWalks/LevelWalk.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Hiki/LevelWalks/Walker.class" afterPath="$PROJECT_DIR$/out/production/Hiki/LevelWalks/Walker.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Hiki/Normal/BetweenLevels.class" afterPath="$PROJECT_DIR$/out/production/Hiki/Normal/BetweenLevels.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Hiki/Normal/Frame$1.class" afterPath="$PROJECT_DIR$/out/production/Hiki/Normal/Frame$1.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Hiki/Normal/Frame.class" afterPath="$PROJECT_DIR$/out/production/Hiki/Normal/Frame.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Hiki/Normal/Input.class" afterPath="$PROJECT_DIR$/out/production/Hiki/Normal/Input.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Hiki/Normal/InputConstants.class" afterPath="$PROJECT_DIR$/out/production/Hiki/Normal/InputConstants.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Hiki/Normal/Lcd.class" afterPath="$PROJECT_DIR$/out/production/Hiki/Normal/Lcd.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Hiki/Normal/Player.class" afterPath="$PROJECT_DIR$/out/production/Hiki/Normal/Player.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Hiki/Normal/PlayerNumber.class" afterPath="$PROJECT_DIR$/out/production/Hiki/Normal/PlayerNumber.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Hiki/Normal/Timer.class" afterPath="$PROJECT_DIR$/out/production/Hiki/Normal/Timer.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Hiki/Normal/World.class" afterPath="$PROJECT_DIR$/out/production/Hiki/Normal/World.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/LevelClub/ClubExplanation.java" afterPath="$PROJECT_DIR$/src/LevelClub/ClubExplanation.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/LevelColor/ColorExplanation.java" afterPath="$PROJECT_DIR$/src/LevelColor/ColorExplanation.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Normal/NoExplanation.java" afterPath="$PROJECT_DIR$/src/Normal/NoExplanation.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/LevelChoice/Answer.java" afterPath="$PROJECT_DIR$/src/LevelChoice/Answer.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/LevelChoice/Event.java" afterPath="$PROJECT_DIR$/src/LevelChoice/Event.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/LevelChoice/LevelChoice.java" afterPath="$PROJECT_DIR$/src/LevelChoice/LevelChoice.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/LevelClub/Clubber.java" afterPath="$PROJECT_DIR$/src/LevelClub/Clubber.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/LevelClub/LevelClub.java" afterPath="$PROJECT_DIR$/src/LevelClub/LevelClub.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/LevelCodeBreaker/CodeBreaker.java" afterPath="$PROJECT_DIR$/src/LevelCodeBreaker/CodeBreaker.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/LevelColor/ColorParticle.java" afterPath="$PROJECT_DIR$/src/LevelColor/ColorParticle.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/LevelColor/ColorSlider.java" afterPath="$PROJECT_DIR$/src/LevelColor/ColorSlider.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/LevelColor/Colors.java" afterPath="$PROJECT_DIR$/src/LevelColor/Colors.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/LevelColor/LevelColor.java" afterPath="$PROJECT_DIR$/src/LevelColor/LevelColor.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/LevelMat/LevelMat.java" afterPath="$PROJECT_DIR$/src/LevelMat/LevelMat.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/LevelMat/Mat.java" afterPath="$PROJECT_DIR$/src/LevelMat/Mat.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/LevelRunner/LevelRunner.java" afterPath="$PROJECT_DIR$/src/LevelRunner/LevelRunner.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/LevelRunner/Runner.java" afterPath="$PROJECT_DIR$/src/LevelRunner/Runner.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/LevelWalks/LevelWalk.java" afterPath="$PROJECT_DIR$/src/LevelWalks/LevelWalk.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/LevelWalks/Walker.java" afterPath="$PROJECT_DIR$/src/LevelWalks/Walker.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Normal/BetweenLevels.java" afterPath="$PROJECT_DIR$/src/Normal/BetweenLevels.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Normal/DrawFunctions.java" afterPath="$PROJECT_DIR$/src/Normal/DrawFunctions.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Normal/Frame.java" afterPath="$PROJECT_DIR$/src/Normal/Frame.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Normal/GameState.java" afterPath="$PROJECT_DIR$/src/Normal/GameState.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Normal/Input.java" afterPath="$PROJECT_DIR$/src/Normal/Input.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Normal/InputConstants.java" afterPath="$PROJECT_DIR$/src/Normal/InputConstants.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Normal/Lcd.java" afterPath="$PROJECT_DIR$/src/Normal/Lcd.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Normal/Library.java" afterPath="$PROJECT_DIR$/src/Normal/Library.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Normal/Player.java" afterPath="$PROJECT_DIR$/src/Normal/Player.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Normal/PlayerNumber.java" afterPath="$PROJECT_DIR$/src/Normal/PlayerNumber.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Normal/Test.java" afterPath="$PROJECT_DIR$/src/Normal/Test.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Normal/Timer.java" afterPath="$PROJECT_DIR$/src/Normal/Timer.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Normal/World.java" afterPath="$PROJECT_DIR$/src/Normal/World.java" />
     </list>
     <ignored path="Hiki.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -37,7 +90,121 @@
     <favorites_list name="Hiki" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="Answer.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/LevelChoice/Answer.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="450">
+              <caret line="60" column="56" selection-start-line="60" selection-start-column="56" selection-end-line="60" selection-end-column="56" />
+              <folding>
+                <element signature="e#1705#1706#0" expanded="true" />
+                <element signature="e#1770#1771#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="LevelColor.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/LevelColor/LevelColor.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="407">
+              <caret line="179" column="24" selection-start-line="179" selection-start-column="24" selection-end-line="179" selection-end-column="24" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="LevelRunner.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/LevelRunner/LevelRunner.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="368">
+              <caret line="90" column="38" selection-start-line="90" selection-start-column="38" selection-end-line="90" selection-end-column="38" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="LevelWalk.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/LevelWalks/LevelWalk.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="450">
+              <caret line="71" column="38" selection-start-line="71" selection-start-column="38" selection-end-line="71" selection-end-column="38" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Event.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/LevelChoice/Event.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="688">
+              <caret line="51" column="42" selection-start-line="51" selection-start-column="42" selection-end-line="51" selection-end-column="42" />
+              <folding>
+                <element signature="e#1275#1276#0" expanded="true" />
+                <element signature="e#1340#1341#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ColorSlider.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/LevelColor/ColorSlider.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="204">
+              <caret line="17" column="23" selection-start-line="17" selection-start-column="23" selection-end-line="17" selection-end-column="23" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="World.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Normal/World.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="369">
+              <caret line="51" column="27" selection-start-line="51" selection-start-column="27" selection-end-line="51" selection-end-column="27" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#486#522#0" expanded="true" />
+                <element signature="method#changeLevel#0;class#World#0" expanded="false" />
+                <element signature="method#run#0;class#World#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Runner.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/LevelRunner/Runner.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="153">
+              <caret line="9" column="13" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Mat.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/LevelMat/Mat.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="504">
+              <caret line="68" column="58" selection-start-line="68" selection-start-column="58" selection-end-line="68" selection-end-column="58" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Player.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/Normal/Player.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="504">
+              <caret line="79" column="5" selection-start-line="79" selection-start-column="5" selection-end-line="79" selection-end-column="5" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -58,9 +225,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/Normal/ColorParticle.java" />
-        <option value="$PROJECT_DIR$/src/Normal/InputConstants.java" />
-        <option value="$PROJECT_DIR$/src/LevelChoice/Mood.java" />
         <option value="$PROJECT_DIR$/src/LevelChoice/Tree.java" />
         <option value="$PROJECT_DIR$/src/Normal/Size.java" />
         <option value="$PROJECT_DIR$/src/Normal/Position.java" />
@@ -69,46 +233,49 @@
         <option value="$PROJECT_DIR$/src/Normal/FrameConstants.java" />
         <option value="$PROJECT_DIR$/src/LevelChoice/TextBox.java" />
         <option value="$PROJECT_DIR$/src/Normal/ImageFunctions.java" />
-        <option value="$PROJECT_DIR$/src/LevelColor/ColorParticle.java" />
-        <option value="$PROJECT_DIR$/src/LevelMat/Mat.java" />
         <option value="$PROJECT_DIR$/src/LevelQue/Clubber.java" />
-        <option value="$PROJECT_DIR$/src/LevelWalks/Walker.java" />
         <option value="$PROJECT_DIR$/src/Normal/Block.java" />
         <option value="$PROJECT_DIR$/src/Normal/Goal.java" />
-        <option value="$PROJECT_DIR$/src/LevelChoice/Event.java" />
-        <option value="$PROJECT_DIR$/src/Normal/Frame.java" />
-        <option value="$PROJECT_DIR$/src/Normal/GameState.java" />
-        <option value="$PROJECT_DIR$/src/LevelMat/LevelMat.java" />
         <option value="$PROJECT_DIR$/src/LevelQue/LevelClub.java" />
-        <option value="$PROJECT_DIR$/src/LevelRunner/LevelRunner.java" />
-        <option value="$PROJECT_DIR$/src/LevelWalks/LevelWalk.java" />
         <option value="$PROJECT_DIR$/src/Normal/ImageRes.java" />
         <option value="$PROJECT_DIR$/src/Normal/ScreenNumbers.java" />
         <option value="$PROJECT_DIR$/src/LevelColor/ColorBlob.java" />
-        <option value="$PROJECT_DIR$/src/Normal/Lcd.java" />
         <option value="$PROJECT_DIR$/src/LevelCodeBreaker/Lock.java" />
-        <option value="$PROJECT_DIR$/src/LevelColor/Colors.java" />
-        <option value="$PROJECT_DIR$/src/Normal/DrawFunctions.java" />
         <option value="$PROJECT_DIR$/src/Normal/MenuButton.java" />
-        <option value="$PROJECT_DIR$/src/LevelChoice/Answer.java" />
         <option value="$PROJECT_DIR$/src/LevelChoice/Story.java" />
-        <option value="$PROJECT_DIR$/src/LevelChoice/LevelChoice.java" />
-        <option value="$PROJECT_DIR$/src/LevelClub/LevelClub.java" />
-        <option value="$PROJECT_DIR$/src/LevelCodeBreaker/CodeBreaker.java" />
-        <option value="$PROJECT_DIR$/src/Normal/Input.java" />
-        <option value="$PROJECT_DIR$/src/Normal/Timer.java" />
-        <option value="$PROJECT_DIR$/src/Normal/Library.java" />
-        <option value="$PROJECT_DIR$/src/Normal/Test.java" />
-        <option value="$PROJECT_DIR$/src/Normal/Player.java" />
-        <option value="$PROJECT_DIR$/src/LevelRunner/Runner.java" />
-        <option value="$PROJECT_DIR$/src/LevelColor/ColorSlider.java" />
-        <option value="$PROJECT_DIR$/src/LevelColor/LevelColor.java" />
-        <option value="$PROJECT_DIR$/src/Normal/World.java" />
-        <option value="$PROJECT_DIR$/src/Normal/BetweenLevels.java" />
         <option value="$PROJECT_DIR$/src/Normal/Level.java" />
         <option value="$PROJECT_DIR$/src/LevelClub/ClubExplanation.java" />
         <option value="$PROJECT_DIR$/src/Normal/NoExplanation.java" />
         <option value="$PROJECT_DIR$/src/LevelColor/ColorExplanation.java" />
+        <option value="$PROJECT_DIR$/src/LevelRunner/Runner.java" />
+        <option value="$PROJECT_DIR$/src/LevelWalks/Walker.java" />
+        <option value="$PROJECT_DIR$/src/LevelChoice/LevelChoice.java" />
+        <option value="$PROJECT_DIR$/src/LevelClub/Clubber.java" />
+        <option value="$PROJECT_DIR$/src/LevelColor/Colors.java" />
+        <option value="$PROJECT_DIR$/src/Normal/BetweenLevels.java" />
+        <option value="$PROJECT_DIR$/src/Normal/DrawFunctions.java" />
+        <option value="$PROJECT_DIR$/src/Normal/Frame.java" />
+        <option value="$PROJECT_DIR$/src/Normal/GameState.java" />
+        <option value="$PROJECT_DIR$/src/Normal/Input.java" />
+        <option value="$PROJECT_DIR$/src/Normal/InputConstants.java" />
+        <option value="$PROJECT_DIR$/src/Normal/Lcd.java" />
+        <option value="$PROJECT_DIR$/src/Normal/Library.java" />
+        <option value="$PROJECT_DIR$/src/Normal/PlayerNumber.java" />
+        <option value="$PROJECT_DIR$/src/Normal/Test.java" />
+        <option value="$PROJECT_DIR$/src/Normal/Timer.java" />
+        <option value="$PROJECT_DIR$/src/LevelColor/ColorParticle.java" />
+        <option value="$PROJECT_DIR$/src/LevelClub/LevelClub.java" />
+        <option value="$PROJECT_DIR$/src/LevelCodeBreaker/CodeBreaker.java" />
+        <option value="$PROJECT_DIR$/src/LevelMat/LevelMat.java" />
+        <option value="$PROJECT_DIR$/src/LevelColor/LevelColor.java" />
+        <option value="$PROJECT_DIR$/src/LevelRunner/LevelRunner.java" />
+        <option value="$PROJECT_DIR$/src/LevelWalks/LevelWalk.java" />
+        <option value="$PROJECT_DIR$/src/LevelChoice/Answer.java" />
+        <option value="$PROJECT_DIR$/src/LevelChoice/Event.java" />
+        <option value="$PROJECT_DIR$/src/LevelColor/ColorSlider.java" />
+        <option value="$PROJECT_DIR$/src/Normal/World.java" />
+        <option value="$PROJECT_DIR$/src/LevelMat/Mat.java" />
+        <option value="$PROJECT_DIR$/src/Normal/Player.java" />
       </list>
     </option>
   </component>
@@ -184,6 +351,24 @@
               <option name="myItemId" value="src" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Normal" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Hiki" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Hiki" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -199,7 +384,43 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="LevelColor" />
+              <option name="myItemId" value="LevelRunner" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Hiki" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Hiki" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="LevelMat" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Hiki" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Hiki" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="LevelChoice" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -751,7 +972,14 @@
       <option name="project" value="LOCAL" />
       <updated>1482003184770</updated>
     </task>
-    <option name="localTasksCounter" value="24" />
+    <task id="LOCAL-00024" summary="converted between classes to package private">
+      <created>1482003407389</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1482003407389</updated>
+    </task>
+    <option name="localTasksCounter" value="25" />
     <servers />
   </component>
   <component name="TodoView">
@@ -769,7 +997,7 @@
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.13319239" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3267974" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3266385" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="true" content_ui="tabs" />
@@ -852,18 +1080,11 @@
     <MESSAGE value="debug tools added" />
     <MESSAGE value="images&#10;" />
     <MESSAGE value="no explanation added" />
-    <option name="LAST_COMMIT_MESSAGE" value="no explanation added" />
+    <MESSAGE value="converted between classes to package private" />
+    <option name="LAST_COMMIT_MESSAGE" value="converted between classes to package private" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/Normal/Test.java</url>
-          <line>30</line>
-          <properties />
-          <option name="timeStamp" value="45" />
-        </line-breakpoint>
-      </breakpoints>
       <option name="time" value="46" />
     </breakpoint-manager>
     <watches-manager />
@@ -873,156 +1094,49 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/LevelChoice/Event.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="332">
-          <caret line="44" column="9" selection-start-line="44" selection-start-column="9" selection-end-line="44" selection-end-column="9" />
-        </state>
+    <entry file="file://$PROJECT_DIR$/Images/Story/step3Answer1.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Normal/Frame.java">
+    <entry file="file://$PROJECT_DIR$/Images/Betweens/clubInstructions.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Images/Betweens/colorInstructions.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/LevelChoice/LevelChoice.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="26" column="15" selection-start-line="26" selection-start-column="15" selection-end-line="26" selection-end-column="15" />
+        <state relative-caret-position="385">
+          <caret line="32" column="34" selection-start-line="32" selection-start-column="34" selection-end-line="32" selection-end-column="34" />
           <folding>
-            <element signature="imports" expanded="false" />
+            <element signature="e#760#761#0" expanded="true" />
+            <element signature="e#796#797#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/LevelRunner/LevelRunner.java">
+    <entry file="file://$PROJECT_DIR$/src/LevelChoice/Mood.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="11" column="33" selection-start-line="11" selection-start-column="33" selection-end-line="11" selection-end-column="33" />
+        <state relative-caret-position="102">
+          <caret line="6" column="12" selection-start-line="6" selection-start-column="12" selection-end-line="6" selection-end-column="12" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/LevelWalks/LevelWalk.java">
+    <entry file="file://$PROJECT_DIR$/src/LevelChoice/Story.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="10" column="38" selection-start-line="10" selection-start-column="38" selection-end-line="10" selection-end-column="38" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/LevelMat/LevelMat.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="850">
-          <caret line="55" column="14" selection-start-line="55" selection-start-column="14" selection-end-line="55" selection-end-column="14" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Images/Story/step3Answer3.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Images/Story/step4Answer1.1.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Images/Story/step4Answer1.2.2.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Images/Story/step4Answer2.1.2.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Images/shoe.png" />
-    <entry file="file://$PROJECT_DIR$/src/Normal/ImageRes.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="19" column="107" selection-start-line="19" selection-start-column="107" selection-end-line="19" selection-end-column="107" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Normal/FrameConstants.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="8" column="4" selection-start-line="8" selection-start-column="4" selection-end-line="17" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Normal/ScreenNumbers.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="442">
-          <caret line="26" column="31" selection-start-line="26" selection-start-column="31" selection-end-line="26" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Normal/Entity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="21" column="0" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/LevelColor/ColorBlob.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="133">
-          <caret line="14" column="24" selection-start-line="14" selection-start-column="24" selection-end-line="14" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Normal/Lcd.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1092">
-          <caret line="140" column="38" selection-start-line="140" selection-start-column="38" selection-end-line="140" selection-end-column="38" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/LevelCodeBreaker/Lock.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="459">
-          <caret line="31" column="28" selection-start-line="31" selection-start-column="28" selection-end-line="31" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/LevelColor/Colors.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="901">
-          <caret line="63" column="17" selection-start-line="63" selection-start-column="17" selection-end-line="63" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Images/titleScreen.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Images/Betweens/noExplanation.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Normal/GameState.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" column="19" selection-start-line="7" selection-start-column="19" selection-end-line="7" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Normal/MenuButton.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="50" column="113" selection-start-line="50" selection-start-column="113" selection-end-line="50" selection-end-column="113" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/LevelChoice/Answer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="782">
-          <caret line="48" column="27" selection-start-line="48" selection-start-column="27" selection-end-line="48" selection-end-column="27" />
-          <folding />
+        <state relative-caret-position="666">
+          <caret line="164" column="15" selection-start-line="164" selection-start-column="15" selection-end-line="164" selection-end-column="15" />
+          <folding>
+            <element signature="method#makeChoice#0;class#Story#0" expanded="false" />
+            <element signature="method#draw#0;class#Story#0" expanded="false" />
+            <element signature="method#drawOptions#0;class#Story#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1040,226 +1154,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Images/Story/step2Answer1.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Images/Story/step2Answer3.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Images/Story/step2Answer2.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Images/Story/step3Answer2.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Images/Story/step3Answer1.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/LevelClub/Clubber.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="14" column="34" selection-start-line="14" selection-start-column="34" selection-end-line="14" selection-end-column="34" />
+        <state relative-caret-position="79">
+          <caret line="13" column="12" selection-start-line="13" selection-start-column="12" selection-end-line="13" selection-end-column="12" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/LevelClub/LevelClub.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2010">
-          <caret line="27" column="19" selection-start-line="27" selection-start-column="19" selection-end-line="27" selection-end-column="19" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/LevelChoice/Story.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="892">
-          <caret line="164" column="15" selection-start-line="164" selection-start-column="15" selection-end-line="164" selection-end-column="15" />
-          <folding>
-            <element signature="method#makeChoice#0;class#Story#0" expanded="false" />
-            <element signature="method#draw#0;class#Story#0" expanded="false" />
-            <element signature="method#drawOptions#0;class#Story#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Normal/Timer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="488">
-          <caret line="38" column="0" selection-start-line="38" selection-start-column="0" selection-end-line="38" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Normal/Library.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="387">
-          <caret line="32" column="0" selection-start-line="32" selection-start-column="0" selection-end-line="32" selection-end-column="0" />
-          <folding>
-            <element signature="method#loadImage#2;class#Library#0" expanded="false" />
-            <element signature="method#loadImage#3;class#Library#0" expanded="false" />
-            <element signature="method#tint#0;class#Library#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Normal/Test.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="30" column="0" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Normal/Input.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-986">
-          <caret line="65" column="28" selection-start-line="65" selection-start-column="28" selection-end-line="65" selection-end-column="28" />
-          <folding>
-            <element signature="e#4593#4594#0" expanded="true" />
-            <element signature="e#4623#4624#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/LevelCodeBreaker/CodeBreaker.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="773">
-          <caret line="136" column="5" selection-start-line="136" selection-start-column="5" selection-end-line="136" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/LevelChoice/LevelChoice.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="505">
-          <caret line="45" column="5" selection-start-line="45" selection-start-column="5" selection-end-line="45" selection-end-column="5" />
-          <folding>
-            <element signature="e#788#789#0" expanded="false" />
-            <element signature="e#824#825#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Normal/Player.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="275">
-          <caret line="69" column="8" selection-start-line="69" selection-start-column="8" selection-end-line="69" selection-end-column="95" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/LevelRunner/Runner.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="21" column="0" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Normal/DrawFunctions.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="213">
-          <caret line="35" column="0" selection-start-line="35" selection-start-column="0" selection-end-line="35" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/LevelColor/ColorSlider.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="61" column="58" selection-start-line="61" selection-start-column="58" selection-end-line="61" selection-end-column="58" />
-          <folding>
-            <element signature="e#2670#2671#0" expanded="true" />
-            <element signature="e#2700#2701#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Images/Betweens/clubInstructions.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Images/Betweens/colorInstructions.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Normal/World.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="273">
-          <caret line="53" column="27" selection-start-line="53" selection-start-column="27" selection-end-line="53" selection-end-column="27" />
-          <folding>
-            <element signature="method#restartLevel#0;class#World#0" expanded="false" />
-            <element signature="method#changeLevel#0;class#World#0" expanded="false" />
-            <element signature="method#run#0;class#World#0" expanded="false" />
-            <element signature="method#drawEntity#0;class#World#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Normal/BetweenLevels.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="22" column="5" selection-start-line="22" selection-start-column="5" selection-end-line="22" selection-end-column="5" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Normal/Level.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="24" column="5" selection-start-line="24" selection-start-column="5" selection-end-line="24" selection-end-column="5" />
-          <folding>
-            <element signature="e#1423#1424#0" expanded="true" />
-            <element signature="e#1454#1455#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/LevelColor/LevelColor.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="53" column="18" selection-start-line="53" selection-start-column="18" selection-end-line="53" selection-end-column="18" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/LevelColor/ColorExplanation.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="147">
-          <caret line="39" column="11" selection-start-line="39" selection-start-column="11" selection-end-line="39" selection-end-column="11" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Normal/NoExplanation.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="10" column="0" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
-          <folding>
-            <element signature="e#189#190#0" expanded="true" />
-            <element signature="e#227#228#0" expanded="true" />
-            <element signature="e#335#336#0" expanded="true" />
-            <element signature="e#381#382#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1270,6 +1169,378 @@
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/LevelCodeBreaker/Lock.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="458">
+          <caret line="31" column="28" selection-start-line="31" selection-start-column="28" selection-end-line="31" selection-end-column="28" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/LevelColor/ColorBlob.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="133">
+          <caret line="14" column="24" selection-start-line="14" selection-start-column="24" selection-end-line="14" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/LevelColor/ColorExplanation.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="147">
+          <caret line="39" column="11" selection-start-line="39" selection-start-column="11" selection-end-line="39" selection-end-column="11" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/LevelColor/Colors.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="18" selection-start-line="2" selection-start-column="18" selection-end-line="2" selection-end-column="18" />
+          <folding>
+            <element signature="e#1660#1661#0" expanded="true" />
+            <element signature="e#1693#1694#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/LevelWalks/Walker.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="9" column="13" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Normal/BetweenLevels.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="15" column="36" selection-start-line="15" selection-start-column="36" selection-end-line="15" selection-end-column="36" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Normal/Block.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Normal/DrawFunctions.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="419">
+          <caret line="58" column="31" selection-start-line="58" selection-start-column="31" selection-end-line="58" selection-end-column="31" />
+          <folding>
+            <element signature="e#1703#1730#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Normal/Enemy.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Normal/Entity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="357">
+          <caret line="21" column="0" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Normal/Frame.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" column="3" selection-start-line="7" selection-start-column="3" selection-end-line="7" selection-end-column="3" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Normal/GameState.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" column="23" selection-start-line="7" selection-start-column="23" selection-end-line="7" selection-end-column="23" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Normal/Goal.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Normal/ImageRes.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Normal/Input.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="10" column="24" selection-start-line="10" selection-start-column="24" selection-end-line="10" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Normal/InputConstants.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" column="50" selection-start-line="4" selection-start-column="50" selection-end-line="4" selection-end-column="50" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Normal/Lcd.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="251">
+          <caret line="124" column="5" selection-start-line="124" selection-start-column="5" selection-end-line="124" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Normal/Level.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="24" column="5" selection-start-line="24" selection-start-column="5" selection-end-line="24" selection-end-column="5" />
+          <folding>
+            <element signature="e#581#582#0" expanded="true" />
+            <element signature="e#626#627#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Normal/Library.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" column="24" selection-start-line="4" selection-start-column="24" selection-end-line="4" selection-end-column="24" />
+          <folding>
+            <element signature="method#loadImage#2;class#Library#0" expanded="false" />
+            <element signature="method#loadImage#3;class#Library#0" expanded="false" />
+            <element signature="method#tint#0;class#Library#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Normal/MenuButton.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="850">
+          <caret line="50" column="113" selection-start-line="50" selection-start-column="113" selection-end-line="50" selection-end-column="113" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Normal/NoExplanation.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="10" column="0" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
+          <folding>
+            <element signature="e#189#190#0" expanded="true" />
+            <element signature="e#227#228#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Normal/Particle.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Normal/PlayerNumber.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" column="21" selection-start-line="4" selection-start-column="21" selection-end-line="4" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Normal/Position.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Normal/ScreenNumbers.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="8" column="12" selection-start-line="8" selection-start-column="12" selection-end-line="8" selection-end-column="12" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Normal/Size.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Normal/Test.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="15" selection-start-line="0" selection-start-column="15" selection-end-line="0" selection-end-column="15" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Normal/Timer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="544">
+          <caret line="34" column="30" selection-start-line="34" selection-start-column="30" selection-end-line="34" selection-end-column="30" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/LevelClub/LevelClub.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="620">
+          <caret line="179" column="57" selection-start-line="179" selection-start-column="57" selection-end-line="179" selection-end-column="57" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/LevelColor/ColorParticle.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="430">
+          <caret line="48" column="8" selection-start-line="48" selection-start-column="8" selection-end-line="48" selection-end-column="60" />
+          <folding>
+            <element signature="e#1233#1234#0" expanded="true" />
+            <element signature="e#1300#1301#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/LevelCodeBreaker/CodeBreaker.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="671">
+          <caret line="129" column="39" selection-start-line="129" selection-start-column="39" selection-end-line="129" selection-end-column="39" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#404#440#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/LevelMat/LevelMat.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="603">
+          <caret line="87" column="90" selection-start-line="87" selection-start-column="90" selection-end-line="87" selection-end-column="90" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/LevelColor/LevelColor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="407">
+          <caret line="179" column="24" selection-start-line="179" selection-start-column="24" selection-end-line="179" selection-end-column="24" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/LevelWalks/LevelWalk.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="450">
+          <caret line="71" column="38" selection-start-line="71" selection-start-column="38" selection-end-line="71" selection-end-column="38" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/LevelChoice/Answer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="450">
+          <caret line="60" column="56" selection-start-line="60" selection-start-column="56" selection-end-line="60" selection-end-column="56" />
+          <folding>
+            <element signature="e#1705#1706#0" expanded="true" />
+            <element signature="e#1770#1771#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/LevelChoice/Event.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="688">
+          <caret line="51" column="42" selection-start-line="51" selection-start-column="42" selection-end-line="51" selection-end-column="42" />
+          <folding>
+            <element signature="e#1275#1276#0" expanded="true" />
+            <element signature="e#1340#1341#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/LevelColor/ColorSlider.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="17" column="23" selection-start-line="17" selection-start-column="23" selection-end-line="17" selection-end-column="23" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Normal/World.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="369">
+          <caret line="51" column="27" selection-start-line="51" selection-start-column="27" selection-end-line="51" selection-end-column="27" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#486#522#0" expanded="true" />
+            <element signature="method#changeLevel#0;class#World#0" expanded="false" />
+            <element signature="method#run#0;class#World#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/LevelRunner/LevelRunner.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="368">
+          <caret line="90" column="38" selection-start-line="90" selection-start-column="38" selection-end-line="90" selection-end-column="38" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/LevelRunner/Runner.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="9" column="13" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/LevelMat/Mat.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="504">
+          <caret line="68" column="58" selection-start-line="68" selection-start-column="58" selection-end-line="68" selection-end-column="58" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Normal/Player.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="504">
+          <caret line="79" column="5" selection-start-line="79" selection-start-column="5" selection-end-line="79" selection-end-column="5" />
+          <folding />
         </state>
       </provider>
     </entry>

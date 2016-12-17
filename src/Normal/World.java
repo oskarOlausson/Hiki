@@ -9,9 +9,6 @@ import LevelColor.LevelColor;
 import LevelChoice.LevelChoice;
 
 import java.awt.*;
-import java.awt.geom.AffineTransform;
-import java.awt.image.AffineTransformOp;
-import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 import java.util.concurrent.locks.ReentrantLock;
 import javax.swing.*;
@@ -20,8 +17,9 @@ import java.util.List;
 public class World extends JPanel{
 
     private GameState state = GameState.MENU;
-    private Timer betweenTimer = new Timer(3);
     private Input input;
+
+    @SuppressWarnings("FieldCanBeLocal")
     private boolean running = false;
     private ReentrantLock lock = new ReentrantLock();
 
@@ -51,12 +49,7 @@ public class World extends JPanel{
         levels.add(new CodeBreaker(this));
         levels.add(new LevelWalk(this));
 
-        this.levelIndex = 1;
-        levels.get(levelIndex).start();
-    }
-
-    public void restartLevel() {
-        levels.get(levelIndex).end();
+        this.levelIndex = 3;
         levels.get(levelIndex).start();
     }
 
@@ -190,41 +183,5 @@ public class World extends JPanel{
             lock.unlock();
         }
         Toolkit.getDefaultToolkit().sync();
-    }
-
-    /**
-     * Draws a scaled and rotated version of an entity
-     * @param g2d
-     * @param entity
-     */
-    public void drawEntity(Graphics2D g2d, Entity entity) {
-        AffineTransform tx;
-        AffineTransformOp op;
-
-        double rotation;
-        Image image = entity.getImage();
-
-        int x = entity.getX();
-        int y = entity.getY();
-
-        int width = entity.image.getWidth(null);
-        int height = entity.image.getHeight(null);
-
-        Size size = entity.getSize();
-        double scalex = size.getWidth() / (double) width;
-        double scaley = size.getHeight() / (double) height;
-
-        rotation = Math.toRadians(entity.getDirection());
-        tx = AffineTransform.getScaleInstance(scalex, scaley);
-        tx.concatenate(AffineTransform.getRotateInstance(rotation, width / 2, height / 2));
-
-        op = new AffineTransformOp(tx, AffineTransformOp.TYPE_BILINEAR);
-
-        g2d.drawImage(op.filter((BufferedImage) image, null), x, y, null);
-    }
-
-    public void drawImage(Graphics2D g2d, Image img, int x, int y) {
-
-        g2d.drawImage(img, x, y, this);
     }
 }

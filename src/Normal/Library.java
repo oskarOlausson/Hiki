@@ -1,16 +1,15 @@
 package Normal;
 
+import javax.imageio.ImageIO;
+import java.awt.*;
+import java.awt.image.*;
+import java.io.IOException;
+import java.util.HashMap;
+
 /**
  * Created by oskar on 2016-10-15.
  * Static class which has an important function used to load images
  */
-
-import javax.imageio.ImageIO;
-import java.awt.*;
-import java.awt.image.*;
-import java.io.File;
-import java.io.IOException;
-import java.util.HashMap;
 
 public class Library {
 

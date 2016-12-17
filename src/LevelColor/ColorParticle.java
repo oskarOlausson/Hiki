@@ -1,23 +1,21 @@
 package LevelColor;
 
-import Normal.Entity;
-import Normal.FrameConstants;
-import Normal.Library;
-import Normal.World;
+import Normal.*;
 
 import java.awt.*;
 
 /**
  * Created by oskar on 2016-12-01.
- * This classes has some inputs and outputs
+ * This class has some inputs and outputs
  */
 class ColorParticle extends Entity {
 
+    @SuppressWarnings("FieldCanBeLocal")
     private double minSpeed = 3;
+    @SuppressWarnings("FieldCanBeLocal")
     private double maxSpeed = 6;
     private double speed;
     private int life;
-    private Color color;
 
     ColorParticle(double x, double y, Color color) {
         init(x, y, Math.random() * Math.PI * 2, minSpeed + Math.random() * (maxSpeed - minSpeed), color);
@@ -29,7 +27,6 @@ class ColorParticle extends Entity {
         this.direction = radians;
         this.speed = speed;
         this.life = (int) ((.5 + Math.random() * 0.75) * FrameConstants.SECOND.value);
-        this.color = color;
 
         image = Library.loadImage("particle", color);
         setSizeFromImage();
@@ -48,7 +45,7 @@ class ColorParticle extends Entity {
         }
     }
 
-    void draw(Graphics g, World world) {
-        world.drawEntity((Graphics2D) g, this);
+    void draw(Graphics g) {
+        DrawFunctions.drawImage(g, image, (int) x, (int) y);
     }
 }

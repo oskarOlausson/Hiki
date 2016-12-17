@@ -56,6 +56,7 @@ public class DrawFunctions {
     /**
      * Draw text in middle of rectangle
      */
+    @SuppressWarnings("unused")
     public static void drawCenteredText(Graphics g, String text, Rectangle rect) {
         Graphics2D g2d = (Graphics2D) g;
         FontMetrics fm = g2d.getFontMetrics();

@@ -11,7 +11,7 @@ class Clubber extends Player {
     private int index = 0;
     private int aimX = 0;
 
-    Clubber(World world, String playerImage, double x, double y, String name) {
+    Clubber(String playerImage, double x, double y, String name) {
         super(playerImage);
         this.x = x;
         this.y = y;

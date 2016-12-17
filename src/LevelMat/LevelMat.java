@@ -14,7 +14,6 @@ public class LevelMat extends Level {
     private Player player;
     private Goal goal;
     private List<Block> blocks = new ArrayList<>();
-    private List<Enemy> enemies = new ArrayList<>();
     private Image background;
     private Timer timer;
 
@@ -27,7 +26,7 @@ public class LevelMat extends Level {
     @Override
     public void start() {
 
-        player = new Mat(world, FrameConstants.WIDTH.value / 2, FrameConstants.HEIGHT.value / 2);
+        player = new Mat(FrameConstants.WIDTH.value / 2, FrameConstants.HEIGHT.value / 2);
         Position center = player.getCenter();
         Position pos;
         for (int i = 0; i < 40; i ++) {
@@ -57,8 +56,6 @@ public class LevelMat extends Level {
 
         goal.move(player);
 
-        enemies.forEach(Enemy::move);
-
         if (player.getPoints() > 0) {
             timer.update();
 
@@ -68,7 +65,7 @@ public class LevelMat extends Level {
         }
     }
 
-    public void createBlock(double x, double y){
+    private void createBlock(double x, double y){
         Block block = new Block(x, y);
         blocks.add(block);
     }
@@ -77,9 +74,10 @@ public class LevelMat extends Level {
 
         Graphics2D g2d = (Graphics2D) g;
 
-        world.drawImage(g2d, background, 0, 0);
+        DrawFunctions.drawImage(g, background,  0, 0);
 
-        world.drawEntity(g2d, goal);
+        DrawFunctions.drawImage(g, goal.getImage(),  goal.getX(), goal.getY());
+
 
         Iterator<Block> iter = blocks.iterator();
 
@@ -87,22 +85,10 @@ public class LevelMat extends Level {
             Block block = iter.next();
 
             if (!block.ifRemove()) {
-                world.drawEntity(g2d, block);
+                DrawFunctions.drawImage(g, block.getImage(),  block.getX(), block.getY());
             }
             else {
                 iter.remove();
-            }
-        }
-
-        Iterator<Enemy> iter2 = enemies.iterator();
-
-        while (iter2.hasNext()) {
-            Enemy enemy = iter2.next();
-            if (!enemy.ifRemove()) {
-                world.drawEntity(g2d, enemy);
-            }
-            else {
-                iter2.remove();
             }
         }
 

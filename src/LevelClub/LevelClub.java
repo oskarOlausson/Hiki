@@ -68,16 +68,16 @@ public class LevelClub extends Level {
         }
         while(solution.equals(names));
 
-        players.add(new Clubber(world, "p1", FrameConstants.WIDTH.value + 100, y, Character.toString(names.charAt(0))));
+        players.add(new Clubber("p1", FrameConstants.WIDTH.value + 100, y, Character.toString(names.charAt(0))));
         players.get(0).setSensorIndex(InputConstants.P1_SLIDE);
 
-        players.add(new Clubber(world, "p2", FrameConstants.WIDTH.value + 120, y + 5, Character.toString(names.charAt(1))));
+        players.add(new Clubber("p2", FrameConstants.WIDTH.value + 120, y + 5, Character.toString(names.charAt(1))));
         players.get(1).setSensorIndex(InputConstants.P2_SLIDE);
 
-        players.add(new Clubber(world, "p3", FrameConstants.WIDTH.value + 110, y + 10, Character.toString(names.charAt(2))));
+        players.add(new Clubber("p3", FrameConstants.WIDTH.value + 110, y + 10, Character.toString(names.charAt(2))));
         players.get(2).setSensorIndex(InputConstants.P3_SLIDE);
 
-        players.add(new Clubber(world, "p4", FrameConstants.WIDTH.value + 116, y + 15, Character.toString(names.charAt(3))));
+        players.add(new Clubber("p4", FrameConstants.WIDTH.value + 116, y + 15, Character.toString(names.charAt(3))));
         players.get(3).setSensorIndex(InputConstants.P4_SLIDE);
 
         screens.add(new Lcd(141799, TextLCDPhidget.PHIDGET_TEXTLCD_SCREEN_4x20));
@@ -170,14 +170,14 @@ public class LevelClub extends Level {
 
         Graphics2D g2d = (Graphics2D) g;
 
-        world.drawImage(g2d, background, 0, 0);
+        DrawFunctions.drawImage(g, background, 0, 0);
 
         for(Clubber c: players) {
             c.draw(g2d);
         }
 
         if (success) {
-            world.drawImage(g2d, foreground, 0, 0);
+            DrawFunctions.drawImage(g, foreground, 0, 0);
         }
 
 

@@ -15,7 +15,7 @@ class ColorSlider extends Player{
 
     private int sensorIndex = InputConstants.P1_SLIDE;
     private int sensorIndex2= InputConstants.P2_SLIDE;
-    private int pad = 50;
+    private int pad = 70;
     private double gotoX;
     private double colorIndexDouble = 0;
     private int colorIndex = 0;

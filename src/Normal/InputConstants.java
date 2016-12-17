@@ -2,6 +2,7 @@ package Normal;
 
 /**
  * Created by oskar on 2016-11-17.
+ * Makes it easier when plugging in he controllers
  */
 public class InputConstants {
     public static final int P1_SLIDE = 0;

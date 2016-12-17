@@ -1,8 +1,6 @@
 package Normal;
 
 import java.awt.*;
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Created by oskar on 2016-12-13.
@@ -15,7 +13,7 @@ public abstract class BetweenLevels {
     public BetweenLevels(String filePath) {
         ImageRes res = new ImageRes("Betweens/" + filePath);
 
-        if (res == null) {
+        if (res.getPath() == null) {
             res = new ImageRes("Betweens/noExplanation.png");
         }
 

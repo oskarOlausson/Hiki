@@ -1,7 +1,7 @@
 package LevelRunner;
 
 import Normal.*;
-import java.awt.*;
+
 
 /**
  * Created by oskar on 2016-11-21.
@@ -12,7 +12,7 @@ public class Runner extends Player{
     private double speed;
     private double speedMax;
 
-    public Runner(World world, double x, double y) {
+    public Runner(double x, double y) {
         super("player");
         this.x = x;
         this.y = y;

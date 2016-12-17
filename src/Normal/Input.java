@@ -9,7 +9,6 @@ package Normal;
 import com.phidgets.*;
 
 import java.awt.event.*;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -85,19 +84,6 @@ public class Input implements KeyListener {
             e.printStackTrace();
         }
         ik = null;
-    }
-
-    public static void main(String[] args) {
-
-        Input input = new Input();
-
-        System.out.println("Press enter to quit");
-        try {
-            System.in.read();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        input.close();
     }
 
     public boolean[] digitalData() {

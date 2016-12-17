@@ -1,45 +1,31 @@
-package LevelMat; /**
- * Created by oskar on 2016-11-17.
- */
+package LevelMat;
 
 import Normal.*;
 
 import java.awt.*;
 
-public class Mat extends Player {
+/**
+ * Created by oskar on 2016-11-17.
+ * Handles all thing in the mat level
+ */
+class Mat extends Player {
 
     private int inp_topLeft = InputConstants.P1_SLIDE;
     private int inp_topRight = InputConstants.P2_SLIDE;
     private int inp_bottomLeft= InputConstants.P3_SLIDE;
     private int inp_bottomRight = InputConstants.P4_SLIDE;
 
-    private World world;
 
-    public Mat(World world) {
+
+    Mat() {
         super("player");
         initWalker();
-        this.world = world;
     }
 
-    public Mat(World world, double x, double y) {
-        this(world);
+    Mat(double x, double y) {
+        this();
         this.x = x;
         this.y = y;
-    }
-
-    public void setSensors(int inp_topLeft, int inp_topRight, int inp_bottomLeft, int inp_bottomRight) {
-        if (inp_topLeft != -1) {
-            this.inp_topLeft = inp_topLeft;
-        }
-        if (inp_topRight != -1) {
-            this.inp_topRight = inp_topRight;
-        }
-        if (inp_bottomLeft != -1) {
-            this.inp_bottomLeft = inp_bottomLeft;
-        }
-        if (inp_bottomRight != -1) {
-            this.inp_bottomRight = inp_bottomRight;
-        }
     }
 
     private void initWalker() {
@@ -80,7 +66,7 @@ public class Mat extends Player {
         g2d.drawLine(cx, cy, cx - 800, cy + 800);
         g2d.drawLine(cx, cy, cx + 800, cy + 800);
 
-        world.drawEntity(g2d, this);
+        DrawFunctions.drawImage(g2d, image, getX(), getY());
     }
 }
 

@@ -49,7 +49,7 @@ class Event extends Entity{
     }
 
     public void draw(Graphics g, World world) {
-        world.drawEntity((Graphics2D) g, this);
+        DrawFunctions.drawImage(g, image, getX(), getY());
     }
 
     boolean hasAnswers() {

@@ -1,10 +1,11 @@
-package Normal; /**
- * Created by oskar on 2016-11-17.
- * This is the main class
- */
+package Normal;
 import javax.swing.*;
 import java.awt.*;
 
+/**
+ * Created by oskar on 2016-11-17.
+ * This is the main class
+ */
 public class Frame extends JFrame {
 
     private World world;

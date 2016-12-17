@@ -1,8 +1,6 @@
 package LevelColor;
 
 import java.awt.*;
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Created by oskar on 2016-11-30.

@@ -1,8 +1,6 @@
 package LevelColor;
 
 import Normal.*;
-import jdk.nashorn.internal.ir.annotations.Ignore;
-
 import java.awt.*;
 import java.util.Iterator;
 import java.util.List;
@@ -33,6 +31,7 @@ public class LevelColor extends Level {
     private double score;
     private double scoreAnim;
     private final int scoreMax = 35;
+    @SuppressWarnings("FieldCanBeLocal")
     private final int scoreBuffer = 10;
 
     public LevelColor(World world) {
@@ -178,7 +177,7 @@ public class LevelColor extends Level {
             ColorParticle c = iterColorParticle.next();
 
             if (!c.ifRemove()) {
-                c.draw(g, world);
+                c.draw(g);
             }
             else {
                 iterColorParticle.remove();

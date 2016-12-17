@@ -15,9 +15,8 @@ public abstract class Player extends Entity{
     protected int points = 0;
 
     public Player(String imagePath) {
-        String string = imagePath;
-        if (string != null) {
-            image = Library.loadImage(string);
+        if (imagePath != null) {
+            image = Library.loadImage(imagePath);
             setSizeFromImage();
         }
         else image = null;
@@ -67,7 +66,7 @@ public abstract class Player extends Entity{
 
     public void draw(Graphics2D g2d) {
 
-        DrawFunctions.drawImage(g2d, image, (int) x, (int) y, 1, 1, Math.toRadians(direction));
+        DrawFunctions.drawImage(g2d, image, getX(), getY(), 1, 1, Math.toRadians(direction));
     }
 
     public double normalize(int value) {
@@ -77,7 +76,7 @@ public abstract class Player extends Entity{
     public abstract void inputs(int[] sensorData, boolean[] digitalData);
 
     public void givePoint() {
-        points++;
+        points ++;
     }
 
     public int getPoints() {

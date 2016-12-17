@@ -32,6 +32,7 @@ public class Timer {
         ticks = maxTicks;
     }
 
+     @SuppressWarnings("unused")
     public void ring() {
         ticks = 0;
         done = true;
