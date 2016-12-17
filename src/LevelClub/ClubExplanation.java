@@ -8,7 +8,7 @@ import java.awt.*;
  * Created by oskar on 2016-12-17.
  * This classes has some inputs and outputs
  */
-public class ClubExplanation extends BetweenLevels{
+class ClubExplanation extends BetweenLevels{
 
     private final int sliderHeight;
     private double progress = 0;
@@ -17,11 +17,9 @@ public class ClubExplanation extends BetweenLevels{
     private Image sliderButton;
     private Timer[] timers = {new Timer(1), new Timer(2), new Timer(1), new Timer(2)};
     private int index = 0;
-    private int topPad = 15;
-    private int bottomPad = 30;
     private Position sliderPosition = new Position(FrameConstants.WIDTH.value * 0.2,  FrameConstants.HEIGHT.value * 0.3);
 
-    public ClubExplanation() {
+    ClubExplanation() {
         super("clubInstructions");
 
         avatar = Library.loadImage("p1");
@@ -54,6 +52,8 @@ public class ClubExplanation extends BetweenLevels{
     public void draw(Graphics g) {
         g.drawImage(image, 0, 0, null);
         g.drawImage(slider, sliderPosition.drawX(), sliderPosition.drawY(), null);
+        int bottomPad = 30;
+        int topPad = 15;
         g.drawImage(sliderButton, sliderPosition.drawX(), (int) (topPad + sliderPosition.drawY() + progress * (sliderHeight - topPad - bottomPad)), null);
         g.drawImage(avatar, (int) (FrameConstants.WIDTH.value * 0.4 + progress * FrameConstants.WIDTH.value * 0.2), FrameConstants.HEIGHT.value / 2, null);
     }

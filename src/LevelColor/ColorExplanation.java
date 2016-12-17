@@ -8,7 +8,7 @@ import java.awt.*;
  * Created by oskar on 2016-12-17.
  * This classes has some inputs and outputs
  */
-public class ColorExplanation extends BetweenLevels {
+class ColorExplanation extends BetweenLevels {
     private final int sliderHeight;
     private double progress = 0;
     private double progress2 = 1;
@@ -19,13 +19,11 @@ public class ColorExplanation extends BetweenLevels {
     private Timer[] timers2 = {new Timer(2), new Timer(1), new Timer(2), new Timer(1)};
     private int index = 0;
     private int index2 = 0;
-    private int topPad = 15;
-    private int bottomPad = 30;
     private Position sliderPosition;
     private Position sliderPosition2;
     private Colors colors = new Colors();
 
-    public ColorExplanation() {
+    ColorExplanation() {
         super("colorInstructions");
         slider = Library.loadImage("sliderSlider");
         sliderHeight = slider.getHeight(null);
@@ -85,6 +83,8 @@ public class ColorExplanation extends BetweenLevels {
         g.drawImage(image, 0, 0, null);
 
         g.drawImage(slider, sliderPosition.drawX(), sliderPosition.drawY(), null);
+        int topPad = 15;
+        int bottomPad = 30;
         g.drawImage(sliderButton, sliderPosition.drawX(), (int) (topPad + sliderPosition.drawY() + progress * (sliderHeight - topPad - bottomPad)), null);
 
         g.drawImage(slider, sliderPosition2.drawX(), sliderPosition2.drawY(), null);

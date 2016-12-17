@@ -6,9 +6,9 @@ import java.awt.*;
  * Created by oskar on 2016-12-17.
  * This classes has some inputs and outputs
  */
-public class NoExplanation extends BetweenLevels {
+class NoExplanation extends BetweenLevels {
 
-    public NoExplanation() {
+    NoExplanation() {
         super("noExplanation");
     }
 

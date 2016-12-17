@@ -7,45 +7,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="84faf7f1-ba4f-4da5-a728-d1f48f6d94b9" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Images/Betweens/colorInstructions.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Images/moonguy.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/LevelClub/ClubExplanation.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/LevelColor/ColorExplanation.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Normal/NoExplanation.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Normal/Test.java" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Hiki/Story/step4Answer2.1.png" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Images/Betweens/clubInstructions.png" afterPath="$PROJECT_DIR$/Images/Betweens/clubInstructions.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Hiki/LevelChoice/Answer.class" afterPath="$PROJECT_DIR$/out/production/Hiki/LevelChoice/Answer.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Hiki/LevelCodeBreaker/CodeBreaker.class" afterPath="$PROJECT_DIR$/out/production/Hiki/LevelCodeBreaker/CodeBreaker.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Hiki/LevelColor/ColorSlider.class" afterPath="$PROJECT_DIR$/out/production/Hiki/LevelColor/ColorSlider.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Hiki/LevelColor/LevelColor.class" afterPath="$PROJECT_DIR$/out/production/Hiki/LevelColor/LevelColor.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Hiki/LevelMat/Mat.class" afterPath="$PROJECT_DIR$/out/production/Hiki/LevelMat/Mat.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Hiki/LevelRunner/Runner.class" afterPath="$PROJECT_DIR$/out/production/Hiki/LevelRunner/Runner.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Hiki/LevelWalks/Walker.class" afterPath="$PROJECT_DIR$/out/production/Hiki/LevelWalks/Walker.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Hiki/Normal/BetweenLevels.class" afterPath="$PROJECT_DIR$/out/production/Hiki/Normal/BetweenLevels.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Hiki/Normal/Input.class" afterPath="$PROJECT_DIR$/out/production/Hiki/Normal/Input.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Hiki/Normal/Level.class" afterPath="$PROJECT_DIR$/out/production/Hiki/Normal/Level.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Hiki/Normal/Player.class" afterPath="$PROJECT_DIR$/out/production/Hiki/Normal/Player.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Hiki/Normal/Timer.class" afterPath="$PROJECT_DIR$/out/production/Hiki/Normal/Timer.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Hiki/Normal/World.class" afterPath="$PROJECT_DIR$/out/production/Hiki/Normal/World.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/LevelChoice/Answer.java" afterPath="$PROJECT_DIR$/src/LevelChoice/Answer.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/LevelChoice/LevelChoice.java" afterPath="$PROJECT_DIR$/src/LevelChoice/LevelChoice.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/LevelClub/Clubber.java" afterPath="$PROJECT_DIR$/src/LevelClub/Clubber.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/LevelClub/LevelClub.java" afterPath="$PROJECT_DIR$/src/LevelClub/LevelClub.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/LevelCodeBreaker/CodeBreaker.java" afterPath="$PROJECT_DIR$/src/LevelCodeBreaker/CodeBreaker.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/LevelColor/ColorSlider.java" afterPath="$PROJECT_DIR$/src/LevelColor/ColorSlider.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/LevelColor/LevelColor.java" afterPath="$PROJECT_DIR$/src/LevelColor/LevelColor.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/LevelMat/Mat.java" afterPath="$PROJECT_DIR$/src/LevelMat/Mat.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/LevelRunner/Runner.java" afterPath="$PROJECT_DIR$/src/LevelRunner/Runner.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/LevelWalks/Walker.java" afterPath="$PROJECT_DIR$/src/LevelWalks/Walker.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Normal/BetweenLevels.java" afterPath="$PROJECT_DIR$/src/Normal/BetweenLevels.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Normal/Input.java" afterPath="$PROJECT_DIR$/src/Normal/Input.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Normal/Level.java" afterPath="$PROJECT_DIR$/src/Normal/Level.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Normal/Library.java" afterPath="$PROJECT_DIR$/src/Normal/Library.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Normal/Player.java" afterPath="$PROJECT_DIR$/src/Normal/Player.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Normal/Timer.java" afterPath="$PROJECT_DIR$/src/Normal/Timer.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Normal/World.java" afterPath="$PROJECT_DIR$/src/Normal/World.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/LevelClub/ClubExplanation.java" afterPath="$PROJECT_DIR$/src/LevelClub/ClubExplanation.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/LevelColor/ColorExplanation.java" afterPath="$PROJECT_DIR$/src/LevelColor/ColorExplanation.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Normal/NoExplanation.java" afterPath="$PROJECT_DIR$/src/Normal/NoExplanation.java" />
     </list>
     <ignored path="Hiki.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -132,18 +97,18 @@
         <option value="$PROJECT_DIR$/src/LevelCodeBreaker/CodeBreaker.java" />
         <option value="$PROJECT_DIR$/src/Normal/Input.java" />
         <option value="$PROJECT_DIR$/src/Normal/Timer.java" />
-        <option value="$PROJECT_DIR$/src/LevelClub/ClubExplanation.java" />
         <option value="$PROJECT_DIR$/src/Normal/Library.java" />
         <option value="$PROJECT_DIR$/src/Normal/Test.java" />
         <option value="$PROJECT_DIR$/src/Normal/Player.java" />
         <option value="$PROJECT_DIR$/src/LevelRunner/Runner.java" />
         <option value="$PROJECT_DIR$/src/LevelColor/ColorSlider.java" />
-        <option value="$PROJECT_DIR$/src/LevelColor/ColorExplanation.java" />
         <option value="$PROJECT_DIR$/src/LevelColor/LevelColor.java" />
         <option value="$PROJECT_DIR$/src/Normal/World.java" />
         <option value="$PROJECT_DIR$/src/Normal/BetweenLevels.java" />
         <option value="$PROJECT_DIR$/src/Normal/Level.java" />
+        <option value="$PROJECT_DIR$/src/LevelClub/ClubExplanation.java" />
         <option value="$PROJECT_DIR$/src/Normal/NoExplanation.java" />
+        <option value="$PROJECT_DIR$/src/LevelColor/ColorExplanation.java" />
       </list>
     </option>
   </component>
@@ -219,10 +184,6 @@
               <option name="myItemId" value="src" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Normal" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -235,6 +196,10 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="LevelColor" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -779,7 +744,14 @@
       <option name="project" value="LOCAL" />
       <updated>1481981889426</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="no explanation added">
+      <created>1482003184770</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1482003184770</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="TodoView">
@@ -879,7 +851,8 @@
     <MESSAGE value="changes in image load" />
     <MESSAGE value="debug tools added" />
     <MESSAGE value="images&#10;" />
-    <option name="LAST_COMMIT_MESSAGE" value="images&#10;" />
+    <MESSAGE value="no explanation added" />
+    <option name="LAST_COMMIT_MESSAGE" value="no explanation added" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1204,16 +1177,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/LevelClub/ClubExplanation.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="12" column="0" selection-start-line="12" selection-start-column="0" selection-end-line="58" selection-end-column="5" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/LevelColor/ColorSlider.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="204">
@@ -1221,16 +1184,6 @@
           <folding>
             <element signature="e#2670#2671#0" expanded="true" />
             <element signature="e#2700#2701#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/LevelColor/ColorExplanation.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="462">
-          <caret line="94" column="46" selection-start-line="94" selection-start-column="46" selection-end-line="94" selection-end-column="46" />
-          <folding>
-            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1287,15 +1240,35 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/LevelColor/ColorExplanation.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="147">
+          <caret line="39" column="11" selection-start-line="39" selection-start-column="11" selection-end-line="39" selection-end-column="11" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/Normal/NoExplanation.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="21" column="39" selection-start-line="21" selection-start-column="39" selection-end-line="21" selection-end-column="39" />
+        <state relative-caret-position="170">
+          <caret line="10" column="0" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
           <folding>
-            <element signature="e#203#204#0" expanded="true" />
-            <element signature="e#241#242#0" expanded="true" />
-            <element signature="e#349#350#0" expanded="true" />
-            <element signature="e#395#396#0" expanded="true" />
+            <element signature="e#189#190#0" expanded="true" />
+            <element signature="e#227#228#0" expanded="true" />
+            <element signature="e#335#336#0" expanded="true" />
+            <element signature="e#381#382#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/LevelClub/ClubExplanation.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="18" column="26" selection-start-line="18" selection-start-column="26" selection-end-line="18" selection-end-column="26" />
+          <folding>
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
