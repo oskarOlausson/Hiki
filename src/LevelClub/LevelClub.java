@@ -25,7 +25,7 @@ public class LevelClub extends Level {
 
 
     public LevelClub (World world) {
-        super("clubInstructions");
+        super(new ClubExplanation());
         this.world = world;
         background = Library.loadImage("backClub");
         foreground = Library.loadImage("madeIt");

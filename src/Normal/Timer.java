@@ -37,7 +37,7 @@ public class Timer {
         done = true;
     }
 
-    public double getPercent() {
+    public double getProgress() {
         return 1 - (ticks / (double) maxTicks);
     }
 }

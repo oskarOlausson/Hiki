@@ -21,6 +21,7 @@ public class Input implements KeyListener {
     private boolean hasKit;
     private List<Integer> keys = new ArrayList<>();
     private final int[] allowedKeys = {KeyEvent.VK_1, KeyEvent.VK_2, KeyEvent.VK_3, KeyEvent.VK_4};
+    private boolean restart = false;
 
     public Input() {
         hasKit = true;
@@ -137,6 +138,13 @@ public class Input implements KeyListener {
         }
     }
 
+    public void restart() {
+        keys = new ArrayList<>();
+        initiateSensors();
+        reset();
+        restart = false;
+    }
+
 
     @Override
     public void keyTyped(KeyEvent e) {
@@ -145,7 +153,11 @@ public class Input implements KeyListener {
 
     @Override
     public void keyPressed(KeyEvent e) {
-        keys.add(e.getKeyCode());
+
+        if (e.getKeyCode() == KeyEvent.VK_R) {
+            restart = true;
+        }
+        else keys.add(e.getKeyCode());
     }
 
     @Override
@@ -160,5 +172,8 @@ public class Input implements KeyListener {
         }
     }
 
+    public boolean ifRestart() {
+        return restart;
+    }
 }
 

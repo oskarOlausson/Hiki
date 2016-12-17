@@ -4,9 +4,6 @@ package LevelWalks; /**
 
 import Normal.*;
 
-import java.awt.*;
-import java.util.List;
-
 public class Walker extends Player {
 
     private int inp_xdir = InputConstants.P1_SLIDE;
@@ -14,7 +11,7 @@ public class Walker extends Player {
     private int inp_speed = InputConstants.P3_SLIDE;
 
     public Walker(World world, double x, double y) {
-        super(world, "player");
+        super("player");
         this.x = x;
         this.y = y;
     }

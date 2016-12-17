@@ -12,11 +12,9 @@ public abstract class Player extends Entity{
     /**
      * Created by oskar on 2016-11-17.
      */
-    protected World world;
     protected int points = 0;
 
-    public Player(World world, String imagePath) {
-        this.world = world;
+    public Player(String imagePath) {
         String string = imagePath;
         if (string != null) {
             image = Library.loadImage(string);
@@ -68,7 +66,8 @@ public abstract class Player extends Entity{
     }
 
     public void draw(Graphics2D g2d) {
-        world.drawEntity(g2d, this);
+
+        DrawFunctions.drawImage(g2d, image, (int) x, (int) y, 1, 1, Math.toRadians(direction));
     }
 
     public double normalize(int value) {

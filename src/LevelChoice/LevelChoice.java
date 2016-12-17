@@ -32,7 +32,7 @@ public class LevelChoice extends Level{
     public void tick(Input input) {
         if (story.update(input)) {
             /*
-            timer.update();
+            timer.tick();
             if (timer.isDone()) {
                 world.nextLevel();
             }

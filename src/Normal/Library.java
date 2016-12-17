@@ -27,6 +27,7 @@ public class Library {
                 System.err.println("Could not find file at " + res.toString());
                 img = loadImage("lock");
             }
+            library.put(res, img);
         }
 
         return img;

@@ -36,6 +36,7 @@ public class LevelColor extends Level {
     private final int scoreBuffer = 10;
 
     public LevelColor(World world) {
+        super(new ColorExplanation());
         this.world = world;
     }
 
@@ -50,7 +51,7 @@ public class LevelColor extends Level {
         colorSliders.add(colorSlider1);
         colorSliders.add(colorSlider2);
         timer = timerMax;
-        score = 30;
+        score = 0;
         scoreAnim = score;
 
         ColorBlob c = new ColorBlob(0);

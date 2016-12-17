@@ -135,12 +135,4 @@ public class CodeBreaker extends Level {
             world.drawEntity(g2d, lock);
         }
     }
-
-    @Override
-    public void doDrawing(Graphics g, GameState gameState) {
-        if (gameState.equals(GameState.BETWEEN)) {
-            drawBetween(g);
-        }
-        else doDrawing(g);
-    }
 }

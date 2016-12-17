@@ -26,6 +26,8 @@ public class World extends JPanel{
     private ReentrantLock lock = new ReentrantLock();
 
     private Image menuImage = Library.loadImage("titleScreen");
+    private Image moonGuy = Library.loadImage("moonguy");
+    private Position moonGuyPosition = new Position(FrameConstants.WIDTH.value * 0.3, FrameConstants.HEIGHT.value * 0.65);
     private List<MenuButton> buttons = new ArrayList<>();
 
     private ArrayList<Level> levels = new ArrayList<>();
@@ -41,15 +43,15 @@ public class World extends JPanel{
             buttons.add(new MenuButton(i, (int) (FrameConstants.WIDTH.value / 5 + (i / 3f) * (FrameConstants.WIDTH.value * 3 / 5)), FrameConstants.HEIGHT.value - 100));
         }
 
+        levels.add(new LevelClub(this));
         levels.add(new LevelChoice(this));
         levels.add(new LevelColor(this));
-        levels.add(new LevelClub(this));
         levels.add(new LevelMat(this));
         levels.add(new LevelRunner(this));
         levels.add(new CodeBreaker(this));
         levels.add(new LevelWalk(this));
 
-        this.levelIndex = 0;
+        this.levelIndex = 1;
         levels.get(levelIndex).start();
     }
 
@@ -59,7 +61,8 @@ public class World extends JPanel{
     }
 
     public void nextLevel() {
-        changeLevel(levelIndex + 1);
+        if (levelIndex + 1 >= levels.size()) changeLevel(0);
+        else changeLevel(levelIndex + 1);
     }
 
     public boolean changeLevel(int levelIndex) {
@@ -127,14 +130,27 @@ public class World extends JPanel{
 
     public void tick(){
 
+        if (input.ifRestart()) {
+            state = GameState.MENU;
+            levelIndex = 0;
+            input.restart();
+            buttons.forEach(MenuButton::reset);
+        }
+
         if (state.equals(GameState.PLAY)) {
             levels.get(levelIndex).tick(input);
         }
         else if (state.equals(GameState.BETWEEN)){
-            betweenTimer.update();
-            if (betweenTimer.isDone()) {
-                betweenTimer.restart();
+            levels.get(levelIndex).tickBetween(input);
+            int sum = 0;
+            for(MenuButton b : buttons) {
+                b.update(input.digitalData());
+                if (b.isDone()) sum++;
+            }
+
+            if (sum >= buttons.size()) {
                 state = GameState.PLAY;
+                buttons.forEach(MenuButton::reset);
             }
         }
         else {
@@ -146,6 +162,7 @@ public class World extends JPanel{
 
             if (sum >= buttons.size()) {
                 state = GameState.BETWEEN;
+                buttons.forEach(MenuButton::reset);
             }
         }
 
@@ -157,11 +174,18 @@ public class World extends JPanel{
         super.paintComponent(g);
         lock.lock();
         try {
-            if (state.equals(GameState.MENU)) {
-                g.drawImage(menuImage, 0, 0, null);
+            if (!state.equals(GameState.PLAY)) {
+                if (state.equals(GameState.MENU)) {
+                    g.drawImage(menuImage, 0, 0, null);
+                    DrawFunctions.drawImage(g, moonGuy, moonGuyPosition.drawX(), moonGuyPosition.drawY(), .5, .5, 0);
+                }
+                else {
+                    levels.get(levelIndex).drawBetween(g);
+                }
+
                 buttons.forEach(b -> b.draw(g));
             }
-            else levels.get(levelIndex).doDrawing(g, state);
+            else levels.get(levelIndex).doDrawing(g);
         } finally {
             lock.unlock();
         }

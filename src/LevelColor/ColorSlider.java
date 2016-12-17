@@ -20,8 +20,10 @@ class ColorSlider extends Player{
     private double colorIndexDouble = 0;
     private int colorIndex = 0;
 
+    private int span = FrameConstants.WIDTH.value;
+
     ColorSlider(World world, double x, double y) {
-        super(world, null);
+        super(null);
         this.x = x;
         this.y = y;
         gotoX = x;
@@ -57,7 +59,7 @@ class ColorSlider extends Player{
         colorIndex = (int) (colorIndexDouble);
         if (colorIndex > 2) colorIndex = 2;
 
-        this.gotoX = pad + sensorValue * (FrameConstants.WIDTH.value - pad * 2);
+        this.gotoX = pad + sensorValue * (span - pad * 2);
     }
 
     public double lowPoint() {
@@ -93,5 +95,9 @@ class ColorSlider extends Player{
         g.fillRect((int) (drawX + boxWidth * colorIndexDouble) - 2, (int) (y - boxHeight / 2), 4, boxHeight);
         g.setColor(Color.WHITE);
         g.drawRect((int) (drawX + boxWidth * colorIndexDouble) - 2, (int) (y - boxHeight / 2), 4, boxHeight);
+    }
+
+    public void setPad(int pad) {
+        this.pad = pad;
     }
 }

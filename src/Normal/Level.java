@@ -1,7 +1,6 @@
 package Normal;
 
 import java.awt.*;
-import java.awt.image.BufferedImage;
 
 /**
  * Created by oskar on 2016-11-18.
@@ -12,25 +11,17 @@ import java.awt.image.BufferedImage;
  */
 public abstract class Level {
 
-    protected BufferedImage betweenImage;
+    protected BetweenLevels between;
 
     /**
      * constructor
      */
-    public Level(String path) {
-
-        ImageRes res = new ImageRes("Betweens/" + path);
-
-        if (res == null) {
-            res = new ImageRes("Betweens/noExplanation.png");
-        }
-
-        betweenImage = Library.loadImage(res);
+    public Level(BetweenLevels between) {
+        this.between = between;
     }
 
     public Level() {
-        ImageRes res = new ImageRes("Betweens/noExplanation.png");
-        betweenImage = Library.loadImage(res);
+        between = new NoExplanation();
     }
 
     /**Called at start of level, create objects in this function**/
@@ -46,21 +37,18 @@ public abstract class Level {
      */
     public abstract void tick(Input input);
 
+    public void tickBetween(Input input) {
+        between.tick(input);
+    }
+
     /**
      * This function should draw everything (also destroys objects that should be destroyed due to synchronize reasons)
      * @param g, the graphics we are drawing to
      */
     public abstract void doDrawing(Graphics g);
 
-    public void doDrawing(Graphics g, GameState gameState) {
-        if (gameState.equals(GameState.BETWEEN)) {
-            drawBetween(g);
-        }
-        else doDrawing(g);
-    }
-
 
     public void drawBetween(Graphics g) {
-        g.drawImage(betweenImage, 0, 0, null);
+        between.draw(g);
     }
 }

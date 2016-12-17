@@ -13,16 +13,11 @@ public class Runner extends Player{
     private double speedMax;
 
     public Runner(World world, double x, double y) {
-        super(world,"player");
+        super("player");
         this.x = x;
         this.y = y;
         speed = 1;
         speedMax = 5;
-    }
-
-    @Override
-    public void draw(Graphics2D g2d) {
-        world.drawEntity(g2d, this);
     }
 
     @Override

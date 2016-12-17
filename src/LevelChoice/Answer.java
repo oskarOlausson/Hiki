@@ -52,7 +52,7 @@ class Answer extends Entity {
     }
 
     void drawTextBox(Graphics g, int x, int y) {
-        double percent = nextTimer.getPercent();
+        double percent = nextTimer.getProgress();
         if (textBox.isChosen()) textBox.draw(g, x, y, percent);
         else textBox.draw(g, x, y, 0);
     }

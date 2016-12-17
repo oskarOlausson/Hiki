@@ -16,7 +16,7 @@ public class Mat extends Player {
     private World world;
 
     public Mat(World world) {
-        super(world, "player");
+        super("player");
         initWalker();
         this.world = world;
     }
