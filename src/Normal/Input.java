@@ -65,22 +65,18 @@ public class Input implements KeyListener {
         if (!hasKit) return;
 
         ik.addSensorChangeListener(se -> {
-            //Insert your code here
             System.out.println("sensor[" + se.getIndex() + "] = " + se.getValue());
             sensors[se.getIndex()] = se.getValue();
         });
 
         ik.addInputChangeListener(ic -> {
-            //Insert your code here
             System.out.println("digital[" + ic.getIndex() + "] = " + ic.getState());
             if (ic.getState()) digital[ic.getIndex()] = true;
         });
     }
 
     public void close() {
-
         if (!hasKit) return;
-
         try {
             ik.close();
         } catch (PhidgetException e) {

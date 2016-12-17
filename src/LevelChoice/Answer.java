@@ -41,9 +41,12 @@ class Answer extends Entity {
             if (nextTimer.isDone()) {
                 next = true;
             }
+            System.out.println("hi");
         }
         else {
             nextTimer.restart();
+            maybe = false;
+            chosen = false;
         }
         textBox.update(maybe, chosen);
     }

@@ -18,13 +18,10 @@ class Story {
     private boolean answerMode = false;
     private int progression = 0;
     private int choice = 0;
-    private int[] debugChoice = {0, 2, 0};
     private int points = 0;
     private Timer timer = new Timer(5);
-    private Timer debugTimer = new Timer(1);
     private boolean done = false;
     private Position answerPosition = new Position(FrameConstants.WIDTH.value - 285, FrameConstants.HEIGHT.value * 0.4);
-    private Timer debugTimer2 = new Timer(1);
 
     Story() {
         mainStory = new ArrayList<>();
@@ -41,9 +38,9 @@ class Story {
         storyAdd("step2");
         lastEvent.addAnswers(new Answer("Tack gärna", "step2Answer1", 0, 1), new Answer("Nej tack", "step2Answer2", 1, 2), new Answer("Dra åt helvete", "step2Answer3", 2, 3));
         storyAdd("step3");
-        lastEvent.addAnswers(new Answer("Dra ut hennes stol\noch sätt dig sedan", "step3Answer1", 0, 1), new Answer("Sätt dig ner", "step3Answer2", 1, 2), new Answer("Muttra något om att du \nvill ha en snyggare dejt", "step3Answer3", 2, 3));
+        lastEvent.addAnswers(new Answer("Sätt dig ner", "step3Answer1", 0, 1), new Answer("Dra ut hennes stol\noch sätt dig sedan", "step3Answer2", 1, 2), new Answer("Muttra något om att du \nvill ha en snyggare dejt", "step3Answer3", 2, 3));
         storyAdd("step4");
-        lastEvent.addAnswers(new Answer("Gå fram till Alicia direkt", "other", 0, 1), new Answer("Ställ dig i Alicias sällskap\noch skratta högt åt\nhennes skämt", "other", 1, 2), new Answer("Gå upp på scenen\n och kräv att Alicia ska\nprata med dig", "other", 2, 3));
+        lastEvent.addAnswers(new Answer("Gå fram till Persbrant direkt", "other", 0, 1), new Answer("Ställ dig i Persbrants sällskap\noch skratta högt åt\nhennes skämt", "other", 1, 2), new Answer("Gå upp på scenen\n och kräv att Persbrant ska\nprata med dig", "other", 2, 3));
     }
 
     /**
@@ -61,27 +58,13 @@ class Story {
                     if (progression < mainStory.size() - 1) progression++;
                 }
             } else {
-                boolean[] arr = input.digitalData().clone();
-
-                //artificial choice
-                if (mainStory.get(progression).hasAnswers()) {
-                    debugTimer.update();
-                    if (debugTimer.isDone()) {
-                        arr[debugChoice[progression - 1]] = true;
-                        debugTimer2.update();
-                        if (debugTimer2.isDone()) {
-                            int index = debugChoice[progression - 1] + 1;
-                            arr[index] = true;
-                        }
-                    }
-                }
 
                 Answer a;
                 int answerIndex = -1;
 
                 for (int i = 0; i < mainStory.get(progression).getAnswers().size(); i++) {
                     a = mainStory.get(progression).getAnswer(i);
-                    a.update(arr);
+                    a.update(input.digitalData());
                     if (a.isDone()) {
                         answerIndex = i;
                         break;
@@ -94,9 +77,6 @@ class Story {
 
                 if (answerIndex != -1) {
                     if (mainStory.get(progression).hasAnswers()) answerMode = true;
-                    debugTimer.restart();
-                    debugTimer2.restart();
-
                     if (mainStory.get(progression).equals(lastEvent)) done = true;
 
                     if (mainStory.get(progression).hasAnswers()) makeChoice(answerIndex);
