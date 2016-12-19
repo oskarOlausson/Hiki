@@ -49,7 +49,7 @@ public class World extends JPanel{
         levels.add(new CodeBreaker(this));
         levels.add(new LevelWalk(this));
 
-        this.levelIndex = 3;
+        this.levelIndex = 4;
         levels.get(levelIndex).start();
     }
 

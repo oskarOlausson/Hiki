@@ -9,9 +9,7 @@ import java.util.List;
  * is not needed but is a good foundation of what is needed of a typical player
  */
 public abstract class Player extends Entity{
-    /**
-     * Created by oskar on 2016-11-17.
-     */
+
     protected int points = 0;
 
     public Player(String imagePath) {
@@ -65,7 +63,6 @@ public abstract class Player extends Entity{
     }
 
     public void draw(Graphics2D g2d) {
-
         DrawFunctions.drawImage(g2d, image, getX(), getY(), 1, 1, Math.toRadians(direction));
     }
 
