@@ -90,26 +90,29 @@ class Story {
                 }
             }
         }
-
-        lastTimer.update();
-        if (lastTimer.isDone()) {
-            showLast = true;
+        else {
+            lastTimer.update();
+            if (lastTimer.isDone()) {
+                showLast = true;
+            }
         }
 
-        return done;
+        return showLast;
     }
 
     private void makeChoice(int index) {
 
         if (progression == 1) {
-            points += (2 - index) * 9;
+            points += index * 9;
         }
         else if (progression == 2) {
-            points += (2 - index) * 3;
+            points += index * 3;
         }
         else if (progression == 3) {
-            points += (2 - index); // * 1
+            points += index;
         }
+
+        System.out.println(points);
 
         answerMode = true;
         choice = index;
@@ -149,11 +152,11 @@ class Story {
 
         //0-2
         endings.add(new Event(s + "2.1.2"));
-        endings.add(new Event(s + "1.2.3"));
+        endings.add(new Event(s + "1.2"));
         endings.add(new Event(s + "2.1.2"));
         //3-5
         endings.add(new Event(s + "2.1.2"));
-        endings.add(new Event(s + "1.2.3"));
+        endings.add(new Event(s + "1.2"));
         endings.add(new Event(s + "2.1.2"));
         //6-8
         endings.add(new Event(s + "1.2"));
@@ -161,16 +164,16 @@ class Story {
         endings.add(new Event(s + "1.2"));
         //9-11
         endings.add(new Event(s + "2.1.2"));
-        endings.add(new Event(s + "1.2.2"));
+        endings.add(new Event(s + "1.2"));
         endings.add(new Event(s + "2.1.2"));
         //12-14
         endings.add(new Event(s + "2.1.2"));
-        endings.add(new Event(s + "1.2.3"));
+        endings.add(new Event(s + "1.2"));
         endings.add(new Event(s + "2.1.2"));
         //15-17
-        endings.add(new Event(s + "3.4"));
-        endings.add(new Event(s + "2.3.3"));
-        endings.add(new Event(s + "3.4"));
+        endings.add(new Event(s + "3.3"));
+        endings.add(new Event(s + "2.3.2"));
+        endings.add(new Event(s + "3.3"));
         //18-20
         endings.add(new Event(s + ""));
         endings.add(new Event(s + ""));
@@ -180,9 +183,9 @@ class Story {
         endings.add(new Event(s + "2.2"));
         endings.add(new Event(s + "2.1.2"));
         //24-26
-        endings.add(new Event(s + "3.4"));
+        endings.add(new Event(s + "3.3"));
         endings.add(new Event(s + "2.2"));
-        endings.add(new Event(s + "3.4"));
+        endings.add(new Event(s + "3.3"));
 
         return endings;
     }

@@ -41,7 +41,6 @@ class Answer extends Entity {
             if (nextTimer.isDone()) {
                 next = true;
             }
-            System.out.println("hi");
         }
         else {
             nextTimer.restart();
