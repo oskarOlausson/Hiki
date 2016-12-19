@@ -43,5 +43,9 @@ public class LevelChoice extends Level{
         story.draw(g, world);
     }
 
+    @Override
+    public boolean hasExplanation() {
+        return false;
+    }
 
 }

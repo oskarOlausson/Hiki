@@ -19,9 +19,13 @@ class Story {
     private int progression = 0;
     private int choice = 0;
     private int points = 0;
-    private Timer timer = new Timer(5);
+    private Timer timer = new Timer(6);
     private boolean done = false;
     private Position answerPosition = new Position(FrameConstants.WIDTH.value - 285, FrameConstants.HEIGHT.value * 0.4);
+    private Timer firstTimer = new Timer(8);
+    private Timer lastTimer = new Timer(10);
+    private boolean showLast = false;
+    private Event theEnd = new Event("end");
 
     Story() {
         mainStory = new ArrayList<>();
@@ -49,7 +53,6 @@ class Story {
      */
     public boolean update(Input input) {
         if (!done) {
-
             if (answerMode) {
                 timer.update();
                 if (timer.isDone()) {
@@ -58,7 +61,6 @@ class Story {
                     if (progression < mainStory.size() - 1) progression++;
                 }
             } else {
-
                 Answer a;
                 int answerIndex = -1;
 
@@ -72,7 +74,11 @@ class Story {
                 }
 
                 if (!mainStory.get(progression).hasAnswers()) {
-                    progression++;
+                    firstTimer.update();
+                    if (firstTimer.isDone()) {
+                        progression++;
+                        firstTimer.restart();
+                    }
                 }
 
                 if (answerIndex != -1) {
@@ -82,8 +88,12 @@ class Story {
                     if (mainStory.get(progression).hasAnswers()) makeChoice(answerIndex);
                     else progression++;
                 }
-
             }
+        }
+
+        lastTimer.update();
+        if (lastTimer.isDone()) {
+            showLast = true;
         }
 
         return done;
@@ -117,7 +127,10 @@ class Story {
             }
         }
         else {
-            endings.get(points).draw(g, world);
+            if (showLast) {
+                theEnd.draw(g, world);
+            }
+            else endings.get(points).draw(g, world);
         }
     }
 
@@ -148,7 +161,7 @@ class Story {
         endings.add(new Event(s + "1.2"));
         //9-11
         endings.add(new Event(s + "2.1.2"));
-        endings.add(new Event(s + "NOT MADE YET"));
+        endings.add(new Event(s + "1.2.2"));
         endings.add(new Event(s + "2.1.2"));
         //12-14
         endings.add(new Event(s + "2.1.2"));
@@ -159,9 +172,9 @@ class Story {
         endings.add(new Event(s + "2.3.3"));
         endings.add(new Event(s + "3.4"));
         //18-20
-        endings.add(new Event(s + "NOT MADE YET"));
-        endings.add(new Event(s + "NOT MADE YET"));
-        endings.add(new Event(s + "NOT MADE YET"));
+        endings.add(new Event(s + ""));
+        endings.add(new Event(s + ""));
+        endings.add(new Event(s + ""));
         //21-23
         endings.add(new Event(s + "2.1.2"));
         endings.add(new Event(s + "2.2"));

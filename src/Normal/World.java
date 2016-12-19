@@ -49,7 +49,7 @@ public class World extends JPanel{
         levels.add(new CodeBreaker(this));
         levels.add(new LevelWalk(this));
 
-        this.levelIndex = 4;
+        this.levelIndex = 1;
         levels.get(levelIndex).start();
     }
 
@@ -72,6 +72,10 @@ public class World extends JPanel{
 
                 //starts next level
                 levels.get(this.levelIndex).start();
+
+                if (!levels.get(this.levelIndex).hasExplanation()) {
+                    state = GameState.PLAY;
+                }
 
                 return true;
             } else {
@@ -155,6 +159,10 @@ public class World extends JPanel{
 
             if (sum >= buttons.size()) {
                 state = GameState.BETWEEN;
+
+                if (!levels.get(this.levelIndex).hasExplanation()) {
+                    state = GameState.PLAY;
+                }
                 buttons.forEach(MenuButton::reset);
             }
         }

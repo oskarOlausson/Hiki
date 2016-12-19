@@ -51,4 +51,8 @@ public abstract class Level {
     public void drawBetween(Graphics g) {
         between.draw(g);
     }
+
+    public boolean hasExplanation() {
+        return true;
+    }
 }
