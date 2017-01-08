@@ -1,6 +1,7 @@
 package Normal;
 
 import java.awt.*;
+import java.util.*;
 import java.util.List;
 
 /**
@@ -10,7 +11,9 @@ import java.util.List;
  */
 public abstract class Player extends Entity{
 
+    protected List<PlayerController> playerControllers = new ArrayList<>();
     protected int points = 0;
+    private Sorter sorter = new Sorter();
 
     public Player(String imagePath) {
         if (imagePath != null) {
@@ -70,7 +73,7 @@ public abstract class Player extends Entity{
         return (double) value / 1000;
     }
 
-    public abstract void inputs(int[] sensorData, boolean[] digitalData);
+    public abstract void inputs();
 
     public void givePoint() {
         points ++;
@@ -78,5 +81,28 @@ public abstract class Player extends Entity{
 
     public int getPoints() {
         return points;
+    }
+
+    public void addController(PlayerController playerController) {
+        playerControllers.add(playerController);
+
+        //in player order (0, 1, 2, 3)
+        playerControllers.sort(sorter);
+    }
+
+    public void addController(PlayerController playerController, String displayText) {
+        addController(playerController);
+        playerController.setString(displayText);
+    }
+
+    public PlayerController firstController() {
+        return playerControllers.get(0);
+    }
+
+    private class Sorter implements Comparator<PlayerController>  {
+        @Override
+        public int compare(PlayerController o1, PlayerController o2) {
+            return o1.getIndex() -  o2.getIndex();
+        }
     }
 }

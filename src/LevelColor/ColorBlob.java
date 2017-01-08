@@ -14,6 +14,7 @@ class ColorBlob extends Entity{
     private int index2 = -1;
     private int size = 50;
     private boolean mix = false;
+    private boolean evil = false;
 
     void moveTo(double x, double y) {
         this.x = x;
@@ -24,13 +25,14 @@ class ColorBlob extends Entity{
 
         if (index < 0) {
             index = (int) Math.round(Math.random() * 2);
+            evil = true;
         }
         this.index = index;
         this.width = size;
         this.height = size;
-        dx = 1 + Math.random();
+        dx = 1.2 + Math.random() * 0.6;
 
-        y = 150 + (Math.random() * (FrameConstants.HEIGHT.value - 300));
+        y = FrameConstants.HEIGHT.value / 2 + (Math.random() * 2 - 1) * 100;
     }
 
     ColorBlob(int index, int index2) {
@@ -59,6 +61,10 @@ class ColorBlob extends Entity{
         return false;
     }
 
+    boolean isEvil() {
+        return evil;
+    }
+
     boolean match(int index, int index2) {
         if (mix) {
             if (this.index == index && this.index2 == index2)       return true;
@@ -75,13 +81,31 @@ class ColorBlob extends Entity{
         x += dx;
     }
 
-    void draw(Graphics g, Colors colors) {
+    void draw(Graphics g, Colors colors, int dx, int dy) {
+
+        if (evil) {
+            g.setColor(Color.BLACK);
+            g.fillOval(getX() + dx, getY() + dy, size, size);
+        }
+
         if (isMix()) {
             g.setColor(colors.secondaryGet(getIndex(), getIndex2()));
         }
         else g.setColor(colors.primaryGet(getIndex()));
 
-        g.fillOval(getX(), getY(), size, size);
+        Graphics2D g2d = (Graphics2D) g;
+
+        g2d.setStroke(new BasicStroke(5));
+
+        if (evil) {
+            g2d.drawOval(getX() + dx, getY() + dy, size, size);
+            int cx = getX() + size / 2;
+            int cy = getY() + size / 2;
+            double scalar = (size / 2) / Math.sqrt(2);
+            g2d.drawLine((int) (cx - scalar), (int) (cy - scalar), (int) (cx + scalar), (int) (cy + scalar));
+            g2d.drawLine((int) (cx + scalar), (int) (cy - scalar), (int) (cx - scalar), (int) (cy + scalar));
+        }
+        else g.fillOval(getX() + dx, getY() + dy, size, size);
     }
 
     int getIndex() {

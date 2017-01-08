@@ -18,6 +18,10 @@ public class Position {
 
     }
 
+    public void addToY(int dy) {
+        this.y += dy;
+    }
+
     public double getX() {
         return x;
     }
@@ -41,5 +45,15 @@ public class Position {
 
     public double distance(Position pos) {
         return Math.sqrt(Math.pow(x - pos.getX(), 2) + Math.pow(y - pos.getY(), 2));
+    }
+
+    public void set(int x, int y) {
+        this.x = x;
+        this.y = y;
+    }
+
+    public void snap(int width, int height) {
+        this.x = Math.floor(this.x / width) * width;
+        this.y = Math.floor(this.y / height) * height;
     }
 }

@@ -13,15 +13,16 @@ class Colors {
     private final Color b = new Color(30, 70, 180);
     private final Color[] PRIMARY = {r, y, b};
 
-    private final Color o = new Color(200, 110, 30);
-    private final Color g = new Color(0, 120, 0);
-    private final Color l = new Color(170, 20, 130);
+    private final Color o = new Color(248, 118, 6);
+    private final Color g = new Color(0, 144, 0);
+    private final Color l = new Color(170, 39, 142);
+    private final Color[] SECONDARY = {o, g, l};
 
     private final Color textColor = new Color(130, 130, 130);
     private final Color scoreColorBack = new Color(150, 150, 150);
     private final Color scoreColor = new Color(110, 110, 110);
 
-    private final Color[] SECONDARY = {o, g, l};
+
 
     Color getTextColor() {
         return textColor;

@@ -3,8 +3,6 @@ package Normal;
 import LevelCodeBreaker.CodeBreaker;
 import LevelMat.LevelMat;
 import LevelClub.LevelClub;
-import LevelWalks.LevelWalk;
-import LevelRunner.LevelRunner;
 import LevelColor.LevelColor;
 import LevelChoice.LevelChoice;
 
@@ -26,7 +24,8 @@ public class World extends JPanel{
     private Image menuImage = Library.loadImage("titleScreen");
     private Image moonGuy = Library.loadImage("moonguy");
     private Position moonGuyPosition = new Position(FrameConstants.WIDTH.value * 0.3, FrameConstants.HEIGHT.value * 0.65);
-    private List<MenuButton> buttons = new ArrayList<>();
+    private List<Button> buttons = new ArrayList<>();
+    private List<MenuButton> menuButtons = new ArrayList<>();
 
     private ArrayList<Level> levels = new ArrayList<>();
     private int levelIndex = 0;
@@ -37,20 +36,27 @@ public class World extends JPanel{
         setBackground(Color.WHITE);
         addKeyListener(input);
 
+        int x;
+        int y;
+
         for (int i = 0; i < 4; i++) {
-            buttons.add(new MenuButton(i, (int) (FrameConstants.WIDTH.value / 5 + (i / 3f) * (FrameConstants.WIDTH.value * 3 / 5)), FrameConstants.HEIGHT.value - 100));
+            x = (int) (FrameConstants.WIDTH.value / 5 + (i / 3f) * (FrameConstants.WIDTH.value * 3 / 5));
+            y = FrameConstants.HEIGHT.value - 100;
+            buttons.add(new Button(input.getController(i), x, y));
+            menuButtons.add(new MenuButton(input.getController(i), x, y));
         }
 
-        levels.add(new LevelClub(this));
-        levels.add(new LevelChoice(this));
-        levels.add(new LevelColor(this));
-        levels.add(new LevelMat(this));
-        levels.add(new LevelRunner(this));
-        levels.add(new CodeBreaker(this));
-        levels.add(new LevelWalk(this));
+        input.getControllers().forEach(c -> c.setString("Välkommen, välj\nkaraktär"));
 
-        this.levelIndex = 1;
-        levels.get(levelIndex).start();
+        levels.add(new LevelColor(this));
+
+        //levels.add(new LevelChoice(this));
+        levels.add(new LevelMat(this));
+        levels.add(new LevelClub(this));
+        levels.add(new CodeBreaker(this));
+
+        this.levelIndex = 0;
+        //levels.get(levelIndex).start(input);
     }
 
     public void nextLevel() {
@@ -59,7 +65,6 @@ public class World extends JPanel{
     }
 
     public boolean changeLevel(int levelIndex) {
-
         state = GameState.BETWEEN;
         lock.lock();
         try {
@@ -71,11 +76,9 @@ public class World extends JPanel{
                 levels.get(previousLevelIndex).end();
 
                 //starts next level
-                levels.get(this.levelIndex).start();
+                //levels.get(this.levelIndex).start(input);
 
-                if (!levels.get(this.levelIndex).hasExplanation()) {
-                    state = GameState.PLAY;
-                }
+                input.getControllers().forEach(c -> c.getPlayerInfo().tickPlayed(levels.get(previousLevelIndex).toEnum()));
 
                 return true;
             } else {
@@ -126,44 +129,56 @@ public class World extends JPanel{
     }
 
     public void tick(){
-
         if (input.ifRestart()) {
             state = GameState.MENU;
-            levelIndex = 0;
+            changeLevel(0);
             input.restart();
-            buttons.forEach(MenuButton::reset);
+            buttons.forEach(Button::reset);
+            input.getControllers().forEach(c -> c.setString("Välkommen, välj\nkaraktär"));
         }
 
         if (state.equals(GameState.PLAY)) {
-            levels.get(levelIndex).tick(input);
+            levels.get(levelIndex).tick();
+            if (levels.get(levelIndex).isDone()) {
+                nextLevel();
+                input.getControllers().forEach(c -> c.setString("Tryck när ni\när redo"));
+            }
         }
         else if (state.equals(GameState.BETWEEN)){
-            levels.get(levelIndex).tickBetween(input);
-            int sum = 0;
-            for(MenuButton b : buttons) {
-                b.update(input.digitalData());
-                if (b.isDone()) sum++;
-            }
+            if (levels.get(levelIndex).hasExplanation()) {
+                levels.get(levelIndex).tickBetween(input);
+                int sum = 0;
+                for (Button b : buttons) {
+                    b.update();
+                    if (b.isDone()) sum++;
+                }
 
-            if (sum >= buttons.size()) {
+                if (sum >= buttons.size()) {
+                    state = GameState.PLAY;
+                    levels.get(levelIndex).start(input);
+                    buttons.forEach(Button::reset);
+                }
+            }
+            else {
                 state = GameState.PLAY;
-                buttons.forEach(MenuButton::reset);
+                levels.get(levelIndex).start(input);
             }
         }
         else {
             int sum = 0;
-            for(MenuButton b : buttons) {
-                b.update(input.digitalData());
-                if (b.isDone()) sum++;
+            for(MenuButton b : menuButtons) {
+                if (b.update()) sum++;
             }
 
-            if (sum >= buttons.size()) {
-                state = GameState.BETWEEN;
-
+            if (sum >= menuButtons.size()) {
                 if (!levels.get(this.levelIndex).hasExplanation()) {
                     state = GameState.PLAY;
                 }
-                buttons.forEach(MenuButton::reset);
+                else {
+                    state = GameState.BETWEEN;
+                    input.getControllers().forEach(c -> c.setString("Tryck när ni\när redo"));
+                }
+                menuButtons.forEach(m -> m.getButton().reset());
             }
         }
 
@@ -179,17 +194,25 @@ public class World extends JPanel{
                 if (state.equals(GameState.MENU)) {
                     g.drawImage(menuImage, 0, 0, null);
                     DrawFunctions.drawImage(g, moonGuy, moonGuyPosition.drawX(), moonGuyPosition.drawY(), .5, .5, 0);
+                    menuButtons.forEach(b -> b.draw(g));
                 }
                 else {
-                    levels.get(levelIndex).drawBetween(g);
+                    if (levels.get(levelIndex).hasExplanation()) {
+                        levels.get(levelIndex).drawBetween(g);
+                        buttons.forEach(b -> b.draw(g));
+                    }
                 }
-
-                buttons.forEach(b -> b.draw(g));
             }
             else levels.get(levelIndex).doDrawing(g);
         } finally {
             lock.unlock();
         }
         Toolkit.getDefaultToolkit().sync();
+    }
+
+    public void updatePlayerInfo() {
+        input.getControllers().forEach(c -> {
+            c.writeToFile();
+        });
     }
 }

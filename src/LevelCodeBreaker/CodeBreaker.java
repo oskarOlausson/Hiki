@@ -15,10 +15,9 @@ public class CodeBreaker extends Level {
     private List<Lcd> screens = new ArrayList<>();
     private boolean success = false;
     private Timer timer;
-    @SuppressWarnings("FieldCanBeLocal")
-    private int playerCount = 4;
 
     private Image background;
+    private WinEffect winEffect = null;
 
     public CodeBreaker(World world) {
         this.world = world;
@@ -26,57 +25,31 @@ public class CodeBreaker extends Level {
     }
 
     @Override
-    public void start() {
+    public void start(Input input) {
 
-        String clue = "Small to Large";
+        String clue = "Liten till stor";
 
         Lock lock = new Lock(100 + locks.size() * 200, FrameConstants.HEIGHT.value / 2);
-        lock.setPlayer(PlayerNumber.P1);
-        lock.setInteraction(InputConstants.P1_SLIDE);
+        lock.addController(input.getController(0));
         locks.add(lock);
 
         lock = new Lock(100 + locks.size() * 200, FrameConstants.HEIGHT.value / 2);
-        lock.setPlayer(PlayerNumber.P2);
-        lock.setInteraction(InputConstants.P2_SLIDE);
+        lock.addController(input.getController(1));
         locks.add(lock);
 
         lock = new Lock(100 + locks.size() * 200, FrameConstants.HEIGHT.value / 2);
-        lock.setPlayer(PlayerNumber.P3);
-        lock.setInteraction(InputConstants.P3_SLIDE);
+        lock.addController(input.getController(2));
         locks.add(lock);
 
         lock = new Lock(100 + locks.size() * 200, FrameConstants.HEIGHT.value / 2);
-        lock.setPlayer(PlayerNumber.P4);
-        lock.setInteraction(InputConstants.P4_SLIDE);
+        lock.addController(input.getController(3));
         locks.add(lock);
 
-
-        //SCREEN
-        Lcd lcd = new Lcd(ScreenNumbers.ONE);
-        lcd.setString(0, clue);
-        lcd.setString(1, Integer.toString(locks.get(0).getNumber()) + "(" + InputConstants.sensorToString(locks.get(0).getInteraction()) + ")");
-        lcd.setBacklight(true);
-        screens.add(lcd);
-
-        lcd = new Lcd(ScreenNumbers.TWO);
-        lcd.setString(0, clue);
-        lcd.setString(1, Integer.toString(locks.get(1).getNumber()) + "(" + InputConstants.sensorToString(locks.get(1).getInteraction()) + ")");
-        lcd.setBacklight(true);
-        screens.add(lcd);
-
-        lcd = new Lcd(ScreenNumbers.THREE);
-        lcd.setString(0, clue);
-        lcd.setString(1, Integer.toString(locks.get(2).getNumber()) + "(" + InputConstants.sensorToString(locks.get(1).getInteraction()) + ")");
-        lcd.setBacklight(true);
-        screens.add(lcd);
-
-        lcd = new Lcd(ScreenNumbers.FOUR);
-        lcd.setString(0, clue);
-        lcd.setString(1, Integer.toString(locks.get(3).getNumber()) + "(" + InputConstants.sensorToString(locks.get(1).getInteraction()) + ")");
-        lcd.setBacklight(true);
-        screens.add(lcd);
+        locks.forEach(l -> l.getController().setString(String.format("%s\n%d", clue, l.getNumber())));
 
         timer = new Timer(1);
+
+        winEffect = new WinEffect();
     }
 
     @Override
@@ -89,12 +62,13 @@ public class CodeBreaker extends Level {
 
         screens = new ArrayList<>();
         timer = null;
+        winEffect = null;
     }
 
-    public void tick(Input input){
+    public void tick(){
 
         for(Lock lock: locks) {
-            if (lock.update(input.sensorData())) {
+            if (lock.update()) {
                 if (!unlocked.contains(lock)) unlocked.add(lock);
             }
             else unlocked.remove(lock);
@@ -111,7 +85,7 @@ public class CodeBreaker extends Level {
         }
         System.out.println(correctCount);
 
-        if (correctCount == playerCount) {
+        if (correctCount == locks.size()) {
             if (!success) {
                 locks.forEach(Lock::success);
             }
@@ -120,6 +94,11 @@ public class CodeBreaker extends Level {
 
         if (success) {
             timer.update();
+
+            if (winEffect != null) {
+                if (winEffect.isStarted()) winEffect.start();
+                winEffect.tick();
+            }
 
             if (timer.isDone()) {
                 world.nextLevel();
@@ -133,5 +112,15 @@ public class CodeBreaker extends Level {
 
             DrawFunctions.drawImage(g, lock.getImage(), lock.getX(), lock.getY());
         }
+
+        if (winEffect != null) {
+            if (winEffect.isStarted()) winEffect.draw(g);
+        }
+
+    }
+
+    @Override
+    public LevelEnum toEnum() {
+        return LevelEnum.CODE;
     }
 }

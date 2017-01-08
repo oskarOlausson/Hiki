@@ -10,8 +10,6 @@ public class InputConstants {
     public static final int P3_SLIDE = 2;
     public static final int P4_SLIDE = 3;
 
-
-
     public static final int BUTTON = 4;
 
     public static String sensorToString(int input) {

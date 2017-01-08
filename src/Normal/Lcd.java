@@ -12,10 +12,7 @@ public class Lcd {
     private TextLCDPhidget screen;
     private int serial;
     private boolean hasScreen;
-
-    public Lcd(ScreenNumbers screenEnum) {
-        this(screenEnum.value, screenEnum.getSize());
-    }
+    private int rowCount = -1;
 
     public Lcd(int serial, int screenSize) {
 
@@ -39,9 +36,11 @@ public class Lcd {
                 screen.setBacklight(true);
                 screen.setDisplayString(0, " ");
                 screen.setDisplayString(1, " ");
+                rowCount = screen.getRowCount();
             } catch (PhidgetException e) {
                 System.err.println("Cant set the screen size, backlight or display string");
                 e.printStackTrace();
+                if (rowCount == -1 ) rowCount = 2;
             }
 
             addSwedishChars();
@@ -55,6 +54,28 @@ public class Lcd {
             screen.setBacklight(on);
         } catch (PhidgetException e) {
             System.err.println("Can´t turn on backlight on lcd " + serial);
+            e.printStackTrace();
+        }
+    }
+
+
+    /**
+     * Really slow, should not be used 60 times a second
+     * @param string, string to write
+     */
+    public void setString(String string) {
+        reset();
+        String[] strings = string.split("\\n");
+        for (int i = 0; i < strings.length; i++) {
+            if (i < strings.length) setString(i, strings[i]);
+            else setString(i, "");
+        }
+    }
+
+    public void fastSetString(int index, String string) {
+        try {
+            screen.setDisplayString(index, string);
+        } catch (PhidgetException e) {
             e.printStackTrace();
         }
     }
@@ -79,7 +100,7 @@ public class Lcd {
 
         string = swedish.toString();
 
-        int len = 15;
+        int len = 18;
         int splitIndex;
 
         try {
@@ -120,10 +141,6 @@ public class Lcd {
         }
     }
 
-    public static void main(String[] args) {
-        new Lcd(141568, TextLCDPhidget.PHIDGET_TEXTLCD_SCREEN_4x20);
-    }
-
     public void close() {
         if (!hasScreen) return;
         try {
@@ -136,13 +153,15 @@ public class Lcd {
     }
 
     public void reset() {
+        if (!hasScreen) return;
         try {
             for (int i = 0; i < screen.getRowCount(); i++) {
                 screen.setDisplayString(i, "");
             }
-            screen.setBacklight(false);
+            screen.setBacklight(true);
         } catch (PhidgetException e) {
             e.printStackTrace();
         }
     }
+
 }

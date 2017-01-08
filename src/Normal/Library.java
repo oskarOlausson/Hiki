@@ -46,7 +46,7 @@ public class Library {
         float b = color.getBlue()   / 255f;
         float a = color.getAlpha()  / 255f;
 
-        return tint(r, g, b, a, img);
+        return tint(img, r, g, b, a);
     }
 
     public static BufferedImage loadImage(String filePath, Color color, double alpha) {
@@ -57,10 +57,10 @@ public class Library {
         float b = color.getBlue()   / 255f;
         float a = (float) alpha;
 
-        return tint(r, g, b, a, img);
+        return tint(img, r, g, b, a);
     }
 
-    private static BufferedImage tint(float r, float g, float b, float a, BufferedImage img) {
+    public static BufferedImage tint(BufferedImage img, float r, float g, float b, float a) {
         BufferedImage tintedSprite = new BufferedImage(img.getWidth(), img.getHeight(), BufferedImage.TRANSLUCENT);
         Graphics2D graphics = tintedSprite.createGraphics();
         graphics.drawImage(img, 0, 0, null);

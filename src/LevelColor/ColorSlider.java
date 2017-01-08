@@ -52,12 +52,28 @@ class ColorSlider extends Player{
         if (Math.abs(x - gotoX) < 2) x = gotoX;
     }
 
-    @Override
-    public void inputs(int[] sensorData, boolean[] digitalData) {
+
+    public void inputs(int[] sensorData) {
         double sensorValue = normalize(sensorData[sensorIndex]);
         colorIndexDouble = 3 * normalize(sensorData[sensorIndex2]);
         colorIndex = (int) (colorIndexDouble);
         if (colorIndex > 2) colorIndex = 2;
+
+        this.gotoX = pad + sensorValue * (span - pad * 2);
+    }
+
+
+    public void inputs() {
+        double sensorValue = playerControllers.get(0).getSliderValue();
+        colorIndexDouble = 3 * playerControllers.get(1).getSliderValue();
+        colorIndex = (int) (colorIndexDouble);
+        if (colorIndex > 2) colorIndex = 2;
+        /*
+        if (playerControllers.get(0).isButtonPressed()) {
+            changeColor();
+        }
+        colorIndexDouble = (colorIndex + 0.5) * 0.2 + colorIndexDouble * 0.8;
+        */
 
         this.gotoX = pad + sensorValue * (span - pad * 2);
     }
@@ -79,22 +95,22 @@ class ColorSlider extends Player{
         return width;
     }
 
-    public void drawInterface(Graphics g, Colors colors) {
+    public void drawInterface(Graphics g, Colors colors, int dx, int dy) {
 
         int boxWidth = 40;
         int boxHeight = 60;
         int totalWidth = boxWidth * 3;
-        int drawX = (int) (getX() + width / 2d - totalWidth / 2d);
+        int drawX = (int) (getX() + width / 2d - totalWidth / 2d) + dx;
 
         for (int i = 0; i < 3; i++) {
             g.setColor(colors.primaryGet(i));
-            g.fillRect(drawX + boxWidth * i, (int) (y - boxHeight / 2), boxWidth, boxHeight);
+            g.fillRect(drawX + boxWidth * i, (int) (y - boxHeight / 2) + dy, boxWidth, boxHeight);
         }
 
         g.setColor(Color.BLACK);
-        g.fillRect((int) (drawX + boxWidth * colorIndexDouble) - 2, (int) (y - boxHeight / 2), 4, boxHeight);
+        g.fillRect((int) (drawX + boxWidth * colorIndexDouble) - 2, (int) (y - boxHeight / 2) + dy, 4, boxHeight);
         g.setColor(Color.WHITE);
-        g.drawRect((int) (drawX + boxWidth * colorIndexDouble) - 2, (int) (y - boxHeight / 2), 4, boxHeight);
+        g.drawRect((int) (drawX + boxWidth * colorIndexDouble) - 2, (int) (y - boxHeight / 2) + dy, 4, boxHeight);
     }
 
     public void setPad(int pad) {

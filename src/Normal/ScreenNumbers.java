@@ -7,10 +7,10 @@ import com.phidgets.TextLCDPhidget;
  * This classes has some inputs and outputs
  */
 public enum ScreenNumbers {
-    ONE (141627),
-    TWO (141568),
-    THREE (141799),
-    FOUR (141787);
+    ONE (141787),
+    TWO (141799),
+    THREE (141627),
+    FOUR (141568);
 
     public final int value;
 

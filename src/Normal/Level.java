@@ -12,6 +12,7 @@ import java.awt.*;
 public abstract class Level {
 
     protected BetweenLevels between;
+    private boolean done = false;
 
     /**
      * constructor
@@ -24,18 +25,18 @@ public abstract class Level {
         between = new NoExplanation();
     }
 
-    /**Called at start of level, create objects in this function**/
-    public abstract void start();
+    /**Called at start of level, create objects in this function
+     * @param input**/
+    public abstract void start(Input input);
 
     /**Called at end of level, null objects in this function**/
     public abstract void end();
 
     /**
      * This function does all the logic behind movement and updates in the level
-     * @param input, this is the way the world class sends what phidgets controls are where
      *
      */
-    public abstract void tick(Input input);
+    public abstract void tick();
 
     public void tickBetween(Input input) {
         between.tick(input);
@@ -47,12 +48,21 @@ public abstract class Level {
      */
     public abstract void doDrawing(Graphics g);
 
+    public void setDone(boolean done) {
+        this.done = done;
+    }
+
+    public boolean isDone() {
+        return done;
+    }
 
     public void drawBetween(Graphics g) {
         between.draw(g);
     }
 
     public boolean hasExplanation() {
-        return true;
+        return false;
     }
+
+    public abstract LevelEnum toEnum();
 }

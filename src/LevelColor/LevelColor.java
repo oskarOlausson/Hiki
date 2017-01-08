@@ -2,9 +2,11 @@ package LevelColor;
 
 import Normal.*;
 import java.awt.*;
+import java.awt.event.KeyEvent;
 import java.util.Iterator;
 import java.util.List;
 import java.util.ArrayList;
+import java.util.Random;
 
 /**
  * Created by Oskar on 2016-11-30.
@@ -19,41 +21,64 @@ public class LevelColor extends Level {
     private ColorSlider colorSlider2;
     private Colors colors = new Colors();
     private World world;
-    private int timerMax = FrameConstants.SECOND.value * 2;
     private int timer;
     private boolean moving = false;
+    private boolean success = false;
+    private int level = 0;
+    private int levelMax = 10;
 
-    private final double scoreDrop = 0.5f / FrameConstants.SECOND.value;
+    private Random random = new Random();
+    private int randMax = (int) (FrameConstants.SECOND.value * 0.5);
+
+    //are arrays because you they change dependent on level
+    private int[] timerMax;
+    private boolean[] mixColors;
+    private boolean[] addNopes;
+
+    private Position screenShake = new Position(0, 0);
 
     private Font fontNormal = new Font("Sans-Serif", Font.PLAIN, 50);
     private Font fontUpsideDown = new Font("Sans-Serif", Font.PLAIN, -50);
 
-    private double score;
-    private double scoreAnim;
-    private final int scoreMax = 35;
-    @SuppressWarnings("FieldCanBeLocal")
-    private final int scoreBuffer = 10;
+    private double score = 0;
+    private double scoreAnim = 0;
+    private final int scoreMax = 10;
+    private WinEffect winEffect = null;
+    private Timer successTimer = null;
+    private Input input;
+
+    private boolean pressed = false;
+    private int screenShakeAmount = 0;
+    private Image gImage = Library.loadImage("colorGoal");
+
 
     public LevelColor(World world) {
         super(new ColorExplanation());
         this.world = world;
+        getLevelInfo();
     }
 
     @Override
-    public void start() {
-        colorSlider1 = new ColorSlider(world, FrameConstants.WIDTH.value / 2 + 10, 30);
-        colorSlider1.setControl(InputConstants.P1_SLIDE, InputConstants.P2_SLIDE);
-        colorSlider1.changeColor();
-        colorSlider2 = new ColorSlider(world, FrameConstants.WIDTH.value / 2 - 10, FrameConstants.HEIGHT.value - 60);
-        colorSlider2.setControl(InputConstants.P3_SLIDE, InputConstants.P4_SLIDE);
+    public void start(Input input) {
+        random.setSeed(System.nanoTime());
+        this.input = input;
+        colorSlider1 = new ColorSlider(world, FrameConstants.WIDTH.value / 2, 100);
+        colorSlider1.addController(input.getController(0), "Du kontrollerar\npositionen");
+        colorSlider1.addController(input.getController(1), "Du kontrollerar\nfärgen");
+
+        colorSlider2 = new ColorSlider(world, FrameConstants.WIDTH.value / 2, FrameConstants.HEIGHT.value - 115);
+        colorSlider2.addController(input.getController(2), "Du kontrollerar\npositionen");
+        colorSlider2.addController(input.getController(3), "Du kontrollerar\nfärgen");
 
         colorSliders.add(colorSlider1);
         colorSliders.add(colorSlider2);
-        timer = timerMax;
+
+        timer = timerMax[0] - 1;
         score = 0;
         scoreAnim = score;
 
         ColorBlob c = new ColorBlob(0);
+
         c.moveTo(FrameConstants.WIDTH.value / 4, FrameConstants.HEIGHT.value / 2);
         colorBlobs.add(c);
 
@@ -64,6 +89,10 @@ public class LevelColor extends Level {
         c = new ColorBlob(1);
         c.moveTo(FrameConstants.WIDTH.value / 2, FrameConstants.HEIGHT.value / 2);
         colorBlobs.add(c);
+
+        winEffect = new WinEffect();
+        success = false;
+        successTimer = new Timer(3);
     }
 
     @Override
@@ -72,24 +101,27 @@ public class LevelColor extends Level {
         colorSlider1    = null;
         colorSlider2    = null;
         colorSliders    = new ArrayList<>();
-        colorSliders    = new ArrayList<>();
         colorParticles  = new ArrayList<>();
         score = 0;
         scoreAnim = 0;
+        winEffect = null;
+        setDone(false);
+        successTimer = null;
     }
 
     @Override
-    public void tick(Input input) {
+    public void tick() {
         int index;
         int index2;
         boolean overLaps;
 
+        updateScreenShaker();
         if (!moving && colorBlobs.isEmpty()) {
             moving = true;
         }
 
         for (ColorSlider c: colorSliders) {
-            c.inputs(input.sensorData(), input.digitalData());
+            c.inputs();
             c.move();
         }
 
@@ -99,31 +131,65 @@ public class LevelColor extends Level {
         double lowPoint = Math.min(colorSlider1.lowPoint(), colorSlider2.lowPoint());
         double highPoint = Math.max(colorSlider1.highPoint(), colorSlider2.highPoint());
 
+        //cheat
+        if (input.keyPressed(KeyEvent.VK_E)) {
+            if (!pressed) {
+                score = scoreMax + 1;
+            }
+            pressed = true;
+        }
+        else pressed = false;
+
         //creates new blobs
         if (moving) {
-            if (timer < 0) {
-                timer = timerMax;
-                if (fiftyFifty()) {
-                    index = (int) Math.round(Math.random() * 2);
-                    do {
-                        index2 = (int) Math.round(Math.random() * 2);
-                    }
-                    while (index == index2);
-                    colorBlobs.add(new ColorBlob(index, index2));
-                } else {
+            if (timer >= timerMax[level]) {
+                timer = random.nextInt(randMax);
+                if (addNopes[level] && fiftyFifty()) {
                     colorBlobs.add(new ColorBlob(-1));
+                } else {
+                    index = (int) Math.round(Math.random() * 2);
+                    if (fiftyFifty() && mixColors[level]) {
+                        do {
+                            index2 = (int) Math.round(Math.random() * 2);
+                        }
+                        while (index == index2);
+                        colorBlobs.add(new ColorBlob(index, index2));
+                    }
+                    else colorBlobs.add(new ColorBlob(index));
                 }
-            } else timer -= 1;
+            } else timer += 1;
         }
 
         for (ColorBlob c: colorBlobs) {
+            if (c.ifRemove()) {
+                continue;
+            }
             if (moving) c.update();
+
+            int cType = 1;
+            if (c.isEvil()) cType = -1;
 
             if (overLaps) {
                 if (c.collision(lowPoint, highPoint)) {
-                    if (c.match(colorSlider1.getIndex(), colorSlider2.getIndex())) {
+                    if (!c.isMix()) {
+                        if (colorSlider1.getIndex() == colorSlider2.getIndex()) {
+                            if (c.match(colorSlider1.getIndex())) {
+                                score += cType;
+                                if (cType == -1) {
+                                    setScreenShaker(10);
+                                }
+                                c.delete();
+                                continue;
+                            }
+                        }
+                    }
+                    else if (c.match(colorSlider1.getIndex(), colorSlider2.getIndex())) {
+                        score += cType;
+                        if (cType == -1) {
+                            setScreenShaker(10);
+                        }
                         c.delete();
-                        score += 3;
+                        continue;
                     }
                 }
             }
@@ -131,25 +197,71 @@ public class LevelColor extends Level {
                 for (ColorSlider slider: colorSliders) {
                     if (c.collision(slider.lowPoint(), slider.highPoint())) {
                         if (c.match(slider.getIndex())) {
+                            score += cType;
+                            if (cType == -1) {
+                                setScreenShaker(10);
+                            }
                             c.delete();
-                            score += 1;
+                            continue;
                         }
                     }
                 }
             }
 
             if (c.getCenter().getX() > FrameConstants.WIDTH.value) {
-                score -= 1;
+                if (c.isEvil()) score++;
+                else {
+                    score--;
+                    setScreenShaker(10);
+                }
                 c.delete();
+                continue;
             }
         }
 
-        score -= scoreDrop;
+        if (winEffect != null) {
+            winEffect.tick();
+        }
 
-        if (score > scoreMax + scoreBuffer) score = scoreMax + scoreBuffer;
+        boolean isMix;
+        boolean nopes;
+        if (score > scoreMax) {
+            score = 0;
+            if (level < levelMax - 1) {
+                isMix = mixColors[level];
+                nopes = addNopes[level];
+                level++;
+
+                if (!isMix) {
+                    if (mixColors[level]) {
+                        input.getControllers().forEach(c -> c.setString("Ni kan mixa\nere färger"));
+                    }
+                }
+
+                if (!nopes) {
+                    if (addNopes[level]) {
+                        input.getControllers().forEach(c -> c.setString("Matcha inte\nx-blobben"));
+                    }
+                }
+
+            }
+            else {
+                success = true;
+                if (winEffect != null) {
+                    winEffect.start();
+                }
+            }
+        }
         else if (score < 0) score = 0;
 
-        scoreAnim = scoreAnim * 0.8 + score * 0.2;
+        if (success) {
+            successTimer.update();
+            if (successTimer.isDone()) {
+                setDone(true);
+            }
+        }
+
+        scoreAnim = scoreAnim * 0.95 + score * 0.05;
     }
 
     private boolean fiftyFifty() {
@@ -164,12 +276,12 @@ public class LevelColor extends Level {
         g.setColor(colors.getScoreColorBack());
         g.drawOval(FrameConstants.WIDTH.value / 2 - size / 2, FrameConstants.HEIGHT.value / 2 - size / 2, size, size);
 
-        int now = (int) (size * Math.min(1, score / scoreMax));
+        int now = (int) (size * Math.min(1, scoreAnim / scoreMax));
 
         g.setColor(colors.getScoreColor());
         g.fillOval(FrameConstants.WIDTH.value / 2 - now / 2, FrameConstants.HEIGHT.value / 2 - now / 2, now, now);
 
-        drawColorSliders(g);
+        drawColorSliders(g, screenShake.drawX(), screenShake.drawY());
 
         Iterator<ColorParticle> iterColorParticle = colorParticles.iterator();
 
@@ -190,7 +302,7 @@ public class LevelColor extends Level {
             ColorBlob c = iterColorBlob.next();
 
             if (!c.ifRemove()) {
-                c.draw(g, colors);
+                c.draw(g, colors, screenShake.drawX(), screenShake.drawY());
             }
             else {
                 Color color;
@@ -209,44 +321,112 @@ public class LevelColor extends Level {
             }
         }
 
+        if (winEffect != null) {
+            winEffect.draw(g);
+        }
 
-
+        drawLevel(g, screenShake.drawX(), screenShake.drawY());
     }
 
+    @Override
+    public LevelEnum toEnum() {
+        return LevelEnum.COLOR;
+    }
 
-    @SuppressWarnings("unused")
-    private void drawScore(Graphics g) {
+    private void drawLevel(Graphics g, int dx, int dy) {
         FontMetrics mud = g.getFontMetrics(fontUpsideDown);
         FontMetrics mn = g.getFontMetrics(fontNormal);
-        String text = "Your score: " + Integer.toString((int) score);
-        int pad = 40;
+        String text = "Level: " + Integer.toString(level + 1) + "/" + Integer.toString(levelMax);
+        int pad = 20;
         g.setColor(colors.getTextColor());
 
         g.setFont(fontUpsideDown);
-        g.drawString(text, FrameConstants.WIDTH.value / 2 - mud.stringWidth(text) / 2, pad - mud.getHeight() / 2 + mud.getAscent());
+        g.drawString(text, dx + FrameConstants.WIDTH.value / 2 - mud.stringWidth(text) / 2, dy + pad - mud.getHeight() / 2 + mud.getAscent());
 
         g.setFont(fontNormal);
-        g.drawString(text, FrameConstants.WIDTH.value / 2 - mn.stringWidth(text) / 2, FrameConstants.HEIGHT.value - pad - mud.getHeight() / 2 + mud.getAscent());
+        g.drawString(text, dx + FrameConstants.WIDTH.value / 2 - mn.stringWidth(text) / 2, dy + FrameConstants.HEIGHT.value - pad - mud.getHeight() / 2 + mud.getAscent());
+
+        for (int i = 0; i < FrameConstants.HEIGHT.value / 50; i++) {
+            DrawFunctions.drawImage(g, gImage, FrameConstants.WIDTH.value - 50, i * 50);
+        }
     }
 
-
-    private void drawColorSliders(Graphics g) {
+    private void drawColorSliders(Graphics g, int dx, int dy) {
+        int pad = 140;
         if (colorSlider1.overLaps(colorSlider2)) {
-            int lx = Math.min((int) colorSlider1.lowPoint(), (int) colorSlider2.lowPoint());
-            int rx = Math.max((int) colorSlider1.highPoint(), (int) colorSlider2.highPoint());
+            int lx = Math.min((int) colorSlider1.lowPoint(), (int) colorSlider2.lowPoint()) + dx;
+            int rx = Math.max((int) colorSlider1.highPoint(), (int) colorSlider2.highPoint()) + dy;
 
             g.setColor(colors.secondaryGet(colorSlider1.getIndex(), colorSlider2.getIndex()));
-            g.fillRect(lx, 85, rx - lx, FrameConstants.HEIGHT.value - 200);
+            g.fillRect(lx, pad, rx - lx, FrameConstants.HEIGHT.value - pad * 2 - 15);
         }
         else {
             for (ColorSlider c : colorSliders) {
                 g.setColor(colors.primaryGet(c.getIndex()));
-                g.fillRect((int) c.lowPoint(), 85, (int) c.getWidth(), FrameConstants.HEIGHT.value - 200);
+                g.fillRect((int) c.lowPoint() + dx, pad + dy, (int) c.getWidth(), FrameConstants.HEIGHT.value - pad * 2 - 15);
             }
         }
 
         for (ColorSlider c : colorSliders) {
-            c.drawInterface(g, colors);
+            c.drawInterface(g, colors, dx, dy);
+        }
+    }
+
+    public void getLevelInfo() {
+        timerMax =  new int[levelMax];
+        mixColors = new boolean[levelMax];
+        addNopes =  new boolean[levelMax];
+        double value;
+
+        //3 seconds on the first level, 2 on the last level
+        for (int i = 0; i < levelMax; i++) {
+
+            value = 3;
+
+            if (i > 6) {
+                addNopes[i] = true;
+                mixColors[i] = true;
+                switch (i) {
+                    case 7:
+                        value = 2.75;
+                        break;
+                    case 8:
+                        value = 2.25;
+                        break;
+                }
+                if (i > 8) {
+                    value = 2;
+                }
+            }
+            else if (i > 1) {
+                mixColors[i] = true;
+                value = 2.5;
+            }
+            else if (i == 1) {
+                value = 2.75;
+            }
+
+            timerMax[i] = (int) (value * FrameConstants.SECOND.value);
+        }
+    }
+
+    @Override
+    public boolean hasExplanation() {
+        return true;
+    }
+
+    public void setScreenShaker(int amount) {
+        screenShakeAmount = amount;
+    }
+
+    public void updateScreenShaker() {
+        if (screenShakeAmount > 1) {
+            screenShakeAmount *= 0.95;
+            screenShake.randomize(-screenShakeAmount, -screenShakeAmount, screenShakeAmount, screenShakeAmount);
+        }
+        else {
+            screenShake.set(0, 0);
+            screenShakeAmount = 0;
         }
     }
 }

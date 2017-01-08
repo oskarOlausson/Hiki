@@ -2,6 +2,7 @@ package LevelCodeBreaker;
 
 import Normal.Entity;
 import Normal.Library;
+import Normal.PlayerController;
 import Normal.PlayerNumber;
 
 import java.awt.*;
@@ -12,16 +13,15 @@ import java.awt.*;
  */
 class Lock extends Entity {
 
-    private PlayerNumber playerNumber;
-    private int interaction = -1;
     private int number;
     private Image imgOpen;
     private Image imgClosed;
     private Image imgPick;
 
-    private int state = 0;
+    private State state = State.Locked;
+    private PlayerController controller;
 
-     Lock(int x, int y) {
+    Lock(int x, int y) {
          this.x = x;
          this.y = y;
          number = (int) (Math.random() * 100);
@@ -32,19 +32,17 @@ class Lock extends Entity {
          setSizeFromImage();
     }
 
-    boolean update(int[] input) {
-        int in = input[interaction];
-
-        if (state == 2) {
+    boolean update() {
+        if (state == State.Open) {
             image = imgOpen;
             return true;
         } else {
-            if (in > 800) {
-                state = 1;
+            if (controller.getSliderValue() > 0.8) {
+                state = State.Active;
                 image = imgPick;
                 return true;
             } else {
-                state = 0;
+                state = State.Active;
                 image = imgClosed;
                 return false;
             }
@@ -52,26 +50,22 @@ class Lock extends Entity {
     }
 
     void success() {
-        state = 2;
-    }
-
-    void setPlayer(PlayerNumber playerNumber) {
-        this.playerNumber = playerNumber;
-    }
-
-    PlayerNumber getPlayer() {
-        return playerNumber;
-    }
-
-    int getInteraction() {
-        return interaction;
-    }
-
-    void setInteraction(int interaction) {
-        this.interaction = interaction;
+        state = State.Open;
     }
 
     int getNumber() {
         return number;
+    }
+
+    public void addController(PlayerController playerController) {
+        controller = playerController;
+    }
+
+    public PlayerController getController() {
+        return controller;
+    }
+
+    private enum State {
+        Locked, Open, Active
     }
 }

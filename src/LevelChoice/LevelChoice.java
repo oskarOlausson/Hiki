@@ -13,13 +13,15 @@ public class LevelChoice extends Level{
     private Story story;
     private World world;
     private Timer timer = new Timer(5);
+    private Input input;
 
     public LevelChoice(World world) {
         this.world = world;
     }
 
     @Override
-    public void start() {
+    public void start(Input input) {
+        this.input = input;
         story = new Story();
     }
 
@@ -29,7 +31,7 @@ public class LevelChoice extends Level{
     }
 
     @Override
-    public void tick(Input input) {
+    public void tick() {
         if (story.update(input)) {
             timer.update();
             if (timer.isDone()) {
@@ -46,6 +48,11 @@ public class LevelChoice extends Level{
     @Override
     public boolean hasExplanation() {
         return false;
+    }
+
+    @Override
+    public LevelEnum toEnum() {
+        return LevelEnum.CHOICE;
     }
 
 }

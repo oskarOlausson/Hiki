@@ -3,6 +3,7 @@ package LevelMat;
 import Normal.*;
 
 import java.awt.*;
+import java.awt.image.BufferedImage;
 
 /**
  * Created by oskar on 2016-11-17.
@@ -10,12 +11,9 @@ import java.awt.*;
  */
 class Mat extends Player {
 
-    private int inp_topLeft = InputConstants.P1_SLIDE;
-    private int inp_topRight = InputConstants.P2_SLIDE;
-    private int inp_bottomLeft= InputConstants.P3_SLIDE;
-    private int inp_bottomRight = InputConstants.P4_SLIDE;
-
-
+    private Color color1 = new Color(120, 64, 44);
+    private Color color2 = new Color(200, 145, 99);
+    private BasicStroke myStroke = new BasicStroke(3);
 
     Mat() {
         super("player");
@@ -29,8 +27,7 @@ class Mat extends Player {
     }
 
     private void initWalker() {
-
-        String string = "player";
+        String string = "mat";
         image = Library.loadImage(string);
 
         setSizeFromImage();
@@ -38,11 +35,12 @@ class Mat extends Player {
         y = 100;
     }
 
-    public void inputs(int[] sensorData, boolean[] digitalData) {
-        double tl = normalize(sensorData[inp_topLeft]);
-        double tr = normalize(sensorData[inp_topRight]);
-        double bl = normalize(sensorData[inp_bottomLeft]);
-        double br = normalize(sensorData[inp_bottomRight]);
+    @Override
+    public void inputs() {
+        double tl = playerControllers.get(0).getSliderValue();
+        double tr = playerControllers.get(1).getSliderValue();
+        double bl = playerControllers.get(2).getSliderValue();
+        double br = playerControllers.get(3).getSliderValue();
 
         dx = (tr + br) - (tl + bl);
         dy = (bl + br) - (tl + tr);
@@ -54,19 +52,40 @@ class Mat extends Player {
         int cx = pos.drawX();
         int cy = pos.drawY();
 
-        g2d.setPaint(new Color(20, 20, 20));
-
-        g2d.drawString(InputConstants.sensorToString(inp_topLeft), cx - 100, cy - 100);
-        g2d.drawString(InputConstants.sensorToString(inp_topRight), cx + 100, cy - 100);
-        g2d.drawString(InputConstants.sensorToString(inp_bottomLeft), cx - 100, cy + 100);
-        g2d.drawString(InputConstants.sensorToString(inp_bottomRight), cx + 100, cy + 100);
-
-        g2d.drawLine(cx, cy, cx - 800, cy - 800);
-        g2d.drawLine(cx, cy, cx + 800, cy - 800);
-        g2d.drawLine(cx, cy, cx - 800, cy + 800);
-        g2d.drawLine(cx, cy, cx + 800, cy + 800);
+        drawRope(g2d, cx, cy, cx - 800, cy - 800, color1, color2);
+        drawRope(g2d, cx, cy, cx + 800, cy - 800, color1, color2);
+        drawRope(g2d, cx, cy, cx - 800, cy + 800, color1, color2);
+        drawRope(g2d, cx, cy, cx + 800, cy + 800, color1, color2);
 
         DrawFunctions.drawImage(g2d, image, getX(), getY());
+    }
+
+    private void drawRope(Graphics2D g2d, int x, int y, int x2, int y2, Color c1, Color c2) {
+        Color colorBefore = g2d.getColor();
+        Stroke strokeBefore = g2d.getStroke();
+
+        g2d.setStroke(myStroke);
+        int lenOfOne = 5;
+        double dx;
+        double dy;
+
+        double totalDistance = (int) Math.sqrt(Math.pow(x - x2, 2) +  Math.pow(y - y2, 2));
+        double angle = Math.atan2(x2 - x, y2 - y);
+
+        for (int i = 0; i < totalDistance / lenOfOne; i++) {
+
+            if (i % 2 == 0) {
+                g2d.setColor(c1);
+            }
+            else g2d.setColor(c2);
+
+            dx = Math.cos(angle) * lenOfOne;
+            dy = Math.sin(angle) * lenOfOne;
+            g2d.drawLine((int) (x + dx * i), (int) (y + dy * i), (int) (x + dx * (i + 1)), (int) (y + dy * (i + 1)));
+        }
+
+        g2d.setStroke(strokeBefore);
+        g2d.setColor(colorBefore);
     }
 }
 

@@ -73,7 +73,7 @@ class ColorExplanation extends BetweenLevels {
         }
 
         int[] sensorArray = {(int) (progress * 1000), (int) (progress2 * 1000)};
-        colorSlider.inputs(sensorArray, null);
+        colorSlider.inputs(sensorArray);
 
         colorSlider.move();
     }
@@ -90,7 +90,7 @@ class ColorExplanation extends BetweenLevels {
         g.drawImage(slider, sliderPosition2.drawX(), sliderPosition2.drawY(), null);
         g.drawImage(sliderButton, sliderPosition2.drawX(), (int) (topPad + sliderPosition2.drawY() + progress2 * (sliderHeight - topPad - bottomPad)), null);
 
-        colorSlider.drawInterface(g, colors);
+        colorSlider.drawInterface(g, colors, 0, 0);
         g.setColor(colors.primaryGet(colorSlider.getIndex()));
         g.fillRect(colorSlider.getX() + 10, 220, 40, 210);
     }
