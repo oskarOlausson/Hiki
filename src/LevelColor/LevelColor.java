@@ -10,7 +10,7 @@ import java.util.Random;
 
 /**
  * Created by Oskar on 2016-11-30.
- * This classes has some inputs and outputs
+ * This class holds the state of the Color Level
  */
 public class LevelColor extends Level {
 
